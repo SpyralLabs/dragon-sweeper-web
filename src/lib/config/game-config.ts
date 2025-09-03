@@ -17,105 +17,120 @@ export const MONSTERS = {
   poisonSpider: {
     id: 'poison_spider',
     power: 2,
-    icon: '',
+    icon: Icons.PoisonSpider,
   },
   goblin: {
     id: 'goblin',
     power: 3,
-    icon: '',
+    icon: Icons.Shadow, // Using Shadow icon for goblin
   },
   cobra: {
     id: 'cobra',
     power: 4,
-    icon: '',
+    icon: Icons.Shadow, // Using Shadow icon for cobra
   },
   mushroom: {
     id: 'mushroom',
     power: 5,
-    icon: '',
+    icon: Icons.Mushroom,
   },
   giant: {
     id: 'giant',
     power: 6,
-    icon: '',
+    icon: Icons.Giant,
   },
   gargoyle: {
     id: 'gargoyle',
     power: 7,
-    icon: '',
+    icon: Icons.Gargoyle,
   },
   poisonMushroom: {
     id: 'poison_mushroom',
     power: 8,
-    icon: '',
+    icon: Icons.Mushroom, // Using Mushroom icon for poison mushroom
   },
   bunny: {
     id: 'bunny',
     power: 9,
-    icon: '',
+    icon: Icons.Shadow, // Using Shadow icon for bunny
   },
   mineSeeker: {
     id: 'mine_seeker',
     power: 10,
-    icon: '',
+    icon: Icons.Mineseeker,
   },
   eye: {
     id: 'eye',
     power: 5,
-    icon: '',
+    icon: Icons.Shadow, // Using Shadow icon for eye
   },
   magician: {
     id: 'magician',
     power: 1,
-    icon: '',
+    icon: Icons.Magician,
   },
   mimic: {
     id: 'mimic',
     power: 11,
-    icon: '',
+    icon: Icons.Mimic,
   },
   darkLord: {
     id: 'dark_lord',
     power: 13,
-    icon: '',
+    icon: Icons.DarkLord,
   },
   mine: {
     id: 'mine',
     power: 100,
-    icon: '',
+    icon: Icons.Mine,
   },
-};
+} as const;
 
 export const ITEMS = {
-  box: {
-    id: 'box',
+  boxCloose: {
+    id: 'box-close',
     power: 0,
-    icon: '',
+    icon: Icons.BoxClose,
+  },
+  boxOpen: {
+    id: 'box-open',
+    power: 0,
+    icon: Icons.BoxOpen,
   },
   hpItem: {
-    id: 'hp_item',
+    id: 'hp-item',
     power: 0,
-    icon: '',
+    icon: Icons.HP,
   },
-  pickItem: {
-    id: 'pick_item',
+  pickDefault: {
+    id: 'pick-item',
     power: 0,
-    icon: '',
+    icon: Icons.PickDefault,
+  },
+  pickShine: {
+    id: 'pick-shine',
+    power: 0,
+    icon: Icons.PickShine,
   },
   darkCrystal: {
     id: 'dark_crystal',
     power: 0,
-    icon: '',
+    icon: Icons.DarkCrystal,
     exp: 3,
+  },
+  darkCrystalBroken: {
+    id: 'dark_crystal_broken',
+    power: 0,
+    icon: Icons.DarkCrystalBroken,
   },
   mineBuster: {
     id: 'mine_buster',
     power: 0,
-    icon: '',
+    icon: Icons.MineBuster,
   },
   monkey: {
     id: 'monkey',
     power: 0,
-    icon: '',
+    icon: Icons.Monkey,
   },
-};
+} as const;

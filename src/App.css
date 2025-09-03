@@ -1,6 +1,0 @@
-@import 'tailwindcss';
-
-/* App-specific styles using Tailwind utilities */
-#root {
-  @apply font-pixel;
-}
