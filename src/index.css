@@ -1,0 +1,62 @@
+@import 'tailwindcss';
+
+/* CSS Custom Properties for Pixel Arial Font */
+:root {
+  --font-pixel: 'Pixel Arial', monospace, sans-serif;
+}
+
+/* Pixel Arial Font Face Declarations */
+@font-face {
+  font-family: 'Pixel Arial';
+  src:
+    url('./assets/font/Pixel_Arial_11_400.woff2') format('woff2'),
+    url('./assets/font/Pixel_Arial_11_400.TTF') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pixel Arial';
+  src:
+    url('./assets/font/Pixel_Arial_11_800.woff2') format('woff2'),
+    url('./assets/font/Pixel_Arial_11_800.TTF') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Apply Pixel Arial as default font globally */
+* {
+  font-family: var(--font-pixel);
+}
+
+body {
+  font-family: var(--font-pixel);
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Ensure all text elements use Pixel Arial */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span,
+div,
+button,
+input,
+textarea,
+select,
+code {
+  font-family: var(--font-pixel);
+}
+
+@theme {
+  --font-pixel: 'Pixel Arial', monospace, sans-serif;
+}
