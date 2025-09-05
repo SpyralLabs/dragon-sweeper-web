@@ -2,6 +2,7 @@ import NavLogo from '@/assets/images/landing/nav-logo.webp';
 import Characters from '@/assets/images/landing/hero-characters.webp';
 import FocusFrame from '@/assets/images/landing/focus-frame.webp';
 import { Button } from '@/components/ui/button';
+import WalletConnectButton from '@/components/widgets/wallet-connect-button';
 
 export default function HomePage() {
   return (
@@ -21,7 +22,7 @@ export default function HomePage() {
       />
       <div className="absolute bottom-[76px] left-1/2 z-1 flex h-[172px] w-105 -translate-x-1/2 items-center justify-center">
         <img src={FocusFrame} alt="Focus Frame" className="absolute inset-0 h-full w-full" />
-        <Button size="lg">connect wallet</Button>
+        <WalletConnectButton size="lg">connect wallet</WalletConnectButton>
       </div>
     </main>
   );
