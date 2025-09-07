@@ -11,10 +11,11 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default: 'hover:bg-primary/90',
-        secondary: 'hover:bg-secondary/80',
+        link: 'text-white underline-offset-2 hover:underline',
       },
       size: {
         default: 'h-[58px] pl-[42.5px] py-1 min-w-[184px]',
+        sm: 'h-fit',
         lg: 'h-[84px] pl-[23px] pr-[25px] pt-4.5 pb-3 rounded-md px-8 text-xl min-w-[184px]',
       },
     },
