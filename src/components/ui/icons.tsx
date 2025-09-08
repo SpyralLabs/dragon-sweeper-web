@@ -1,3 +1,4 @@
+import { cn } from '@/lib/utils/tailwind-util';
 import { type ComponentPropsWithoutRef, forwardRef } from 'react';
 
 const Icons = {
@@ -4046,6 +4047,118 @@ const Icons = {
       <path d="M17 16H22V21H17V16Z" fill="#E0F0FF" />
     </svg>
   )),
+  Star: forwardRef<SVGSVGElement, ComponentPropsWithoutRef<'svg'>>((props, ref) => (
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 16 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+      ref={ref}
+    >
+      <path
+        d="M8.7998 1.59961H10.4004V3.2002H11.2002V4.7998H13.5996V5.59961H16V7.2002H15.2002V8H14.4004V9.59961H12.7998V12.7998H13.5996V14.4004H12.7998V16H10.4004V14.4004H8.7998V12.7998H7.2002V14.4004H5.59961V16H3.2002V14.4004H2.40039V12.7998H3.2002V9.59961H1.59961V8H0.799805V7.2002H0V5.59961H2.40039V4.7998H4.7998V3.2002H5.59961V1.59961H7.2002V0H8.7998V1.59961Z"
+        fill="#C8CFC4"
+      />
+    </svg>
+  )),
+  ArrowRight: forwardRef<SVGSVGElement, ComponentPropsWithoutRef<'svg'>>(
+    ({ className, ...props }, ref) => (
+      <svg
+        width="25"
+        height="22"
+        viewBox="0 0 25 22"
+        fill="current"
+        xmlns="http://www.w3.org/2000/svg"
+        className={cn('fill-[#F0FFE6]', className)}
+        {...props}
+        ref={ref}
+      >
+        <path
+          d="M15 20V22H13V20H15ZM17 20H15V18H17V20ZM19 18H17V16H19V18ZM21 16H19V14H21V16ZM23 10H25V12H23V14H21V12H0V10H21V8H23V10ZM21 8H19V6H21V8ZM19 6H17V4H19V6ZM17 4H15V2H17V4ZM15 2H13V0H15V2Z"
+          fill="current"
+        />
+      </svg>
+    ),
+  ),
+  ArrowLeft: forwardRef<SVGSVGElement, ComponentPropsWithoutRef<'svg'>>(
+    ({ className, ...props }, ref) => (
+      <svg
+        width="25"
+        height="22"
+        viewBox="0 0 25 22"
+        fill="current"
+        xmlns="http://www.w3.org/2000/svg"
+        className={cn('fill-[#F0FFE6]', className)}
+        {...props}
+        ref={ref}
+      >
+        <path
+          d="M10 2V0H12V2H10ZM8 2H10V4H8V2ZM6 4H8V6H6V4ZM4 6H6V8H4V6ZM2 12H0V10H2V8H4V10H25V12H4V14H2V12ZM4 14H6V16H4V14ZM6 16H8V18H6V16ZM8 18H10V20H8V18ZM10 20H12V22H10V20Z"
+          fill="current"
+        />
+      </svg>
+    ),
+  ),
+  GoldPointerDown: forwardRef<SVGSVGElement, ComponentPropsWithoutRef<'svg'>>((props, ref) => (
+    <svg
+      width="51"
+      height="33"
+      viewBox="0 0 51 33"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+      ref={ref}
+    >
+      <g clip-path="url(#clip0_21_374)">
+        <mask
+          id="path-1-outside-1_21_374"
+          maskUnits="userSpaceOnUse"
+          x="0"
+          y="-0.4375"
+          width="51"
+          height="34"
+          fill="black"
+        >
+          <rect fill="white" y="-0.4375" width="51" height="34" />
+          <path d="M48 9.875H44.625V13.25H41.25V16.625H37.875V20H34.5V23.375H31.125V26.75H27.75V30.125H23.25V26.75H19.875V23.375H16.5V20H13.125V16.625H9.75V13.25H6.375V9.875H3V2.5625H48V9.875Z" />
+        </mask>
+        <path
+          d="M48 9.875H44.625V13.25H41.25V16.625H37.875V20H34.5V23.375H31.125V26.75H27.75V30.125H23.25V26.75H19.875V23.375H16.5V20H13.125V16.625H9.75V13.25H6.375V9.875H3V2.5625H48V9.875Z"
+          fill="#CE841B"
+        />
+        <path
+          d="M48 9.875V12.875H51V9.875H48ZM44.625 9.875V6.875H41.625V9.875H44.625ZM44.625 13.25V16.25H47.625V13.25H44.625ZM41.25 13.25V10.25H38.25V13.25H41.25ZM41.25 16.625V19.625H44.25V16.625H41.25ZM37.875 16.625V13.625H34.875V16.625H37.875ZM37.875 20V23H40.875V20H37.875ZM34.5 20V17H31.5V20H34.5ZM34.5 23.375V26.375H37.5V23.375H34.5ZM31.125 23.375V20.375H28.125V23.375H31.125ZM31.125 26.75V29.75H34.125V26.75H31.125ZM27.75 26.75V23.75H24.75V26.75H27.75ZM27.75 30.125V33.125H30.75V30.125H27.75ZM23.25 30.125H20.25V33.125H23.25V30.125ZM23.25 26.75H26.25V23.75H23.25V26.75ZM19.875 26.75H16.875V29.75H19.875V26.75ZM19.875 23.375H22.875V20.375H19.875V23.375ZM16.5 23.375H13.5V26.375H16.5V23.375ZM16.5 20H19.5V17H16.5V20ZM13.125 20H10.125V23H13.125V20ZM13.125 16.625H16.125V13.625H13.125V16.625ZM9.75 16.625H6.75V19.625H9.75V16.625ZM9.75 13.25H12.75V10.25H9.75V13.25ZM6.375 13.25H3.375V16.25H6.375V13.25ZM6.375 9.875H9.375V6.875H6.375V9.875ZM3 9.875H0V12.875H3V9.875ZM3 2.5625V-0.4375H0V2.5625H3ZM48 2.5625H51V-0.4375H48V2.5625ZM48 9.875V6.875H44.625V9.875V12.875H48V9.875ZM44.625 9.875H41.625V13.25H44.625H47.625V9.875H44.625ZM44.625 13.25V10.25H41.25V13.25V16.25H44.625V13.25ZM41.25 13.25H38.25V16.625H41.25H44.25V13.25H41.25ZM41.25 16.625V13.625H37.875V16.625V19.625H41.25V16.625ZM37.875 16.625H34.875V20H37.875H40.875V16.625H37.875ZM37.875 20V17H34.5V20V23H37.875V20ZM34.5 20H31.5V23.375H34.5H37.5V20H34.5ZM34.5 23.375V20.375H31.125V23.375V26.375H34.5V23.375ZM31.125 23.375H28.125V26.75H31.125H34.125V23.375H31.125ZM31.125 26.75V23.75H27.75V26.75V29.75H31.125V26.75ZM27.75 26.75H24.75V30.125H27.75H30.75V26.75H27.75ZM27.75 30.125V27.125H23.25V30.125V33.125H27.75V30.125ZM23.25 30.125H26.25V26.75H23.25H20.25V30.125H23.25ZM23.25 26.75V23.75H19.875V26.75V29.75H23.25V26.75ZM19.875 26.75H22.875V23.375H19.875H16.875V26.75H19.875ZM19.875 23.375V20.375H16.5V23.375V26.375H19.875V23.375ZM16.5 23.375H19.5V20H16.5H13.5V23.375H16.5ZM16.5 20V17H13.125V20V23H16.5V20ZM13.125 20H16.125V16.625H13.125H10.125V20H13.125ZM13.125 16.625V13.625H9.75V16.625V19.625H13.125V16.625ZM9.75 16.625H12.75V13.25H9.75H6.75V16.625H9.75ZM9.75 13.25V10.25H6.375V13.25V16.25H9.75V13.25ZM6.375 13.25H9.375V9.875H6.375H3.375V13.25H6.375ZM6.375 9.875V6.875H3V9.875V12.875H6.375V9.875ZM3 9.875H6V2.5625H3H0V9.875H3ZM3 2.5625V5.5625H48V2.5625V-0.4375H3V2.5625ZM48 2.5625H45V9.875H48H51V2.5625H48Z"
+          fill="#45260B"
+          mask="url(#path-1-outside-1_21_374)"
+        />
+        <path
+          d="M27.75 30.125H23.25V26.75H19.875V23.375H16.5V20H13.125V16.625H9.75V13.25H6.375V9.875H3V6.5H48V9.875H44.625V13.25H41.25V16.625H37.875V20H34.5V23.375H31.125V26.75H27.75V30.125Z"
+          fill="#CE841B"
+        />
+        <path
+          d="M27.75 30.125H25.5V6.5H48V9.875H44.625V13.25H41.25V16.625H37.875V20H34.5V23.375H31.125V26.75H27.75V30.125Z"
+          fill="#E7A140"
+        />
+        <rect x="3" y="2.5625" width="22.5" height="3.9375" fill="#E7A140" />
+        <rect x="14" y="2.5625" width="34" height="4" fill="#EEDD7B" />
+        <rect x="14" y="6.5625" width="25" height="4" fill="#EEDD7B" />
+        <rect x="19" y="10.5625" width="15" height="4" fill="#EEDD7B" />
+        <rect x="14" y="6.5625" width="25" height="4" fill="#FFF5B9" />
+        <rect x="22.6875" y="15.125" width="3" height="15" fill="#C96B1E" />
+        <rect x="19.6875" y="15.125" width="3" height="12" fill="#C96B1E" />
+        <rect x="16.5" y="16.0625" width="3.375" height="6.75" fill="#C96B1E" />
+        <rect x="13.125" y="12.6875" width="3.375" height="3.375" fill="#C96B1E" />
+        <rect x="3" y="2.5625" width="5.625" height="3.9375" fill="#CE841B" />
+      </g>
+      <defs>
+        <clipPath id="clip0_21_374">
+          <rect width="51" height="33" fill="white" />
+        </clipPath>
+      </defs>
+    </svg>
+  )),
 };
 
 Icons.BoxClose.displayName = 'BoxClose';
@@ -4077,5 +4190,9 @@ Icons.Playbook.displayName = 'Playbook';
 Icons.Setting.displayName = 'Setting';
 Icons.RedDot.displayName = 'RedDot';
 Icons.Gacha.displayName = 'Gacha';
+Icons.Star.displayName = 'Star';
+Icons.ArrowRight.displayName = 'ArrowRight';
+Icons.ArrowLeft.displayName = 'ArrowLeft';
+Icons.GoldPointerDown.displayName = 'GoldPointerDown';
 
 export default Icons;

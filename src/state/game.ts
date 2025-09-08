@@ -8,6 +8,12 @@ export enum GameUtility {
   MINE,
   SHIELD,
 }
+
+export type NFTUtilityType = {
+  key: keyof typeof GameUtility;
+  starRate: 0 | 1 | 2 | 3 | 4 | 5;
+};
+
 /**
  * @param selectedNFTId - if `Infinity`, then user must select NFT
  * @param utility - The key label of GameUtility
@@ -18,10 +24,7 @@ export enum GameUtility {
  */
 export interface GameConfigState {
   selectedNFTId: number;
-  utility: {
-    key: keyof typeof GameUtility;
-    starRate: 0 | 1 | 2 | 3 | 4 | 5;
-  } | null;
+  utility: NFTUtilityType | null;
   configs: {
     userPoints: number;
     userPortions: number;
