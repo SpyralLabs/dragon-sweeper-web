@@ -1,90 +1,16 @@
-import { motion, type Variants } from 'framer-motion';
+import { motion } from 'framer-motion';
 import NavLogo from '@/assets/images/landing/nav-logo.webp';
 import Characters from '@/assets/images/landing/hero-characters.webp';
 import FocusFrame from '@/assets/images/landing/focus-frame.webp';
 import WalletConnectButton from '@/components/widgets/wallet-connect-button';
-
-// 애니메이션 variants
-const backgroundVariants: Variants = {
-  initial: {
-    opacity: 0,
-    scale: 1.1,
-  },
-  in: {
-    opacity: 1,
-    scale: 1,
-  },
-};
-
-const logoVariants: Variants = {
-  initial: {
-    opacity: 0,
-    y: -100,
-    scale: 0.8,
-  },
-  in: {
-    opacity: 1,
-    y: 0,
-    scale: 1,
-  },
-};
-
-const charactersVariants: Variants = {
-  initial: {
-    opacity: 0,
-    y: 100,
-    scale: 0.8,
-  },
-  in: {
-    opacity: 1,
-    y: 0,
-    scale: 1,
-  },
-};
-
-const buttonContainerVariants: Variants = {
-  initial: {
-    opacity: 0,
-    scale: 0.5,
-    y: 50,
-  },
-  in: {
-    opacity: 1,
-    scale: 1,
-    y: 0,
-  },
-};
-
-const buttonVariants: Variants = {
-  initial: {
-    opacity: 0,
-    scale: 0.8,
-  },
-  in: {
-    opacity: 1,
-    scale: 1,
-  },
-  hover: {
-    scale: 1.05,
-    transition: {
-      type: 'spring',
-      stiffness: 400,
-      damping: 10,
-    },
-  },
-  tap: {
-    scale: 0.95,
-  },
-};
-
-const staggerContainer = {
-  in: {
-    transition: {
-      staggerChildren: 0.3,
-      delayChildren: 0.2,
-    },
-  },
-};
+import {
+  AppearVariants,
+  bottomUpTransitionVariants,
+  buttonVariants,
+  ScaleDownVariants,
+  staggerContainer,
+  topDownTransitionVariants,
+} from '@/lib/config/motion-config';
 
 export default function HomePage() {
   return (
@@ -96,14 +22,14 @@ export default function HomePage() {
     >
       {/* Background */}
       <motion.div
-        variants={backgroundVariants}
+        variants={ScaleDownVariants}
         transition={{ duration: 1.2, ease: 'easeOut' }}
         className="absolute inset-0 -z-1 h-full w-full bg-[url(/src/assets/images/landing/bg-texture.webp)]"
       />
 
       {/* Logo */}
       <motion.img
-        variants={logoVariants}
+        variants={topDownTransitionVariants}
         transition={{
           duration: 0.8,
           delay: 0.3,
@@ -119,7 +45,7 @@ export default function HomePage() {
 
       {/* Characters */}
       <motion.img
-        variants={charactersVariants}
+        variants={bottomUpTransitionVariants}
         transition={{
           duration: 1.0,
           delay: 0.6,
@@ -135,7 +61,7 @@ export default function HomePage() {
 
       {/* Connect Wallet Button Container */}
       <motion.div
-        variants={buttonContainerVariants}
+        variants={AppearVariants}
         transition={{
           duration: 0.6,
           delay: 0.9,
@@ -159,7 +85,7 @@ export default function HomePage() {
           whileTap="tap"
         >
           <WalletConnectButton size="lg" explicitAction="connect">
-            connect wallet
+            CONNECT WALLET
           </WalletConnectButton>
         </motion.div>
       </motion.div>

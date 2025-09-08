@@ -36,16 +36,20 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant, size, children, ...props }, ref) => {
     return (
       <button className={cn(buttonVariants({ variant, size, className }))} ref={ref} {...props}>
-        <img
-          className="absolute bottom-0 left-0 h-[calc(100%-6px)] w-full"
-          src={ButtonBottomFrame}
-          alt="Button Bottom Frame"
-        />
-        <img
-          className="absolute top-0 left-0 h-[calc(100%-6px)] w-full"
-          src={ButtonTopFrame}
-          alt="Button Top Frame"
-        />
+        {variant === 'default' && (
+          <>
+            <img
+              className="absolute bottom-0 left-0 h-[calc(100%-6px)] w-full"
+              src={ButtonBottomFrame}
+              alt="Button Bottom Frame"
+            />
+            <img
+              className="absolute top-0 left-0 h-[calc(100%-6px)] w-full"
+              src={ButtonTopFrame}
+              alt="Button Top Frame"
+            />
+          </>
+        )}
         <div className="relative z-1">{children}</div>
       </button>
     );

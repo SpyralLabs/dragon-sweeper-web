@@ -18,11 +18,11 @@ export default function AssetLabel({ type }: Props) {
   });
   const children =
     type === 'eth' && balanceInfo
-      ? formatUnits(balanceInfo.value, balanceInfo.decimals)
+      ? formatUnits(balanceInfo.value, balanceInfo.decimals) + ' $ETH'
       : formatTxHash(address);
 
   return (
-    <div className="flex min-w-[168px] items-center justify-center bg-black px-5 pt-1 pb-[3px]">
+    <div className="flex min-w-[168px] items-center justify-center bg-black px-5 pt-1 pb-[3px] text-sm">
       {children}
     </div>
   );

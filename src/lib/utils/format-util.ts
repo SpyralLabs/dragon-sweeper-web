@@ -1,4 +1,5 @@
 export function formatTxHash(txHash?: string) {
   if (!txHash) return '-';
-  return `${txHash.slice(0, 6)}...${txHash.slice(-4)}`;
+  const lowertxHash = txHash.toLowerCase();
+  return `${lowertxHash.slice(0, 6)}...${lowertxHash.slice(-4)}`;
 }

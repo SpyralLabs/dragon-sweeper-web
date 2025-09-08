@@ -76,36 +76,12 @@ const rightPanelVariants = {
   },
 };
 
-const characterGridVariants = {
-  initial: {
-    opacity: 0,
-    scale: 0.8,
-  },
-  in: {
-    opacity: 1,
-    scale: 1,
-  },
-};
-
 const staggerContainer = {
   in: {
     transition: {
       staggerChildren: 0.1,
       delayChildren: 0.2,
     },
-  },
-};
-
-const staggerItem = {
-  initial: {
-    opacity: 0,
-    y: 20,
-    scale: 0.9,
-  },
-  in: {
-    opacity: 1,
-    y: 0,
-    scale: 1,
   },
 };
 
@@ -200,61 +176,9 @@ const CharacterLayout = ({ children }: CharacterLayoutProps) => {
         variants={staggerContainer}
         initial="initial"
         animate="in"
-        className="flex h-[calc(100vh-180px)] flex-col items-center justify-center p-6"
+        className="flex h-[calc(100vh-180px)] w-full flex-col items-center overflow-x-hidden px-5 py-[55px] pt-[51px]"
       >
-        {/* Welcome Message */}
-        <motion.div variants={staggerItem} className="mb-8 text-center">
-          <motion.h1
-            initial={{ opacity: 0, y: -30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="mb-4 text-4xl font-bold text-white"
-          >
-            Welcome, [hero123]
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="text-xl text-gray-300"
-          >
-            Select your character
-          </motion.p>
-        </motion.div>
-
-        {/* Character Selection Grid */}
-        <motion.div
-          variants={characterGridVariants}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="w-full max-w-6xl"
-        >
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.7 }}
-            className="rounded-lg border-2 border-[#8b4513] bg-gradient-to-b from-[#2d1b13] to-[#1a0f0c] p-6 shadow-2xl"
-          >
-            {children}
-          </motion.div>
-        </motion.div>
-
-        {/* Navigation */}
-        <motion.div variants={staggerItem} className="mt-8 flex items-center gap-8">
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="rounded-lg border-2 border-[#8b4513] bg-[#2d1b13] px-6 py-3 text-white transition-colors hover:bg-[#3d2b23]"
-          >
-            ← BACK
-          </motion.button>
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="rounded-lg border-2 border-[#8b4513] bg-[#2d1b13] px-6 py-3 text-white transition-colors hover:bg-[#3d2b23]"
-          >
-            NEXT (All 5) →
-          </motion.button>
-        </motion.div>
+        {children}
       </motion.div>
     </motion.div>
   );
