@@ -11,11 +11,11 @@ import CharacterCard from '@/features/onboarding/component/character-card';
 import type { NFTInfo } from '@/features/onboarding/types/nft';
 import { useGameConfig } from '@/lib/hooks/use-game-config';
 import { useNavigate } from 'react-router';
+import useUsername from '@/lib/hooks/user-username';
 
 export default function CharacterSelectBox() {
   const navigate = useNavigate();
-  const { address } = useAccount();
-  const { data: ensName } = useEnsName({ address });
+  const userName = useUsername();
   const { page, size } = usePagination();
   const [pagination, setPagination] = useState({ page, size });
   const { selectNFT, setUtility } = useGameConfig();
@@ -61,7 +61,7 @@ export default function CharacterSelectBox() {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="text-gold text-xl leading-[35px]"
         >
-          Welcome, {ensName || formatTxHash(address)}
+          Welcome, {userName}
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: -20 }}

@@ -1,9 +1,11 @@
 import BackgroundPattern from '@/assets/images/layout/header-bg-pattern.webp';
+import DotHeroSampleImage from '@/assets/images/hero/hero-sample-dot.webp';
 import AssetLabel from '@/components/ui/asset-label';
 import WalletConnectButton from '@/components/widgets/wallet-connect-button';
 import { DesktopLogo } from '@/components/ui/logo';
 import { MENU_LIST } from '@/lib/config/menu-config';
 import { useGameConfig } from '@/lib/hooks/use-game-config';
+import UserIngameStatus from '@/components/widgets/user-ingame-status';
 
 export function Header() {
   const { status } = useGameConfig();
@@ -18,7 +20,7 @@ export function Header() {
         className="w-desktop-max absolute inset-0 z-0 h-full max-w-none! select-none"
         draggable={false}
       />
-      <div className="z-1 flex h-14 w-full items-center border-b-[3px] border-b-black bg-[#261a17] px-5">
+      <div className="z-2 flex h-14 w-full items-center border-b-[3px] border-b-black bg-[#261a17] px-5">
         <div className="z-1 mr-3 ml-auto flex items-center justify-center gap-2.5">
           <AssetLabel type="eth" />
           <AssetLabel type="account" />
@@ -27,8 +29,11 @@ export function Header() {
           </WalletConnectButton>
         </div>
       </div>
-      <div className="z-1 mx-auto flex w-full max-w-[1602px] flex-1 items-center justify-between px-5">
-        <DesktopLogo />
+      <div className="z-1 m-auto flex h-25 w-full max-w-[1602px] items-center justify-between px-5">
+        <div className="flex items-center gap-8">
+          <DesktopLogo />
+          {canEnterGame && <UserIngameStatus dotImage={DotHeroSampleImage} />}
+        </div>
         {canEnterGame && (
           <nav className="z-1 flex h-20 items-center gap-5">
             {MENU_LIST.map((menu) => (
