@@ -34,23 +34,81 @@ export interface ButtonProps
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant, size, children, ...props }, ref) => {
+    const [isTouched, setIsTouched] = React.useState(false);
     return (
       <button className={cn(buttonVariants({ variant, size, className }))} ref={ref} {...props}>
         {variant === 'default' && (
           <>
             <img
-              className="absolute bottom-0 left-0 h-[calc(100%-6px)] w-full"
+              className="absolute bottom-0 left-0 h-[calc(100%-6px)] w-full select-none"
               src={ButtonBottomFrame}
               alt="Button Bottom Frame"
+              draggable={false}
             />
             <img
-              className="absolute top-0 left-0 h-[calc(100%-6px)] w-full"
+              className={cn(
+                'absolute top-0 left-0 h-[calc(100%-6px)] w-full transition-transform duration-200 select-none',
+                isTouched && 'translate-y-1.5',
+              )}
               src={ButtonTopFrame}
               alt="Button Top Frame"
+              onMouseDown={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                variant === 'default' && setIsTouched(true);
+              }}
+              onMouseUp={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                variant === 'default' && setIsTouched(false);
+              }}
+              onTouchStart={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                variant === 'default' && setIsTouched(true);
+              }}
+              onTouchEnd={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                variant === 'default' && setIsTouched(false);
+              }}
+              onMouseLeave={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                variant === 'default' && setIsTouched(false);
+              }}
+              draggable={false}
             />
           </>
         )}
-        <div className="relative z-1">{children}</div>
+        <div
+          className={cn(
+            'relative z-1 transition-transform duration-200',
+            isTouched && 'translate-y-1.5',
+          )}
+          onMouseDown={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            variant === 'default' && setIsTouched(true);
+          }}
+          onMouseUp={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            variant === 'default' && setIsTouched(false);
+          }}
+          onTouchStart={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            variant === 'default' && setIsTouched(true);
+          }}
+          onTouchEnd={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            variant === 'default' && setIsTouched(false);
+          }}
+        >
+          {children}
+        </div>
       </button>
     );
   },

@@ -15,7 +15,16 @@ export const MENU_LIST = [
   {
     label: 'YGG',
     modalKey: 'ygg',
-    icon: <img src={Ygg} alt="logo" width={59} height={61.6} />,
+    icon: (
+      <img
+        style={{ userSelect: 'none' }}
+        src={Ygg}
+        alt="logo"
+        width={59}
+        height={61.6}
+        draggable={false}
+      />
+    ),
   },
   {
     label: 'Setting',

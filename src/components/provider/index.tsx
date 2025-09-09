@@ -9,7 +9,7 @@ export default function _Provider({ children }: { children: React.ReactNode }) {
   return (
     <JotaiProvider store={store}>
       <WagmiProvider>
-        <AbstractWalletProvider chain={SUPPORTED_NETWORK}>{children}</AbstractWalletProvider>;
+        <AbstractWalletProvider chain={SUPPORTED_NETWORK}>{children}</AbstractWalletProvider>
       </WagmiProvider>
     </JotaiProvider>
   );

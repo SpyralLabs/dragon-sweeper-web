@@ -179,7 +179,7 @@ const CharacterLayout = ({ children }: CharacterLayoutProps) => {
           variants={staggerContainer}
           initial="initial"
           animate="in"
-          className="flex w-full flex-col items-center overflow-x-hidden px-5 py-[55px] pt-[51px]"
+          className="flex w-full flex-col items-center px-5 py-[55px] pt-[51px]"
         >
           {children}
         </motion.div>

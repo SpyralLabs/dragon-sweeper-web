@@ -7,15 +7,11 @@ import { useNavigate } from 'react-router';
 
 interface WalletConnectButtonProps extends ButtonProps {
   explicitAction?: 'connect' | 'disconnect';
-  onConnected?: () => void;
-  onDisconnected?: () => void;
 }
 export default function WalletConnectButton({
   explicitAction,
   className,
-  onConnected,
   onClick,
-  onDisconnected,
   variant,
   size,
   ...props
@@ -29,29 +25,39 @@ export default function WalletConnectButton({
   const isWalletDisconnectAction = explicitAction === 'disconnect';
 
   const handleClick = async () => {
-    if (!isConnected || isWalletConnectAction) {
-      await disconnectAsync();
-      login();
-      return;
-    }
+    setIsLoading(true);
+    try {
+      if (isWalletConnectAction) {
+        await disconnectAsync();
+        login();
+        return;
+      }
 
-    if (isConnected || isWalletDisconnectAction) {
-      logout();
-      await disconnectAsync();
-      navigate('/', { replace: true });
-      return;
+      if (isWalletDisconnectAction) {
+        logout();
+        await disconnectAsync();
+        navigate('/', { replace: true });
+        return;
+      }
+
+      if (!isConnected) {
+        await disconnectAsync();
+        login();
+        return;
+      } else {
+        logout();
+        await disconnectAsync();
+        navigate('/', { replace: true });
+        return;
+      }
+    } catch (error) {
+      console.error(error);
     }
   };
 
-  useEffect(() => {
-    if (isConnected) {
-      setIsLoading(false);
-      navigate('/onboarding/character');
-    }
-  }, [isConnected]);
-
   return (
     <Button
+      disabled={isLoading}
       variant={variant || (isConnected || isWalletDisconnectAction ? 'link' : 'default')}
       size={size || (isConnected || isWalletDisconnectAction ? 'sm' : 'default')}
       className={cn([

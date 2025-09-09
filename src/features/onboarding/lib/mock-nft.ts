@@ -18,10 +18,16 @@ import { GameUtility } from '@/state/game';
 
 export const MOCK_NFT = [
   {
+    id: 0,
+    name: 'NFT Namename',
+    src: HeroSample,
+    utility: { key: 'DEFAULT', starRate: GameUtility.DEFAULT },
+  },
+  {
     id: 1,
     name: 'NFT Namename',
     src: HeroSample,
-    utility: { key: 'EXP', starRate: GameUtility.EXP },
+    utility: { key: 'POINT', starRate: GameUtility.POINT },
   },
   {
     id: 2,
@@ -33,18 +39,18 @@ export const MOCK_NFT = [
     id: 3,
     name: 'NFT Namename',
     src: HeroSample,
-    utility: { key: 'SHIELD', starRate: GameUtility.SHIELD },
+    utility: { key: 'HP', starRate: GameUtility.HP },
   },
   {
     id: 4,
     name: 'NFT Namename',
     src: HeroSample,
-    utility: { key: 'EXP', starRate: GameUtility.EXP },
+    utility: { key: 'MINE', starRate: GameUtility.MINE },
   },
   {
     id: 5,
     name: 'NFT Namename',
     src: HeroSample,
-    utility: { key: 'EXP', starRate: GameUtility.EXP },
+    utility: { key: 'SHIELD', starRate: GameUtility.SHIELD },
   },
 ] as const;

@@ -23,12 +23,6 @@ export const useGameConfig = () => {
     if (!gameConfig.utility) {
       missingItems.push('Utility setting');
     }
-
-    // 사용자 설정 확인
-    if (!gameConfig.configs) {
-      missingItems.push('사용자 설정');
-    }
-
     const canEnterGame = missingItems.length === 0;
 
     return {
