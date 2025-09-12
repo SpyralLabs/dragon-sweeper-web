@@ -1,0 +1,293 @@
+import { BOARD_SIZE, ITEMS, MONSTERS, type GameEntity } from '@/lib/config/game-config';
+
+interface Cell {
+  entity: GameEntity | null;
+  revealed: boolean;
+  marked: boolean;
+}
+
+export class DungeonGenerator {
+  public width: number;
+  public height: number;
+  public board: Cell[][];
+  public startPos: { x: number; y: number };
+
+  constructor() {
+    this.width = BOARD_SIZE.width;
+    this.height = BOARD_SIZE.height;
+    this.board = Array.from({ length: this.height }, () =>
+      Array.from({ length: this.width }, () => ({ entity: null, revealed: false, marked: false })),
+    );
+    this.startPos = {
+      x: Math.floor(this.width / 2),
+      y: Math.floor(this.height / 2),
+    };
+  }
+
+  public generateBoard(): Cell[][] {
+    this.placeFixedEntities();
+    this.placeRandomMonstersAndItems();
+    this.secureSafeZone();
+    return this.board;
+  }
+
+  private placeEntity(x: number, y: number, entity: GameEntity): boolean {
+    if (!this.isValidPosition(x, y) || this.board[y][x].entity) {
+      return false;
+    }
+    this.board[y][x].entity = entity;
+    return true;
+  }
+
+  private placeFixedEntities() {
+    // 1. Fix DarkLord in the center of the dungeon
+    const darkLordPos = {
+      x: Math.floor(this.width / 2),
+      y: Math.floor(this.height / 2),
+    };
+    this.placeEntity(darkLordPos.x, darkLordPos.y, MONSTERS.darkLord);
+
+    // 2. Fix darkCrystal in the corners of the dungeon
+    const crystalPositions = [
+      { x: darkLordPos.x - 1, y: darkLordPos.y },
+      { x: darkLordPos.x + 1, y: darkLordPos.y },
+      { x: darkLordPos.x, y: darkLordPos.y - 1 },
+      { x: darkLordPos.x, y: darkLordPos.y + 1 },
+    ];
+
+    crystalPositions.forEach((pos) => {
+      if (this.isValidPosition(pos.x, pos.y)) {
+        this.placeEntity(pos.x, pos.y, ITEMS.darkCrystal);
+      }
+    });
+
+    // 3. Fix MineSeeker in a corner of the dungeon
+    const corners = [
+      { x: 0, y: 0 },
+      { x: 0, y: this.height - 1 },
+      { x: this.width - 1, y: 0 },
+      { x: this.width - 1, y: this.height - 1 },
+    ];
+
+    const selectedCorner = corners[Math.floor(Math.random() * corners.length)];
+    this.placeEntity(selectedCorner.x, selectedCorner.y, MONSTERS.mineSeeker);
+
+    // 4. Magician and PoisonMushroom
+    const magicianPos = this.findWallPosition();
+    if (magicianPos) {
+      this.placeEntity(magicianPos.x, magicianPos.y, MONSTERS.magician);
+      // 마법사 근처에 5개의 독버섯을 배치합니다.
+      this.placeClusterAtPosition(MONSTERS.poisonMushroom, 5, magicianPos);
+    }
+    this.placeRandomly(MONSTERS.bunny, 2);
+    this.placeRandomly(MONSTERS.mimic);
+    this.placeRandomly(MONSTERS.eye, 2);
+    this.placeRandomly(ITEMS.monkey);
+  }
+
+  private placeRandomMonstersAndItems() {
+    // 1. Place 9 of the cell with mines
+    const mineCount = 9;
+    this.placeRandomly(MONSTERS.mine, mineCount, 2);
+
+    // 2. Place eliteMonsters
+    this.placeRandomly(MONSTERS.cobra, 8, 2);
+    this.placeRandomly(MONSTERS.giant, 5, 6);
+
+    // 3. Place Gargoyle
+    // Place around wall or nearby mushroom cluster
+    const gargoyleCount = 4;
+    for (let i = 0; i < gargoyleCount; i++) {
+      let attempts = 100;
+      while (attempts > 0) {
+        const x = Math.floor(Math.random() * this.width);
+        const y = Math.floor(Math.random() * this.height);
+        if (this.isNearWallOrMushroom(x, y) && this.placeEntity(x, y, MONSTERS.gargoyle)) {
+          break;
+        }
+        attempts--;
+      }
+    }
+
+    // 4. Place normal monster clusters
+    this.placeClusterByCount(MONSTERS.spider, 13, 2, 5); // 2~5
+    this.placeClusterByCount(MONSTERS.poisonSpider, 12, 2, 2); // 2
+    this.placeClusterByCount(MONSTERS.goblin, 10, 1, 3); // 1~3
+
+    const boxCount = 5;
+    this.placeRandomly(ITEMS.boxClose, boxCount);
+    this.placeRandomly(ITEMS.hpItem, 7);
+    this.placeRandomly(ITEMS.pickDefault, 1);
+  }
+
+  private findWallPosition(): { x: number; y: number } | null {
+    let attempts = 100;
+    while (attempts > 0) {
+      const x = Math.floor(Math.random() * this.width);
+      const y = Math.floor(Math.random() * this.height);
+      // 벽 근처이고 코너가 아닌 위치를 찾습니다.
+      if (this.isNearWall(x, y) && !this.isCorner(x, y) && !this.board[y][x].entity) {
+        return { x, y };
+      }
+      attempts--;
+    }
+    return null;
+  }
+
+  private isNearWall(x: number, y: number): boolean {
+    return x === 0 || y === 0 || x === this.width - 1 || y === this.height - 1;
+  }
+
+  private isCorner(x: number, y: number): boolean {
+    return (
+      (x === 0 && y === 0) ||
+      (x === this.width - 1 && y === 0) ||
+      (x === 0 && y === this.height - 1) ||
+      (x === this.width - 1 && y === this.height - 1)
+    );
+  }
+
+  private isNearWallOrMushroom(x: number, y: number): boolean {
+    if (x <= 1 || y <= 1 || x >= this.width - 2 || y >= this.height - 2) {
+      return true;
+    }
+
+    for (let dy = -2; dy <= 2; dy++) {
+      for (let dx = -2; dx <= 2; dx++) {
+        const nx = x + dx;
+        const ny = y + dy;
+        if (
+          this.isValidPosition(nx, ny) &&
+          (this.board[ny][nx].entity?.id === 'mushroom' ||
+            this.board[ny][nx].entity?.id === 'poison_mushroom')
+        ) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
+  private placeClusterByCount(
+    entity: GameEntity,
+    totalCount: number,
+    minSize: number,
+    maxSize: number,
+  ) {
+    let placedCount = 0;
+    while (placedCount < totalCount) {
+      const clusterSize = Math.min(
+        Math.floor(Math.random() * (maxSize - minSize + 1)) + minSize,
+        totalCount - placedCount,
+      );
+      const startPos = this.findRandomEmptyPosition();
+      if (!startPos) break;
+
+      for (let i = 0; i < clusterSize; i++) {
+        const x = startPos.x + Math.floor(Math.random() * 3) - 1;
+        const y = startPos.y + Math.floor(Math.random() * 3) - 1;
+
+        if (this.placeEntity(x, y, entity)) {
+          placedCount++;
+        }
+      }
+    }
+  }
+
+  private placeClusterAtPosition(
+    entity: GameEntity,
+    count: number,
+    centerPos: { x: number; y: number },
+  ) {
+    for (let i = 0; i < count; i++) {
+      let attempts = 100;
+      while (attempts > 0) {
+        const x = centerPos.x + Math.floor(Math.random() * 3) - 1;
+        const y = centerPos.y + Math.floor(Math.random() * 3) - 1;
+
+        if (this.placeEntity(x, y, entity)) {
+          break;
+        }
+        attempts--;
+      }
+    }
+  }
+
+  private placeRandomly(entity: GameEntity, count: number = 1, _distFromStart?: number) {
+    for (let i = 0; i < count; i++) {
+      let attempts = 300;
+      while (attempts > 0) {
+        const x = Math.floor(Math.random() * this.width);
+        const y = Math.floor(Math.random() * this.height);
+
+        // Check if the cell is already occupied
+        if (this.board[y][x].entity) {
+          attempts--;
+          continue;
+        }
+
+        // Optional: Check distance from start
+        const distFromStart = Math.abs(x - this.startPos.x) + Math.abs(y - this.startPos.y);
+        if (_distFromStart && distFromStart <= _distFromStart) {
+          attempts--;
+          continue;
+        }
+
+        // New logic: Check if a mine already exists in a 3x3 area around the new position
+        let isTooClose = false;
+        for (let dy = -1; dy <= 1; dy++) {
+          for (let dx = -1; dx <= 1; dx++) {
+            const nx = x + dx;
+            const ny = y + dy;
+            if (this.isValidPosition(nx, ny) && this.board[ny][nx].entity?.id === entity.id) {
+              isTooClose = true;
+              break;
+            }
+          }
+          if (isTooClose) break;
+        }
+
+        if (isTooClose) {
+          attempts--;
+          continue;
+        }
+
+        // All checks passed, place the entity
+        this.board[y][x].entity = entity;
+        break;
+      }
+    }
+  }
+
+  private secureSafeZone() {
+    for (let y = 0; y < this.height; y++) {
+      for (let x = 0; x < this.width; x++) {
+        const dist = Math.abs(x - this.startPos.x) + Math.abs(y - this.startPos.y);
+        const cell = this.board[y][x];
+
+        if (dist <= 2 && cell.entity?.type === 'monster' && cell.entity.power > 2) {
+          if (cell.entity.id !== MONSTERS.darkLord.id && cell.entity.id !== MONSTERS.mine.id) {
+            this.board[y][x].entity = MONSTERS.spider;
+          }
+        }
+      }
+    }
+  }
+
+  private isValidPosition(x: number, y: number): boolean {
+    return x >= 0 && x < this.width && y >= 0 && y < this.height;
+  }
+
+  private findRandomEmptyPosition(): { x: number; y: number } | null {
+    let attempts = 100;
+    while (attempts > 0) {
+      const x = Math.floor(Math.random() * this.width);
+      const y = Math.floor(Math.random() * this.height);
+      if (!this.board[y][x].entity) {
+        return { x, y };
+      }
+      attempts--;
+    }
+    return null;
+  }
+}

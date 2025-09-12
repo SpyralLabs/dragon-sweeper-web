@@ -1,7 +1,7 @@
 import { useLoginWithAbstract } from '@abstract-foundation/agw-react';
 import { Button, type ButtonProps } from '../ui/button';
 import { cn } from '@/lib/utils/tailwind-util';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useAccount, useDisconnect } from 'wagmi';
 import { useNavigate } from 'react-router';
 
@@ -64,7 +64,7 @@ export default function WalletConnectButton({
         'font-bold',
         variant === 'link' && 'font-normal',
         className,
-        isLoading && 'opacity-50',
+        isLoading && 'opacity-75',
       ])}
       onClick={(e) => {
         e.preventDefault();

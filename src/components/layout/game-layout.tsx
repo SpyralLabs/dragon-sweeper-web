@@ -121,7 +121,7 @@ const PlayLayout = ({ children }: PlayLayoutProps) => {
               transition={{ duration: 0.6, delay: 0.6 }}
               className="h-full rounded-lg border-2 border-[#8b4513] bg-gradient-to-b from-[#2d1b13] to-[#1a0f0c] p-4 shadow-2xl"
             >
-              {children}
+              {/* {children} */}
             </motion.div>
           </motion.div>
 
@@ -145,8 +145,7 @@ const PlayLayout = ({ children }: PlayLayoutProps) => {
                   transition={{ duration: 0.8, delay: 0.9, type: 'spring', bounce: 0.3 }}
                   className="text-center"
                 >
-                  <div className="mb-4 text-2xl font-bold text-white">Game Board</div>
-                  <div className="text-gray-400">Game content will be rendered here</div>
+                  {children}
                 </motion.div>
               </div>
             </motion.div>
