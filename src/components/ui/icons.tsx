@@ -4159,6 +4159,789 @@ const Icons = {
       </defs>
     </svg>
   )),
+  Wall1: forwardRef<SVGSVGElement, ComponentPropsWithoutRef<'svg'>>((props, ref) => (
+    <svg
+      width="44"
+      height="42"
+      viewBox="0 0 44 42"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+      ref={ref}
+    >
+      <path d="M17 10H43V40H17V10Z" fill="#858EAE" />
+      <path d="M17 10H43V40H17V10Z" fill="#858EAE" />
+      <path d="M2 10H43V2H2V10Z" fill="#B8C2D8" />
+      <path d="M2 10H43V2H2V10Z" fill="#B8C2D8" />
+      <path d="M24 3H31V2H24V3Z" fill="#E5F7FD" />
+      <path d="M24 3H31V2H24V3Z" fill="#E5F7FD" />
+      <path d="M8 3H18V2H8V3Z" fill="#E5F7FD" />
+      <path d="M8 3H18V2H8V3Z" fill="#E5F7FD" />
+      <path d="M24 7H44V4H24V7Z" fill="#A4B1CC" />
+      <path d="M24 7H44V4H24V7Z" fill="#A4B1CC" />
+      <path d="M32 3H34V2H32V3Z" fill="#E5F7FD" />
+      <path d="M32 3H34V2H32V3Z" fill="#E5F7FD" />
+      <path d="M5 3H7V2H5V3Z" fill="#E5F7FD" />
+      <path d="M5 3H7V2H5V3Z" fill="#E5F7FD" />
+      <path d="M23 8H36V6H23V8Z" fill="#7988A2" />
+      <path d="M23 8H36V6H23V8Z" fill="#7988A2" />
+      <path d="M23 8H38V7H23V8Z" fill="#7988A2" />
+      <path d="M23 8H38V7H23V8Z" fill="#7988A2" />
+      <path d="M22 8H24V4H22V8Z" fill="#7988A2" />
+      <path d="M22 8H24V4H22V8Z" fill="#7988A2" />
+      <path d="M2 7H18V4H2V7Z" fill="#A4B1CC" />
+      <path d="M2 7H18V4H2V7Z" fill="#A4B1CC" />
+      <path d="M2 8H16V6H2V8Z" fill="#7988A2" />
+      <path d="M2 8H16V6H2V8Z" fill="#7988A2" />
+      <path d="M37 8H44V6H37V8Z" fill="#7988A2" />
+      <path d="M37 8H44V6H37V8Z" fill="#7988A2" />
+      <path d="M16 8H22V6H16V8Z" fill="#7988A2" />
+      <path d="M16 8H22V6H16V8Z" fill="#7988A2" />
+      <rect x="31" y="14" width="5" height="2" fill="#73648F" />
+      <rect x="31" y="15" width="3" height="1" fill="#3C2D4A" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 31 14)" fill="#73648F" />
+      <rect width="1" height="3" transform="matrix(1 0 0 -1 41 13)" fill="#73648F" />
+      <rect width="2" height="1" transform="matrix(1 0 0 -1 32 11)" fill="#B7BFDB" />
+      <rect width="3" height="1" transform="matrix(1 0 0 -1 36 11)" fill="#B7BFDB" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 40 11)" fill="#B7BFDB" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 30 12)" fill="#73648F" />
+      <rect width="11" height="2" transform="matrix(1 0 0 -1 33 15)" fill="#73648F" />
+      <rect x="21" y="10" width="2" height="4" fill="#73648F" />
+      <rect x="27" y="10" width="2" height="4" fill="#73648F" />
+      <rect x="2" y="26" width="9" height="12" fill="#858EAE" />
+      <rect x="2" y="9" width="15" height="31" fill="#858EAE" />
+      <rect x="2" y="33" width="15" height="4" fill="#75678E" />
+      <rect x="2" y="37" width="15" height="3" fill="#3C2D4A" />
+      <rect x="9" y="10" width="11" height="4" fill="#858EAE" />
+      <rect x="17" y="20" width="26" height="2" fill="#1F2248" />
+      <rect x="26" y="30" width="17" height="2" fill="#1F2248" />
+      <rect x="17" y="15" width="1" height="1" fill="#1F2248" />
+      <rect x="19" y="13" width="1" height="1" fill="#1F2248" />
+      <rect x="19" y="12" width="1" height="1" fill="#1F2248" />
+      <rect x="30" y="12" width="1" height="2" fill="#1F2248" />
+      <rect x="33" y="16" width="2" height="1" fill="#1F2248" />
+      <rect x="34" y="15" width="9" height="2" fill="#1F2248" />
+      <rect x="31" y="14" width="2" height="7" fill="#1F2248" />
+      <rect x="2" y="9" width="42" height="1" fill="#3C2D4A" />
+      <rect x="17" y="33" width="2" height="7" fill="#1F2248" />
+      <rect x="2" y="21" width="14" height="4" fill="#75678E" />
+      <rect x="8" y="16" width="10" height="5" fill="#858EAE" />
+      <rect x="20" y="12" width="10" height="5" fill="#858EAE" />
+      <rect x="19" y="14" width="12" height="6" fill="#858EAE" />
+      <rect x="19" y="17" width="12" height="3" fill="#73648F" />
+      <rect x="20" y="24" width="7" height="1" fill="#73648F" />
+      <rect x="16" y="21" width="1" height="2" fill="#73648F" />
+      <rect x="16" y="29" width="11" height="3" fill="#73648F" />
+      <rect x="28" y="27" width="10" height="2" fill="#73648F" />
+      <rect x="39" y="22" width="1" height="1" fill="#73648F" />
+      <rect x="29" y="23" width="2" height="6" fill="#73648F" />
+      <rect x="29" y="23" width="1" height="1" fill="#3C2D4A" />
+      <rect x="29" y="25" width="1" height="4" fill="#3C2D4A" />
+      <rect x="32" y="26" width="12" height="4" fill="#73648F" />
+      <rect x="28" y="29" width="7" height="1" fill="#3C2D4A" />
+      <rect x="35" y="29" width="9" height="1" fill="#3C2D4A" />
+      <rect x="32" y="28" width="1" height="1" fill="#3C2D4A" />
+      <rect x="30" y="28" width="1" height="1" fill="#3C2D4A" />
+      <rect x="19" y="36" width="25" height="2" fill="#73648F" />
+      <rect x="32" y="18" width="12" height="2" fill="#73648F" />
+      <rect x="19" y="19" width="11" height="2" fill="#5B4E74" />
+      <rect x="19" y="20" width="4" height="1" fill="#3C2D4A" />
+      <rect x="26" y="20" width="4" height="1" fill="#3C2D4A" />
+      <rect x="24" y="20" width="1" height="1" fill="#3C2D4A" />
+      <rect x="12" y="15" width="5" height="4" fill="#858EAE" />
+      <rect x="9" y="24" width="4" height="1" fill="#5B4E74" />
+      <rect x="12" y="26" width="4" height="2" fill="#1F2248" />
+      <rect x="13" y="25" width="4" height="1" fill="#5B4E74" />
+      <rect x="2" y="23" width="15" height="3" fill="#5B4E74" />
+      <rect x="34" y="28" width="10" height="1" fill="#5B4E74" />
+      <rect x="6" y="36" width="7" height="1" fill="#5B4E74" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 2 23)" fill="#5B4E74" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 14 23)" fill="#5B4E74" />
+      <rect x="13" y="25" width="4" height="1" fill="#3C2D4A" />
+      <rect x="13" y="24" width="1" height="2" fill="#3C2D4A" />
+      <rect width="11" height="2" transform="matrix(-1 0 0 1 13 24)" fill="#3C2D4A" />
+      <rect x="42" y="16" width="2" height="5" fill="#15121A" />
+      <rect x="42" y="9" width="2" height="6" fill="#15121A" />
+      <rect x="1" y="8" width="42" height="1" fill="#15121A" />
+      <rect x="42" y="22" width="2" height="9" fill="#15121A" />
+      <rect x="42" y="32" width="2" height="8" fill="#15121A" />
+      <rect y="9" width="2" height="6" fill="#15121A" />
+      <rect y="2" width="2" height="6" fill="#15121A" />
+      <rect x="42" y="2" width="2" height="6" fill="#15121A" />
+      <rect x="1" width="22" height="2" fill="#15121A" />
+      <rect x="23" width="20" height="2" fill="#15121A" />
+      <rect x="20" y="2" width="2" height="6" fill="#15121A" />
+      <rect x="42" y="40" width="2" height="40" transform="rotate(90 42 40)" fill="#15121A" />
+      <rect width="1" height="5" transform="matrix(1 0 0 -1 2 21)" fill="#75678E" />
+      <rect width="3" height="2" transform="matrix(1 0 0 -1 15 21)" fill="#75678E" />
+      <rect width="3" height="1" transform="matrix(1 0 0 -1 15 17)" fill="#75678E" />
+      <rect width="3" height="1" transform="matrix(1 0 0 -1 5 21)" fill="#75678E" />
+      <rect width="1" height="5" transform="matrix(1 0 0 -1 17 21)" fill="#75678E" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 16 21)" fill="#3C2D4A" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 13 24)" fill="#3C2D4A" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 9 18)" fill="#B7BFDB" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 10 28)" fill="#B7BFDB" />
+      <rect width="2" height="2" transform="matrix(1 0 0 -1 2 34)" fill="#75678E" />
+      <rect width="1" height="2" transform="matrix(1 0 0 -1 5 34)" fill="#75678E" />
+      <rect width="2" height="5" transform="matrix(1 0 0 -1 13 34)" fill="#75678E" />
+      <rect width="2" height="5" transform="matrix(1 0 0 -1 12 36)" fill="#75678E" />
+      <rect width="1" height="6" transform="matrix(1 0 0 -1 14 33)" fill="#75678E" />
+      <rect width="2" height="6" transform="matrix(1 0 0 -1 15 37)" fill="#75678E" />
+      <rect width="4" height="2" transform="matrix(1 0 0 -1 16 33)" fill="#3C2D4A" />
+      <rect width="4" height="1" transform="matrix(1 0 0 -1 2 37)" fill="#3C2D4A" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 11 29)" fill="#B7BFDB" />
+      <rect width="2" height="2" transform="matrix(1 0 0 -1 19 36)" fill="#73648F" />
+      <rect width="2" height="3" transform="matrix(1 0 0 -1 28 35)" fill="#73648F" />
+      <rect width="1" height="4" transform="matrix(1 0 0 -1 41 36)" fill="#73648F" />
+      <rect width="1" height="3" transform="matrix(1 0 0 -1 40 38)" fill="#73648F" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 25 37)" fill="#858EAE" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 30 37)" fill="#858EAE" />
+      <rect width="4" height="1" transform="matrix(1 0 0 -1 37 33)" fill="#B7BFDB" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 41 34)" fill="#B7BFDB" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 35 33)" fill="#B7BFDB" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 25 28)" fill="#B7BFDB" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 24 23)" fill="#B7BFDB" />
+      <rect width="1" height="2" transform="matrix(1 0 0 -1 18 30)" fill="#73648F" />
+      <rect width="2" height="1" transform="matrix(1 0 0 -1 20 29)" fill="#73648F" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 26 29)" fill="#73648F" />
+      <rect width="2" height="1" transform="matrix(1 0 0 -1 18 31)" fill="#3C2D4A" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 19 38)" fill="#3C2D4A" />
+      <rect width="2" height="1" transform="matrix(1 0 0 -1 23 38)" fill="#3C2D4A" />
+      <rect width="8" height="2" transform="matrix(1 0 0 -1 19 33)" fill="#3C2D4A" />
+      <rect width="3" height="1" transform="matrix(1 0 0 -1 17 25)" fill="#3C2D4A" />
+      <rect width="3" height="1" transform="matrix(1 0 0 -1 22 27)" fill="#B7BFDB" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 14 18)" fill="#B7BFDB" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 24 15)" fill="#B7BFDB" />
+      <rect width="1" height="2" transform="matrix(1 0 0 -1 19 17)" fill="#73648F" />
+      <rect width="9" height="2" transform="matrix(1 0 0 -1 9 14)" fill="#73648F" />
+      <rect width="1" height="2" transform="matrix(1 0 0 -1 23 18)" fill="#73648F" />
+      <rect width="1" height="2" transform="matrix(1 0 0 -1 19 12)" fill="#73648F" />
+      <rect width="1" height="2" transform="matrix(1 0 0 -1 18 13)" fill="#73648F" />
+      <rect width="7" height="1" transform="matrix(1 0 0 -1 8 14)" fill="#3C2D4A" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 16 14)" fill="#3C2D4A" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 19 15)" fill="#73648F" />
+      <rect width="3" height="1" transform="matrix(1 0 0 -1 9 15)" fill="#3C2D4A" />
+      <rect width="2" height="2" transform="matrix(1 0 0 -1 2 12)" fill="#73648F" />
+      <rect width="7" height="3" transform="matrix(1 0 0 -1 2 15)" fill="#73648F" />
+      <rect width="1" height="2" transform="matrix(1 0 0 -1 25 18)" fill="#73648F" />
+      <rect width="1" height="2" transform="matrix(1 0 0 -1 30 17)" fill="#73648F" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 19 20)" fill="#5B4E74" />
+      <rect width="6" height="1" transform="matrix(1 0 0 -1 25 19)" fill="#5B4E74" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 29 14)" fill="#B7BFDB" />
+      <rect width="3" height="1" transform="matrix(1 0 0 -1 11 17)" fill="#B7BFDB" />
+      <rect width="2" height="1" transform="matrix(1 0 0 -1 15 11)" fill="#B7BFDB" />
+      <rect width="8" height="1" transform="matrix(1 0 0 -1 20 14)" fill="#B7BFDB" />
+      <rect width="3" height="1" transform="matrix(1 0 0 -1 33 23)" fill="#B7BFDB" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 34 24)" fill="#B7BFDB" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 37 23)" fill="#B7BFDB" />
+      <rect width="3" height="1" transform="matrix(1 0 0 -1 6 28)" fill="#B7BFDB" />
+      <rect x="20" y="9" width="1" height="3" fill="#1F2248" />
+      <rect x="29" y="9" width="1" height="3" fill="#1F2248" />
+      <rect x="25" y="21" width="2" height="2" fill="#1F2248" />
+      <rect x="16" y="25" width="11" height="2" fill="#1F2248" />
+      <rect x="27" y="21" width="2" height="14" fill="#1F2248" />
+      <rect x="28" y="32" width="1" height="3" fill="#3C2D4A" />
+      <rect x="28" y="32" width="2" height="1" fill="#3C2D4A" />
+      <rect x="20" y="12" width="10" height="1" fill="#1F2248" />
+      <rect x="21" y="11" width="8" height="1" fill="#3C2D4A" />
+      <rect x="19" y="38" width="23" height="2" fill="#3C2D4A" />
+      <rect x="30" y="19" width="1" height="2" fill="#1F2248" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 41 15)" fill="#3C2D4A" />
+      <rect x="14" y="21" width="2" height="12" fill="#1F2248" />
+      <rect x="1" y="15" width="10" height="2" fill="#1F2248" />
+      <rect y="16" width="2" height="9" fill="#15121A" />
+      <rect x="11" y="14" width="7" height="2" fill="#1F2248" />
+      <rect x="1" y="25" width="11" height="2" fill="#1F2248" />
+      <rect y="26" width="2" height="14" fill="#15121A" />
+      <rect x="17" y="32" width="5" height="1" transform="rotate(90 17 32)" fill="#5B4E74" />
+      <rect x="16" y="33" width="4" height="2" transform="rotate(90 16 33)" fill="#5B4E74" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 2 15)" fill="#3C2D4A" />
+      <rect x="17" y="13" width="2" height="8" fill="#1F2248" />
+      <rect x="16" y="33" width="12" height="2" fill="#1F2248" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 16 37)" fill="#3C2D4A" />
+    </svg>
+  )),
+  Wall2: forwardRef<SVGSVGElement, ComponentPropsWithoutRef<'svg'>>((props, ref) => (
+    <svg
+      width="44"
+      height="42"
+      viewBox="0 0 44 42"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+      ref={ref}
+    >
+      <path d="M17 10H43V40H17V10Z" fill="#858EAE" />
+      <path d="M17 10H43V40H17V10Z" fill="#858EAE" />
+      <path d="M2 10H22V2H2V10Z" fill="#B8C2D8" />
+      <path d="M2 10H22V2H2V10Z" fill="#B8C2D8" />
+      <path d="M25 10H42V2H25V10Z" fill="#B8C2D8" />
+      <path d="M25 10H42V2H25V10Z" fill="#B8C2D8" />
+      <path d="M25 3H32V2H25V3Z" fill="#E5F7FD" />
+      <path d="M25 3H32V2H25V3Z" fill="#E5F7FD" />
+      <path d="M8 3H18V2H8V3Z" fill="#E5F7FD" />
+      <path d="M8 3H18V2H8V3Z" fill="#E5F7FD" />
+      <path d="M24 7H44V4H24V7Z" fill="#A4B1CC" />
+      <path d="M24 7H44V4H24V7Z" fill="#A4B1CC" />
+      <path d="M33 3H35V2H33V3Z" fill="#E5F7FD" />
+      <path d="M33 3H35V2H33V3Z" fill="#E5F7FD" />
+      <path d="M5 3H7V2H5V3Z" fill="#E5F7FD" />
+      <path d="M5 3H7V2H5V3Z" fill="#E5F7FD" />
+      <path d="M23 8H36V6H23V8Z" fill="#7988A2" />
+      <path d="M23 8H36V6H23V8Z" fill="#7988A2" />
+      <path d="M23 8H38V7H23V8Z" fill="#7988A2" />
+      <path d="M23 8H38V7H23V8Z" fill="#7988A2" />
+      <path d="M22 8H24V4H22V8Z" fill="#7988A2" />
+      <path d="M22 8H24V4H22V8Z" fill="#7988A2" />
+      <path d="M2 7H18V4H2V7Z" fill="#A4B1CC" />
+      <path d="M2 7H18V4H2V7Z" fill="#A4B1CC" />
+      <path d="M2 8H16V6H2V8Z" fill="#7988A2" />
+      <path d="M2 8H16V6H2V8Z" fill="#7988A2" />
+      <path d="M37 8H44V6H37V8Z" fill="#7988A2" />
+      <path d="M37 8H44V6H37V8Z" fill="#7988A2" />
+      <path d="M16 8H22V6H16V8Z" fill="#7988A2" />
+      <path d="M16 8H22V6H16V8Z" fill="#7988A2" />
+      <rect x="31" y="14" width="5" height="2" fill="#73648F" />
+      <rect x="31" y="15" width="3" height="1" fill="#3C2D4A" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 31 14)" fill="#73648F" />
+      <rect width="1" height="3" transform="matrix(1 0 0 -1 41 13)" fill="#73648F" />
+      <rect width="2" height="1" transform="matrix(1 0 0 -1 32 11)" fill="#B7BFDB" />
+      <rect width="3" height="1" transform="matrix(1 0 0 -1 36 11)" fill="#B7BFDB" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 40 11)" fill="#B7BFDB" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 30 12)" fill="#73648F" />
+      <rect width="11" height="2" transform="matrix(1 0 0 -1 33 15)" fill="#73648F" />
+      <rect x="21" y="10" width="2" height="4" fill="#73648F" />
+      <rect x="27" y="10" width="2" height="4" fill="#73648F" />
+      <rect x="2" y="26" width="9" height="12" fill="#858EAE" />
+      <rect x="2" y="9" width="15" height="31" fill="#858EAE" />
+      <rect x="2" y="33" width="15" height="4" fill="#75678E" />
+      <rect x="2" y="37" width="15" height="3" fill="#3C2D4A" />
+      <rect x="9" y="10" width="11" height="4" fill="#858EAE" />
+      <rect x="17" y="20" width="26" height="2" fill="#1F2248" />
+      <rect x="26" y="30" width="17" height="2" fill="#1F2248" />
+      <rect x="17" y="15" width="1" height="1" fill="#1F2248" />
+      <rect x="19" y="13" width="1" height="1" fill="#1F2248" />
+      <rect x="19" y="12" width="1" height="1" fill="#1F2248" />
+      <rect x="30" y="12" width="1" height="2" fill="#1F2248" />
+      <rect x="33" y="16" width="2" height="1" fill="#1F2248" />
+      <rect x="34" y="15" width="9" height="2" fill="#1F2248" />
+      <rect x="31" y="14" width="2" height="7" fill="#1F2248" />
+      <rect x="2" y="9" width="42" height="1" fill="#3C2D4A" />
+      <rect x="17" y="33" width="2" height="7" fill="#1F2248" />
+      <rect x="2" y="21" width="14" height="4" fill="#75678E" />
+      <rect x="8" y="16" width="10" height="5" fill="#858EAE" />
+      <rect x="20" y="12" width="10" height="5" fill="#858EAE" />
+      <rect x="19" y="14" width="12" height="6" fill="#858EAE" />
+      <rect x="19" y="17" width="12" height="3" fill="#73648F" />
+      <rect x="20" y="24" width="7" height="1" fill="#73648F" />
+      <rect x="16" y="21" width="1" height="2" fill="#73648F" />
+      <rect x="16" y="29" width="11" height="3" fill="#73648F" />
+      <rect x="28" y="27" width="10" height="2" fill="#73648F" />
+      <rect x="39" y="22" width="1" height="1" fill="#73648F" />
+      <rect x="29" y="23" width="2" height="6" fill="#73648F" />
+      <rect x="29" y="23" width="1" height="1" fill="#3C2D4A" />
+      <rect x="29" y="25" width="1" height="4" fill="#3C2D4A" />
+      <rect x="32" y="26" width="12" height="4" fill="#73648F" />
+      <rect x="28" y="29" width="7" height="1" fill="#3C2D4A" />
+      <rect x="35" y="29" width="9" height="1" fill="#3C2D4A" />
+      <rect x="32" y="28" width="1" height="1" fill="#3C2D4A" />
+      <rect x="30" y="28" width="1" height="1" fill="#3C2D4A" />
+      <rect x="19" y="36" width="25" height="2" fill="#73648F" />
+      <rect x="32" y="18" width="12" height="2" fill="#73648F" />
+      <rect x="19" y="19" width="11" height="2" fill="#5B4E74" />
+      <rect x="19" y="20" width="4" height="1" fill="#3C2D4A" />
+      <rect x="26" y="20" width="4" height="1" fill="#3C2D4A" />
+      <rect x="24" y="20" width="1" height="1" fill="#3C2D4A" />
+      <rect x="12" y="15" width="5" height="4" fill="#858EAE" />
+      <rect x="9" y="24" width="4" height="1" fill="#5B4E74" />
+      <rect x="12" y="26" width="4" height="2" fill="#1F2248" />
+      <rect x="13" y="25" width="4" height="1" fill="#5B4E74" />
+      <rect x="2" y="23" width="15" height="3" fill="#5B4E74" />
+      <rect x="34" y="28" width="10" height="1" fill="#5B4E74" />
+      <rect x="6" y="36" width="7" height="1" fill="#5B4E74" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 2 23)" fill="#5B4E74" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 14 23)" fill="#5B4E74" />
+      <rect x="13" y="25" width="4" height="1" fill="#3C2D4A" />
+      <rect x="13" y="24" width="1" height="2" fill="#3C2D4A" />
+      <rect width="11" height="2" transform="matrix(-1 0 0 1 13 24)" fill="#3C2D4A" />
+      <rect x="42" y="16" width="2" height="5" fill="#15121A" />
+      <rect x="42" y="9" width="2" height="6" fill="#15121A" />
+      <rect x="1" y="8" width="42" height="1" fill="#15121A" />
+      <rect x="42" y="22" width="2" height="9" fill="#15121A" />
+      <rect x="42" y="32" width="2" height="8" fill="#15121A" />
+      <rect y="9" width="2" height="6" fill="#15121A" />
+      <rect y="4" width="2" height="4" fill="#15121A" />
+      <rect x="2" y="2" width="2" height="2" fill="#15121A" />
+      <rect x="42" y="2" width="2" height="6" fill="#15121A" />
+      <rect x="4" width="17" height="2" fill="#15121A" />
+      <rect x="24" width="19" height="2" fill="#15121A" />
+      <rect x="20" y="2" width="2" height="6" fill="#15121A" />
+      <rect x="22" y="4" width="2" height="2" fill="#15121A" />
+      <rect x="24" y="2" width="2" height="2" fill="#15121A" />
+      <rect x="42" y="40" width="2" height="40" transform="rotate(90 42 40)" fill="#15121A" />
+      <rect width="1" height="5" transform="matrix(1 0 0 -1 2 21)" fill="#75678E" />
+      <rect width="3" height="2" transform="matrix(1 0 0 -1 15 21)" fill="#75678E" />
+      <rect width="3" height="1" transform="matrix(1 0 0 -1 15 17)" fill="#75678E" />
+      <rect width="3" height="5" transform="matrix(1 0 0 -1 6 22)" fill="#75678E" />
+      <rect width="4" height="5" transform="matrix(1 0 0 -1 3 22)" fill="#75678E" />
+      <rect width="1" height="5" transform="matrix(1 0 0 -1 17 21)" fill="#75678E" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 16 21)" fill="#3C2D4A" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 13 24)" fill="#3C2D4A" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 9 18)" fill="#B7BFDB" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 10 28)" fill="#B7BFDB" />
+      <rect width="2" height="2" transform="matrix(1 0 0 -1 2 34)" fill="#75678E" />
+      <rect width="1" height="2" transform="matrix(1 0 0 -1 5 34)" fill="#75678E" />
+      <rect width="2" height="5" transform="matrix(1 0 0 -1 13 34)" fill="#75678E" />
+      <rect width="2" height="5" transform="matrix(1 0 0 -1 12 36)" fill="#75678E" />
+      <rect width="1" height="6" transform="matrix(1 0 0 -1 14 33)" fill="#75678E" />
+      <rect width="2" height="6" transform="matrix(1 0 0 -1 15 37)" fill="#75678E" />
+      <rect width="4" height="2" transform="matrix(1 0 0 -1 16 33)" fill="#3C2D4A" />
+      <rect width="4" height="1" transform="matrix(1 0 0 -1 2 37)" fill="#3C2D4A" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 11 29)" fill="#B7BFDB" />
+      <rect width="2" height="2" transform="matrix(1 0 0 -1 19 36)" fill="#73648F" />
+      <rect width="3" height="5" transform="matrix(1 0 0 -1 28 37)" fill="#73648F" />
+      <rect width="1" height="4" transform="matrix(1 0 0 -1 41 36)" fill="#73648F" />
+      <rect width="1" height="3" transform="matrix(1 0 0 -1 40 38)" fill="#73648F" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 25 37)" fill="#858EAE" />
+      <rect width="4" height="1" transform="matrix(1 0 0 -1 37 33)" fill="#B7BFDB" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 41 34)" fill="#B7BFDB" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 35 33)" fill="#B7BFDB" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 25 28)" fill="#B7BFDB" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 24 23)" fill="#B7BFDB" />
+      <rect width="1" height="2" transform="matrix(1 0 0 -1 18 30)" fill="#73648F" />
+      <rect width="2" height="1" transform="matrix(1 0 0 -1 20 29)" fill="#73648F" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 26 29)" fill="#73648F" />
+      <rect width="2" height="1" transform="matrix(1 0 0 -1 18 31)" fill="#3C2D4A" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 19 38)" fill="#3C2D4A" />
+      <rect width="2" height="1" transform="matrix(1 0 0 -1 23 38)" fill="#3C2D4A" />
+      <rect width="8" height="2" transform="matrix(1 0 0 -1 19 33)" fill="#3C2D4A" />
+      <rect width="3" height="1" transform="matrix(1 0 0 -1 17 25)" fill="#3C2D4A" />
+      <rect width="3" height="1" transform="matrix(1 0 0 -1 22 27)" fill="#B7BFDB" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 14 18)" fill="#B7BFDB" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 24 15)" fill="#B7BFDB" />
+      <rect width="1" height="2" transform="matrix(1 0 0 -1 19 17)" fill="#73648F" />
+      <rect width="9" height="2" transform="matrix(1 0 0 -1 9 14)" fill="#73648F" />
+      <rect width="1" height="2" transform="matrix(1 0 0 -1 23 18)" fill="#73648F" />
+      <rect width="1" height="2" transform="matrix(1 0 0 -1 19 12)" fill="#73648F" />
+      <rect width="1" height="2" transform="matrix(1 0 0 -1 18 13)" fill="#73648F" />
+      <rect width="7" height="1" transform="matrix(1 0 0 -1 8 14)" fill="#3C2D4A" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 16 14)" fill="#3C2D4A" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 19 15)" fill="#73648F" />
+      <rect width="3" height="1" transform="matrix(1 0 0 -1 9 15)" fill="#3C2D4A" />
+      <rect width="2" height="2" transform="matrix(1 0 0 -1 2 12)" fill="#73648F" />
+      <rect width="7" height="3" transform="matrix(1 0 0 -1 2 15)" fill="#73648F" />
+      <rect width="1" height="2" transform="matrix(1 0 0 -1 25 18)" fill="#73648F" />
+      <rect width="1" height="2" transform="matrix(1 0 0 -1 30 17)" fill="#73648F" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 19 20)" fill="#5B4E74" />
+      <rect width="6" height="1" transform="matrix(1 0 0 -1 25 19)" fill="#5B4E74" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 29 14)" fill="#B7BFDB" />
+      <rect width="3" height="1" transform="matrix(1 0 0 -1 11 17)" fill="#B7BFDB" />
+      <rect width="2" height="1" transform="matrix(1 0 0 -1 15 11)" fill="#B7BFDB" />
+      <rect width="8" height="1" transform="matrix(1 0 0 -1 20 14)" fill="#B7BFDB" />
+      <rect width="3" height="1" transform="matrix(1 0 0 -1 33 23)" fill="#B7BFDB" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 34 24)" fill="#B7BFDB" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 37 23)" fill="#B7BFDB" />
+      <rect width="3" height="1" transform="matrix(1 0 0 -1 6 28)" fill="#B7BFDB" />
+      <rect x="20" y="9" width="1" height="3" fill="#1F2248" />
+      <rect x="29" y="9" width="1" height="3" fill="#1F2248" />
+      <rect x="25" y="21" width="2" height="2" fill="#1F2248" />
+      <rect x="16" y="25" width="11" height="2" fill="#1F2248" />
+      <rect x="27" y="21" width="2" height="14" fill="#1F2248" />
+      <rect x="28" y="32" width="1" height="3" fill="#3C2D4A" />
+      <rect x="28" y="32" width="2" height="1" fill="#3C2D4A" />
+      <rect x="20" y="12" width="10" height="1" fill="#1F2248" />
+      <rect x="21" y="11" width="8" height="1" fill="#3C2D4A" />
+      <rect x="19" y="38" width="23" height="2" fill="#3C2D4A" />
+      <rect x="30" y="19" width="1" height="2" fill="#1F2248" />
+      <rect x="33" y="18" width="2" height="3" fill="#1F2248" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 41 15)" fill="#3C2D4A" />
+      <rect x="14" y="21" width="2" height="12" fill="#1F2248" />
+      <rect x="1" y="15" width="10" height="2" fill="#1F2248" />
+      <rect y="16" width="2" height="9" fill="#15121A" />
+      <rect x="11" y="14" width="7" height="2" fill="#1F2248" />
+      <rect x="1" y="25" width="11" height="2" fill="#1F2248" />
+      <rect y="26" width="2" height="14" fill="#15121A" />
+      <rect x="17" y="32" width="5" height="1" transform="rotate(90 17 32)" fill="#5B4E74" />
+      <rect x="16" y="33" width="4" height="2" transform="rotate(90 16 33)" fill="#5B4E74" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 2 15)" fill="#3C2D4A" />
+      <rect x="17" y="13" width="2" height="8" fill="#1F2248" />
+      <rect x="5" y="20" width="2" height="2" fill="#1F2248" />
+      <rect x="3" y="17" width="2" height="3" fill="#1F2248" />
+      <rect x="7" y="22" width="2" height="5" fill="#1F2248" />
+      <rect x="16" y="33" width="12" height="2" fill="#1F2248" />
+      <rect x="28" y="35" width="2" height="3" fill="#1F2248" />
+      <rect x="30" y="38" width="2" height="3" fill="#1F2248" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 16 37)" fill="#3C2D4A" />
+    </svg>
+  )),
+  Wall3: forwardRef<SVGSVGElement, ComponentPropsWithoutRef<'svg'>>((props, ref) => (
+    <svg
+      width="44"
+      height="42"
+      viewBox="0 0 44 42"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+      ref={ref}
+    >
+      <path d="M17 10H43V40H17V10Z" fill="#858EAE" />
+      <path d="M17 10H43V40H17V10Z" fill="#858EAE" />
+      <path d="M2 10H22V4H2V10Z" fill="#B8C2D8" />
+      <path d="M2 10H22V4H2V10Z" fill="#B8C2D8" />
+      <path d="M25 10H42V2H25V10Z" fill="#B8C2D8" />
+      <path d="M25 10H42V2H25V10Z" fill="#B8C2D8" />
+      <path d="M25 3H32V2H25V3Z" fill="#E5F7FD" />
+      <path d="M25 3H32V2H25V3Z" fill="#E5F7FD" />
+      <path d="M24 7H44V4H24V7Z" fill="#A4B1CC" />
+      <path d="M24 7H44V4H24V7Z" fill="#A4B1CC" />
+      <path d="M33 3H35V2H33V3Z" fill="#E5F7FD" />
+      <path d="M33 3H35V2H33V3Z" fill="#E5F7FD" />
+      <path d="M5 3H7V2H5V3Z" fill="#E5F7FD" />
+      <path d="M5 3H7V2H5V3Z" fill="#E5F7FD" />
+      <path d="M23 8H36V6H23V8Z" fill="#7988A2" />
+      <path d="M23 8H36V6H23V8Z" fill="#7988A2" />
+      <path d="M23 8H38V7H23V8Z" fill="#7988A2" />
+      <path d="M23 8H38V7H23V8Z" fill="#7988A2" />
+      <path d="M22 8H24V4H22V8Z" fill="#7988A2" />
+      <path d="M22 8H24V4H22V8Z" fill="#7988A2" />
+      <path d="M2 7H18V4H2V7Z" fill="#A4B1CC" />
+      <path d="M2 7H18V4H2V7Z" fill="#A4B1CC" />
+      <path d="M2 8H16V6H2V8Z" fill="#7988A2" />
+      <path d="M2 8H16V6H2V8Z" fill="#7988A2" />
+      <path d="M37 8H44V6H37V8Z" fill="#7988A2" />
+      <path d="M37 8H44V6H37V8Z" fill="#7988A2" />
+      <path d="M16 8H22V6H16V8Z" fill="#7988A2" />
+      <path d="M16 8H22V6H16V8Z" fill="#7988A2" />
+      <rect x="31" y="14" width="5" height="2" fill="#73648F" />
+      <rect x="31" y="15" width="3" height="1" fill="#3C2D4A" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 31 14)" fill="#73648F" />
+      <rect width="1" height="3" transform="matrix(1 0 0 -1 41 13)" fill="#73648F" />
+      <rect width="2" height="1" transform="matrix(1 0 0 -1 32 11)" fill="#B7BFDB" />
+      <rect width="3" height="1" transform="matrix(1 0 0 -1 36 11)" fill="#B7BFDB" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 40 11)" fill="#B7BFDB" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 30 12)" fill="#73648F" />
+      <rect width="11" height="2" transform="matrix(1 0 0 -1 33 15)" fill="#73648F" />
+      <rect x="21" y="10" width="2" height="4" fill="#73648F" />
+      <rect x="27" y="10" width="2" height="4" fill="#73648F" />
+      <rect x="2" y="26" width="9" height="12" fill="#858EAE" />
+      <rect x="2" y="9" width="15" height="31" fill="#858EAE" />
+      <rect x="2" y="33" width="15" height="4" fill="#75678E" />
+      <rect x="2" y="37" width="15" height="3" fill="#3C2D4A" />
+      <rect x="9" y="10" width="11" height="4" fill="#858EAE" />
+      <rect x="17" y="20" width="26" height="2" fill="#1F2248" />
+      <rect x="26" y="30" width="17" height="2" fill="#1F2248" />
+      <rect x="17" y="15" width="1" height="1" fill="#1F2248" />
+      <rect x="19" y="13" width="1" height="1" fill="#1F2248" />
+      <rect x="19" y="12" width="1" height="1" fill="#1F2248" />
+      <rect x="30" y="12" width="1" height="2" fill="#1F2248" />
+      <rect x="33" y="16" width="2" height="1" fill="#1F2248" />
+      <rect x="34" y="15" width="9" height="2" fill="#1F2248" />
+      <rect x="31" y="14" width="2" height="7" fill="#1F2248" />
+      <rect x="2" y="9" width="42" height="1" fill="#3C2D4A" />
+      <rect x="17" y="33" width="2" height="7" fill="#1F2248" />
+      <rect x="2" y="21" width="14" height="4" fill="#75678E" />
+      <rect x="8" y="16" width="10" height="5" fill="#858EAE" />
+      <rect x="20" y="12" width="10" height="5" fill="#858EAE" />
+      <rect x="19" y="14" width="12" height="6" fill="#858EAE" />
+      <rect x="19" y="17" width="12" height="3" fill="#73648F" />
+      <rect x="20" y="24" width="7" height="1" fill="#73648F" />
+      <rect x="16" y="21" width="1" height="2" fill="#73648F" />
+      <rect x="16" y="29" width="11" height="3" fill="#73648F" />
+      <rect x="28" y="27" width="10" height="2" fill="#73648F" />
+      <rect x="39" y="22" width="1" height="1" fill="#73648F" />
+      <rect x="29" y="23" width="2" height="6" fill="#73648F" />
+      <rect x="29" y="23" width="1" height="1" fill="#3C2D4A" />
+      <rect x="29" y="25" width="1" height="4" fill="#3C2D4A" />
+      <rect x="32" y="26" width="12" height="4" fill="#73648F" />
+      <rect x="28" y="29" width="7" height="1" fill="#3C2D4A" />
+      <rect x="35" y="29" width="9" height="1" fill="#3C2D4A" />
+      <rect x="32" y="28" width="1" height="1" fill="#3C2D4A" />
+      <rect x="30" y="28" width="1" height="1" fill="#3C2D4A" />
+      <rect x="19" y="36" width="25" height="2" fill="#73648F" />
+      <rect x="32" y="18" width="12" height="2" fill="#73648F" />
+      <rect x="19" y="19" width="11" height="2" fill="#5B4E74" />
+      <rect x="19" y="20" width="4" height="1" fill="#3C2D4A" />
+      <rect x="26" y="20" width="4" height="1" fill="#3C2D4A" />
+      <rect x="24" y="20" width="1" height="1" fill="#3C2D4A" />
+      <rect x="12" y="15" width="5" height="4" fill="#858EAE" />
+      <rect x="9" y="24" width="4" height="1" fill="#5B4E74" />
+      <rect x="12" y="26" width="4" height="2" fill="#1F2248" />
+      <rect x="13" y="25" width="4" height="1" fill="#5B4E74" />
+      <rect x="2" y="23" width="15" height="3" fill="#5B4E74" />
+      <rect x="34" y="28" width="10" height="1" fill="#5B4E74" />
+      <rect x="6" y="36" width="7" height="1" fill="#5B4E74" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 2 23)" fill="#5B4E74" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 14 23)" fill="#5B4E74" />
+      <rect x="13" y="25" width="4" height="1" fill="#3C2D4A" />
+      <rect x="13" y="24" width="1" height="2" fill="#3C2D4A" />
+      <rect width="11" height="2" transform="matrix(-1 0 0 1 13 24)" fill="#3C2D4A" />
+      <rect x="42" y="16" width="2" height="5" fill="#15121A" />
+      <rect x="42" y="9" width="2" height="6" fill="#15121A" />
+      <rect x="1" y="8" width="42" height="1" fill="#15121A" />
+      <rect x="42" y="22" width="2" height="9" fill="#15121A" />
+      <rect x="42" y="32" width="2" height="8" fill="#15121A" />
+      <rect y="9" width="2" height="6" fill="#15121A" />
+      <rect y="4" width="2" height="4" fill="#15121A" />
+      <rect x="2" y="2" width="2" height="2" fill="#15121A" />
+      <rect x="42" y="2" width="2" height="6" fill="#15121A" />
+      <rect x="4" y="2" width="5" height="2" fill="#15121A" />
+      <rect x="9" y="4" width="5" height="2" fill="#15121A" />
+      <rect x="14" y="2" width="6" height="2" fill="#15121A" />
+      <rect x="28" width="11" height="2" fill="#15121A" />
+      <rect x="20" y="4" width="2" height="4" fill="#15121A" />
+      <rect x="22" y="4" width="2" height="2" fill="#15121A" />
+      <rect x="24" y="2" width="2" height="2" fill="#15121A" />
+      <rect x="26" y="2" width="2" height="2" fill="#15121A" />
+      <rect x="42" y="40" width="2" height="40" transform="rotate(90 42 40)" fill="#15121A" />
+      <rect width="1" height="5" transform="matrix(1 0 0 -1 2 21)" fill="#75678E" />
+      <rect width="3" height="2" transform="matrix(1 0 0 -1 15 21)" fill="#75678E" />
+      <rect width="3" height="1" transform="matrix(1 0 0 -1 15 17)" fill="#75678E" />
+      <rect width="3" height="5" transform="matrix(1 0 0 -1 6 22)" fill="#75678E" />
+      <rect width="4" height="5" transform="matrix(1 0 0 -1 3 22)" fill="#75678E" />
+      <rect width="1" height="5" transform="matrix(1 0 0 -1 17 21)" fill="#75678E" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 16 21)" fill="#3C2D4A" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 13 24)" fill="#3C2D4A" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 9 18)" fill="#B7BFDB" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 10 28)" fill="#B7BFDB" />
+      <rect width="2" height="2" transform="matrix(1 0 0 -1 2 34)" fill="#75678E" />
+      <rect width="1" height="2" transform="matrix(1 0 0 -1 5 34)" fill="#75678E" />
+      <rect width="2" height="5" transform="matrix(1 0 0 -1 13 34)" fill="#75678E" />
+      <rect width="2" height="5" transform="matrix(1 0 0 -1 12 36)" fill="#75678E" />
+      <rect width="1" height="6" transform="matrix(1 0 0 -1 14 33)" fill="#75678E" />
+      <rect width="2" height="6" transform="matrix(1 0 0 -1 15 37)" fill="#75678E" />
+      <rect width="4" height="2" transform="matrix(1 0 0 -1 16 33)" fill="#3C2D4A" />
+      <rect width="4" height="1" transform="matrix(1 0 0 -1 2 37)" fill="#3C2D4A" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 11 29)" fill="#B7BFDB" />
+      <rect width="2" height="2" transform="matrix(1 0 0 -1 19 36)" fill="#73648F" />
+      <rect width="3" height="5" transform="matrix(1 0 0 -1 28 37)" fill="#73648F" />
+      <rect width="1" height="4" transform="matrix(1 0 0 -1 41 36)" fill="#73648F" />
+      <rect width="1" height="3" transform="matrix(1 0 0 -1 40 38)" fill="#73648F" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 25 37)" fill="#858EAE" />
+      <rect width="4" height="1" transform="matrix(1 0 0 -1 37 33)" fill="#B7BFDB" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 41 34)" fill="#B7BFDB" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 35 33)" fill="#B7BFDB" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 25 28)" fill="#B7BFDB" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 24 23)" fill="#B7BFDB" />
+      <rect width="1" height="2" transform="matrix(1 0 0 -1 18 30)" fill="#73648F" />
+      <rect width="2" height="1" transform="matrix(1 0 0 -1 20 29)" fill="#73648F" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 26 29)" fill="#73648F" />
+      <rect width="2" height="1" transform="matrix(1 0 0 -1 18 31)" fill="#3C2D4A" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 19 38)" fill="#3C2D4A" />
+      <rect width="2" height="1" transform="matrix(1 0 0 -1 23 38)" fill="#3C2D4A" />
+      <rect width="8" height="2" transform="matrix(1 0 0 -1 19 33)" fill="#3C2D4A" />
+      <rect width="3" height="1" transform="matrix(1 0 0 -1 17 25)" fill="#3C2D4A" />
+      <rect width="3" height="1" transform="matrix(1 0 0 -1 22 27)" fill="#B7BFDB" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 14 18)" fill="#B7BFDB" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 24 15)" fill="#B7BFDB" />
+      <rect width="1" height="2" transform="matrix(1 0 0 -1 19 17)" fill="#73648F" />
+      <rect width="9" height="2" transform="matrix(1 0 0 -1 9 14)" fill="#73648F" />
+      <rect width="1" height="2" transform="matrix(1 0 0 -1 23 18)" fill="#73648F" />
+      <rect width="1" height="2" transform="matrix(1 0 0 -1 19 12)" fill="#73648F" />
+      <rect width="1" height="2" transform="matrix(1 0 0 -1 18 13)" fill="#73648F" />
+      <rect width="7" height="1" transform="matrix(1 0 0 -1 8 14)" fill="#3C2D4A" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 16 14)" fill="#3C2D4A" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 19 15)" fill="#73648F" />
+      <rect width="3" height="1" transform="matrix(1 0 0 -1 9 15)" fill="#3C2D4A" />
+      <rect width="2" height="2" transform="matrix(1 0 0 -1 2 12)" fill="#73648F" />
+      <rect width="7" height="3" transform="matrix(1 0 0 -1 2 15)" fill="#73648F" />
+      <rect width="1" height="2" transform="matrix(1 0 0 -1 25 18)" fill="#73648F" />
+      <rect width="1" height="2" transform="matrix(1 0 0 -1 30 17)" fill="#73648F" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 19 20)" fill="#5B4E74" />
+      <rect width="6" height="1" transform="matrix(1 0 0 -1 25 19)" fill="#5B4E74" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 29 14)" fill="#B7BFDB" />
+      <rect width="3" height="1" transform="matrix(1 0 0 -1 11 17)" fill="#B7BFDB" />
+      <rect width="2" height="1" transform="matrix(1 0 0 -1 15 11)" fill="#B7BFDB" />
+      <rect width="8" height="1" transform="matrix(1 0 0 -1 20 14)" fill="#B7BFDB" />
+      <rect width="3" height="1" transform="matrix(1 0 0 -1 33 23)" fill="#B7BFDB" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 34 24)" fill="#B7BFDB" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 37 23)" fill="#B7BFDB" />
+      <rect width="3" height="1" transform="matrix(1 0 0 -1 6 28)" fill="#B7BFDB" />
+      <rect x="20" y="9" width="1" height="3" fill="#1F2248" />
+      <rect x="29" y="9" width="1" height="3" fill="#1F2248" />
+      <rect x="25" y="21" width="2" height="2" fill="#1F2248" />
+      <rect x="16" y="25" width="11" height="2" fill="#1F2248" />
+      <rect x="27" y="21" width="2" height="14" fill="#1F2248" />
+      <rect x="28" y="32" width="1" height="3" fill="#3C2D4A" />
+      <rect x="28" y="32" width="2" height="1" fill="#3C2D4A" />
+      <rect x="20" y="12" width="10" height="1" fill="#1F2248" />
+      <rect x="21" y="11" width="8" height="1" fill="#3C2D4A" />
+      <rect x="19" y="38" width="23" height="2" fill="#3C2D4A" />
+      <rect x="30" y="19" width="1" height="2" fill="#1F2248" />
+      <rect x="33" y="18" width="2" height="3" fill="#1F2248" />
+      <rect x="35" y="22" width="2" height="2" fill="#1F2248" />
+      <rect x="26" y="13" width="2" height="2" fill="#1F2248" />
+      <rect x="28" y="15" width="2" height="2" fill="#1F2248" />
+      <rect x="37" y="24" width="2" height="2" fill="#1F2248" />
+      <rect x="35" y="32" width="2" height="2" fill="#1F2248" />
+      <rect x="34" y="34" width="2" height="2" fill="#1F2248" />
+      <rect x="32" y="36" width="2" height="2" fill="#1F2248" />
+      <rect x="39" y="26" width="2" height="2" fill="#1F2248" />
+      <rect x="40" y="27" width="2" height="2" fill="#1F2248" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 41 15)" fill="#3C2D4A" />
+      <rect x="14" y="21" width="2" height="12" fill="#1F2248" />
+      <rect x="1" y="15" width="10" height="2" fill="#1F2248" />
+      <rect y="16" width="2" height="9" fill="#15121A" />
+      <rect x="11" y="14" width="7" height="2" fill="#1F2248" />
+      <rect x="1" y="25" width="11" height="2" fill="#1F2248" />
+      <rect y="26" width="2" height="14" fill="#15121A" />
+      <rect x="16" y="33" width="4" height="2" transform="rotate(90 16 33)" fill="#5B4E74" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 2 15)" fill="#3C2D4A" />
+      <rect x="17" y="13" width="2" height="8" fill="#1F2248" />
+      <rect x="5" y="20" width="2" height="2" fill="#1F2248" />
+      <rect x="3" y="17" width="2" height="3" fill="#1F2248" />
+      <rect x="3" y="22" width="2" height="5" fill="#1F2248" />
+      <rect x="9" y="27" width="2" height="3" fill="#1F2248" />
+      <rect x="11" y="30" width="2" height="4" fill="#1F2248" />
+      <rect x="9" y="33" width="2" height="2" fill="#1F2248" />
+      <rect x="7" y="34" width="2" height="2" fill="#1F2248" />
+      <rect x="16" y="27" width="2" height="2" fill="#1F2248" />
+      <rect x="13" y="34" width="2" height="3" fill="#1F2248" />
+      <rect x="14" y="33" width="2" height="2" fill="#1F2248" />
+      <rect x="15" y="37" width="2" height="3" fill="#1F2248" />
+      <rect x="16" y="33" width="12" height="2" fill="#1F2248" />
+      <rect x="28" y="35" width="2" height="3" fill="#1F2248" />
+      <rect x="30" y="38" width="2" height="3" fill="#1F2248" />
+      <rect width="1" height="1" transform="matrix(1 0 0 -1 16 37)" fill="#3C2D4A" />
+      <path d="M4 5H9V4H4V5Z" fill="#E5F7FD" />
+      <path d="M4 5H9V4H4V5Z" fill="#E5F7FD" />
+      <path d="M15 5H20V4H15V5Z" fill="#E5F7FD" />
+      <path d="M15 5H20V4H15V5Z" fill="#E5F7FD" />
+    </svg>
+  )),
+  Wall4: forwardRef<SVGSVGElement, ComponentPropsWithoutRef<'svg'>>((props, ref) => (
+    <svg
+      width="46"
+      height="34"
+      viewBox="0 0 46 34"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+      ref={ref}
+    >
+      <path d="M26 28H35V33H26V28Z" fill="#858EAE" />
+      <path d="M26 28H35V33H26V28Z" fill="#858EAE" />
+      <path d="M26 28H33V26H26V28Z" fill="#3C2D4A" />
+      <path d="M26 28H33V26H26V28Z" fill="#3C2D4A" />
+      <path d="M26 30H35V32H26V30Z" fill="#73648F" />
+      <path d="M26 30H35V32H26V30Z" fill="#73648F" />
+      <path d="M27 28H31V30H27V28Z" fill="#B7BFDB" />
+      <path d="M27 28H31V30H27V28Z" fill="#B7BFDB" />
+      <path d="M24 28H26V33H24V28Z" fill="#15121A" />
+      <path d="M24 28H26V33H24V28Z" fill="#15121A" />
+      <path d="M33 28H35V33H33V28Z" fill="#15121A" />
+      <path d="M33 28H35V33H33V28Z" fill="#15121A" />
+      <path d="M26 32H33V34H26V32Z" fill="#15121A" />
+      <path d="M26 32H33V34H26V32Z" fill="#15121A" />
+      <path d="M10 23H19V28H10V23Z" fill="#858EAE" />
+      <path d="M10 23H19V28H10V23Z" fill="#858EAE" />
+      <path d="M10 23H17V21H10V23Z" fill="#3C2D4A" />
+      <path d="M10 23H17V21H10V23Z" fill="#3C2D4A" />
+      <path d="M10 25H19V27H10V25Z" fill="#73648F" />
+      <path d="M10 25H19V27H10V25Z" fill="#73648F" />
+      <path d="M11 23H15V25H11V23Z" fill="#B7BFDB" />
+      <path d="M11 23H15V25H11V23Z" fill="#B7BFDB" />
+      <path d="M8 23H10V28H8V23Z" fill="#15121A" />
+      <path d="M8 23H10V28H8V23Z" fill="#15121A" />
+      <path d="M17 23H19V28H17V23Z" fill="#15121A" />
+      <path d="M17 23H19V28H17V23Z" fill="#15121A" />
+      <path d="M10 27H17V29H10V27Z" fill="#15121A" />
+      <path d="M10 27H17V29H10V27Z" fill="#15121A" />
+      <path d="M3 12H9V16H3V12Z" fill="#858EAE" />
+      <path d="M3 12H9V16H3V12Z" fill="#858EAE" />
+      <path d="M3 12H8V10H3V12Z" fill="#3C2D4A" />
+      <path d="M3 12H8V10H3V12Z" fill="#3C2D4A" />
+      <path d="M3 13H8V15H3V13Z" fill="#73648F" />
+      <path d="M3 13H8V15H3V13Z" fill="#73648F" />
+      <path d="M3 12H7V13H3V12Z" fill="#B7BFDB" />
+      <path d="M3 12H7V13H3V12Z" fill="#B7BFDB" />
+      <path d="M1 12H3V16H1V12Z" fill="#3C2D4A" />
+      <path d="M1 12H3V16H1V12Z" fill="#3C2D4A" />
+      <path d="M8 12H10V16H8V12Z" fill="#15121A" />
+      <path d="M8 12H10V16H8V12Z" fill="#15121A" />
+      <path d="M3 15H8V17H3V15Z" fill="#15121A" />
+      <path d="M3 15H8V17H3V15Z" fill="#15121A" />
+      <path d="M24 2H30V6H24V2Z" fill="#858EAE" />
+      <path d="M24 2H30V6H24V2Z" fill="#858EAE" />
+      <path d="M24 2H29V-1.04308e-07H24V2Z" fill="#3C2D4A" />
+      <path d="M24 2H29V-1.04308e-07H24V2Z" fill="#3C2D4A" />
+      <path d="M24 3H29V5H24V3Z" fill="#73648F" />
+      <path d="M24 3H29V5H24V3Z" fill="#73648F" />
+      <path d="M24 2H28V3H24V2Z" fill="#B7BFDB" />
+      <path d="M24 2H28V3H24V2Z" fill="#B7BFDB" />
+      <path d="M22 2H24V6H22V2Z" fill="#3C2D4A" />
+      <path d="M22 2H24V6H22V2Z" fill="#3C2D4A" />
+      <path d="M29 2H31V6H29V2Z" fill="#15121A" />
+      <path d="M29 2H31V6H29V2Z" fill="#15121A" />
+      <path d="M24 5H29V7H24V5Z" fill="#15121A" />
+      <path d="M24 5H29V7H24V5Z" fill="#15121A" />
+      <path d="M37 15H46V20H37V15Z" fill="#858EAE" />
+      <path d="M37 15H46V20H37V15Z" fill="#858EAE" />
+      <path d="M37 15H44V13H37V15Z" fill="#3C2D4A" />
+      <path d="M37 15H44V13H37V15Z" fill="#3C2D4A" />
+      <path d="M37 17H46V19H37V17Z" fill="#73648F" />
+      <path d="M37 17H46V19H37V17Z" fill="#73648F" />
+      <path d="M38 15H42V17H38V15Z" fill="#B7BFDB" />
+      <path d="M38 15H42V17H38V15Z" fill="#B7BFDB" />
+      <path d="M35 15H37V20H35V15Z" fill="#15121A" />
+      <path d="M35 15H37V20H35V15Z" fill="#15121A" />
+      <path d="M44 15H46V20H44V15Z" fill="#15121A" />
+      <path d="M44 15H46V20H44V15Z" fill="#15121A" />
+      <path d="M37 19H44V21H37V19Z" fill="#15121A" />
+      <path d="M37 19H44V21H37V19Z" fill="#15121A" />
+      <path d="M2 26H11V31H2V26Z" fill="#858EAE" />
+      <path d="M2 26H11V31H2V26Z" fill="#858EAE" />
+      <path d="M2 25H11V23H2V25Z" fill="#3C2D4A" />
+      <path d="M2 25H11V23H2V25Z" fill="#3C2D4A" />
+      <path d="M1 26H12V24H1V26Z" fill="#3C2D4A" />
+      <path d="M1 26H12V24H1V26Z" fill="#3C2D4A" />
+      <path d="M2 29H11V31H2V29Z" fill="#73648F" />
+      <path d="M2 29H11V31H2V29Z" fill="#73648F" />
+      <path d="M2 30H5V31H2V30Z" fill="#3C2D4A" />
+      <path d="M2 30H5V31H2V30Z" fill="#3C2D4A" />
+      <path d="M3 25H10V27H3V25Z" fill="#B7BFDB" />
+      <path d="M3 25H10V27H3V25Z" fill="#B7BFDB" />
+      <path d="M0 26H2V31H0V26Z" fill="#15121A" />
+      <path d="M0 26H2V31H0V26Z" fill="#15121A" />
+      <path d="M11 26H13V31H11V26Z" fill="#15121A" />
+      <path d="M11 26H13V31H11V26Z" fill="#15121A" />
+      <path d="M2 31H11V33H2V31Z" fill="#15121A" />
+      <path d="M2 31H11V33H2V31Z" fill="#15121A" />
+    </svg>
+  )),
+  ExpWall: forwardRef<SVGSVGElement, ComponentPropsWithoutRef<'svg'>>((props, ref) => (
+    <svg
+      width="18"
+      height="26"
+      viewBox="0 0 18 26"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+      ref={ref}
+    >
+      <path
+        d="M11 26H7V24H11V26ZM7 24H4V22H7V24ZM14 24H11V22H14V24ZM4 22H2V20H4V22ZM16 22H14V20H16V22ZM18 20H16V6H18V20ZM16 6H14V4H16V6ZM14 4H11V2H14V4Z"
+        fill="black"
+      />
+      <rect y="6" width="2" height="14" fill="#351E0F" />
+      <rect x="2" y="4" width="2" height="2" fill="#351E0F" />
+      <rect x="4" y="2" width="3" height="2" fill="#351E0F" />
+      <rect x="7" width="4" height="2" fill="#351E0F" />
+      <rect x="2" y="6" width="7" height="2" fill="#F6DD68" />
+      <rect x="4" y="4" width="5" height="2" fill="#F6DD68" />
+      <rect x="7" y="2" width="2" height="2" fill="#F6DD68" />
+      <rect x="9" y="2" width="2" height="2" fill="#F5F8E7" />
+      <rect x="9" y="4" width="5" height="2" fill="#F5F8E7" />
+      <rect x="9" y="20" width="5" height="2" fill="#E3842F" />
+      <rect x="9" y="22" width="2" height="2" fill="#E3842F" />
+      <rect x="7" y="22" width="2" height="2" fill="#683F20" />
+      <rect x="4" y="20" width="5" height="2" fill="#683F20" />
+      <rect x="2" y="18" width="7" height="2" fill="#683F20" />
+      <rect x="9" y="6" width="7" height="2" fill="#F5F8E7" />
+      <rect x="9" y="18" width="7" height="2" fill="#E3842F" />
+      <rect x="9" y="8" width="7" height="10" fill="#F6DD68" />
+      <rect x="2" y="8" width="7" height="10" fill="#E3842F" />
+    </svg>
+  )),
 };
 
 Icons.BoxClose.displayName = 'BoxClose';
@@ -4194,5 +4977,10 @@ Icons.Star.displayName = 'Star';
 Icons.ArrowRight.displayName = 'ArrowRight';
 Icons.ArrowLeft.displayName = 'ArrowLeft';
 Icons.GoldPointerDown.displayName = 'GoldPointerDown';
+Icons.Wall1.displayName = 'Wall1';
+Icons.Wall2.displayName = 'Wall2';
+Icons.Wall3.displayName = 'Wall3';
+Icons.Wall4.displayName = 'Wall4';
+Icons.ExpWall.displayName = 'ExpWall';
 
 export default Icons;

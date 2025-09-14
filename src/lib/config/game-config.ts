@@ -46,7 +46,8 @@ export type Items =
   | 'darkCrystal'
   | 'darkCrystalBroken'
   | 'mineBuster'
-  | 'monkey';
+  | 'monkey'
+  | 'wall';
 
 export const MONSTERS: Record<Monsters, GameEntity> = {
   spider: {
@@ -219,5 +220,12 @@ export const ITEMS: Record<Items, GameEntity> = {
     xp: 0,
     power: 0,
     icon: Icons.Monkey,
+  },
+  wall: {
+    id: 'wall',
+    type: 'item',
+    xp: 0,
+    power: 0,
+    icon: Icons.Wall1,
   },
 };
