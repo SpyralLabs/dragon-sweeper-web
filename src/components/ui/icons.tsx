@@ -4942,6 +4942,95 @@ const Icons = {
       <rect x="2" y="8" width="7" height="10" fill="#E3842F" />
     </svg>
   )),
+  ExpBox: forwardRef<SVGSVGElement, ComponentPropsWithoutRef<'svg'>>((props, ref) => (
+    <svg
+      width="38"
+      height="26"
+      viewBox="0 0 38 26"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+      ref={ref}
+    >
+      <rect x="29" y="16" width="4" height="2" fill="#351E0F" />
+      <rect x="22" y="18" width="7" height="2" fill="#351E0F" />
+      <rect x="13" y="20" width="10" height="2" fill="#351E0F" />
+      <rect x="4" y="18" width="9" height="2" fill="#351E0F" />
+      <rect x="2" y="16" width="2" height="2" fill="#351E0F" />
+      <rect y="14" width="2" height="2" fill="#351E0F" />
+      <rect x="6" y="21" width="5" height="2" fill="#351E0F" />
+      <rect x="17" y="24" width="5" height="2" fill="#351E0F" />
+      <rect x="22" y="21" width="5" height="2" fill="#351E0F" />
+      <rect x="27" y="23" width="5" height="2" fill="#351E0F" />
+      <rect x="31" y="18" width="4" height="2" fill="#351E0F" />
+      <rect x="7" y="2" width="21" height="6" fill="#8F613E" />
+      <rect x="25" y="5" width="11" height="5" fill="#8F613E" />
+      <rect x="5" y="5" width="2" height="3" fill="#8F613E" />
+      <rect x="13" y="18" width="9" height="2" fill="#E3842F" />
+      <rect x="6" y="20" width="5" height="2" fill="#E3842F" />
+      <rect x="17" y="23" width="5" height="2" fill="#E3842F" />
+      <rect x="22" y="20" width="5" height="2" fill="#F6DD68" />
+      <rect x="27" y="22" width="5" height="2" fill="#F6DD68" />
+      <rect x="31" y="17" width="4" height="2" fill="#E3842F" />
+      <rect x="4" y="16" width="18" height="2" fill="#E3842F" />
+      <rect x="10" y="16" width="3" height="2" fill="#944518" />
+      <rect x="17" y="14" width="5" height="2" fill="#E3842F" />
+      <rect x="17" y="10" width="3" height="2" fill="#F6DD68" />
+      <rect x="20" y="8" width="4" height="2" fill="#F6DD68" />
+      <rect x="24" y="8" width="5" height="2" fill="#F6DD68" />
+      <rect x="24" y="10" width="5" height="2" fill="#F6DD68" />
+      <rect x="2" y="14" width="10" height="2" fill="#E3842F" />
+      <rect x="22" y="16" width="7" height="2" fill="#E3842F" />
+      <rect x="27" y="14" width="6" height="2" fill="#E3842F" />
+      <rect x="32" y="11" width="3" height="3" fill="#E3842F" />
+      <rect x="36" y="7" width="2" height="3" fill="#351E0F" />
+      <rect x="33" y="7" width="3" height="3" fill="#683F20" />
+      <rect x="29" y="5" width="4" height="4" fill="#683F20" />
+      <rect x="25" y="5" width="4" height="3" fill="#683F20" />
+      <rect x="33" y="10" width="3" height="2" fill="#351E0F" />
+      <rect y="10" width="2" height="4" fill="#E3842F" />
+      <rect x="2" y="8" width="5" height="2" fill="#E3842F" />
+      <rect x="7" y="6" width="5" height="2" fill="#E3842F" />
+      <rect x="7" y="8" width="5" height="2" fill="#F6DD68" />
+      <rect x="2" y="10" width="5" height="2" fill="#F6DD68" />
+      <rect x="7" y="12" width="5" height="2" fill="#F6DD68" />
+      <rect x="12" y="14" width="5" height="2" fill="#F6DD68" />
+      <rect x="12" y="10" width="5" height="2" fill="#F6DD68" />
+      <rect x="17" y="12" width="5" height="2" fill="#F6DD68" />
+      <rect x="17" y="16" width="5" height="2" fill="#F6DD68" />
+      <rect x="22" y="14" width="5" height="2" fill="#F6DD68" />
+      <rect x="27" y="12" width="5" height="2" fill="#F6DD68" />
+      <rect x="12" y="12" width="5" height="2" fill="#E3842F" />
+      <rect x="22" y="12" width="5" height="2" fill="#FEFEFB" />
+      <rect x="20" y="10" width="4" height="2" fill="#FEFEFB" />
+      <rect x="7" y="10" width="5" height="2" fill="#FEFEFB" />
+      <rect y="3" width="5" height="1" fill="#FEFEFB" />
+      <rect x="12" y="19" width="5" height="1" fill="#FEFEFB" />
+      <rect x="2" y="12" width="5" height="2" fill="#E3842F" />
+      <rect x="3" y="6" width="4" height="2" fill="#351E0F" />
+      <rect x="12" y="6" width="8" height="2" fill="#683F20" />
+      <rect x="11" y="2" width="6" height="2" fill="#A37A5B" />
+      <rect x="33" y="14" width="2" height="2" fill="#351E0F" />
+      <rect x="5" y="4" width="2" height="2" fill="#351E0F" />
+      <rect x="7" y="2" width="4" height="2" fill="#7C5638" />
+      <rect x="11" width="6" height="2" fill="#7C5638" />
+      <rect x="23" y="4" width="2" height="2" fill="#351E0F" />
+      <rect x="24" y="6" width="5" height="2" fill="#351E0F" />
+      <rect x="17" y="2" width="6" height="2" fill="#683F20" />
+      <rect x="23" y="1" width="5" height="2" fill="#683F20" />
+      <rect x="28" y="3" width="4" height="2" fill="#351E0F" />
+      <rect x="32" y="5" width="4" height="2" fill="#351E0F" />
+      <rect x="12" y="8" width="4" height="2" fill="#F6DD68" />
+      <rect x="16" y="8" width="4" height="2" fill="#FEFEFB" />
+      <rect x="16" y="8" width="4" height="2" fill="#E3842F" />
+      <rect x="20" y="6" width="4" height="2" fill="#FEFEFB" />
+      <rect x="10" y="9" width="4" height="2" transform="rotate(90 10 9)" fill="#FEFEFB" />
+      <rect x="3" y="1" width="5" height="1" transform="rotate(90 3 1)" fill="#FEFEFB" />
+      <rect x="15" y="17" width="5" height="1" transform="rotate(90 15 17)" fill="#FEFEFB" />
+      <rect x="29" y="9" width="4" height="3" fill="#E3842F" />
+      <rect x="27" y="16" width="2" height="2" fill="#944518" />
+    </svg>
+  )),
 };
 
 Icons.BoxClose.displayName = 'BoxClose';
@@ -4982,5 +5071,6 @@ Icons.Wall2.displayName = 'Wall2';
 Icons.Wall3.displayName = 'Wall3';
 Icons.Wall4.displayName = 'Wall4';
 Icons.ExpWall.displayName = 'ExpWall';
+Icons.ExpBox.displayName = 'ExpBox';
 
 export default Icons;

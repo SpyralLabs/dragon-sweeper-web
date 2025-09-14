@@ -3,7 +3,8 @@ import { BOARD_SIZE, ITEMS, MONSTERS, type GameEntity } from '@/lib/config/game-
 export interface Cell {
   entity: GameEntity | null;
   revealed: boolean;
-  marked: boolean;
+  executed: boolean;
+  marked: number | null;
 }
 
 export class DungeonGenerator {
@@ -16,7 +17,12 @@ export class DungeonGenerator {
     this.width = BOARD_SIZE.width;
     this.height = BOARD_SIZE.height;
     this.board = Array.from({ length: this.height }, () =>
-      Array.from({ length: this.width }, () => ({ entity: null, revealed: false, marked: false })),
+      Array.from({ length: this.width }, () => ({
+        entity: null,
+        revealed: false,
+        marked: null,
+        executed: false,
+      })),
     );
     this.startPos = {
       x: 0,
@@ -31,6 +37,29 @@ export class DungeonGenerator {
     this.placeRandomMonstersAndItems();
     this.secureSafeZone();
     return this.board;
+  }
+
+  public getMonsterPowerSum(x: number, y: number): number {
+    let powerSum = 0;
+
+    for (let dy = -1; dy <= 1; dy++) {
+      for (let dx = -1; dx <= 1; dx++) {
+        if (dx === 0 && dy === 0) {
+          continue;
+        }
+
+        const newX = x + dx;
+        const newY = y + dy;
+
+        if (this.isValidPosition(newX, newY)) {
+          const cell = this.board[newY][newX];
+          if (cell.entity?.type === 'monster') {
+            powerSum += cell.entity.power;
+          }
+        }
+      }
+    }
+    return powerSum;
   }
 
   public setStartPos(): void {

@@ -19,11 +19,29 @@ export const dungeonGeneratorAtom = atom<DungeonGenerator | null>(null);
 export const boardAtom = atom<Cell[][]>([]);
 
 // 플레이어 상태를 위한 atom
-export const hpAtom = atom(25); // 초기 HP
+export const hpAtom = atom(5); // 초기 HP
 export const expAtom = atom(0); // 초기 EXP
 export const levelAtom = atom(1); // 초기 레벨
-export const maxHpAtom = atom(25); // 최대 HP
+export const maxHpAtom = atom(15); // 최대 HP
 export const pointsAtom = atom(0); // 유저 포인트
+const levelUpTable = [0, 4, 5, 7, 9, 9, 10, 12, 12, 12, 15, 18, 21, 21, 25];
+export const nextLevelExpAtom = atom((get) => {
+  const level = get(levelAtom);
+  const index = Math.min(level, levelUpTable.length - 1);
+  return levelUpTable[index];
+});
+
+export const canLevelUpAtom = atom((get) => {
+  const exp = get(expAtom);
+  const nextLevelExp = get(nextLevelExpAtom);
+  const hp = get(hpAtom);
+  const maxHp = get(maxHpAtom);
+
+  return hp > 0 && exp >= nextLevelExp && hp < maxHp;
+});
+export const specialMonstersStatusAtom = atom({
+  isMineSeekerDefeated: false,
+});
 export const gameOverAtom = atom(false);
 export const gameWonAtom = atom(false);
 
