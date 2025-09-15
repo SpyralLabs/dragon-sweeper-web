@@ -32,6 +32,7 @@ export type Monsters =
   | 'bunny'
   | 'mineSeeker'
   | 'eye'
+  | 'shadow'
   | 'magician'
   | 'mimic'
   | 'darkLord'
@@ -71,14 +72,14 @@ export const MONSTERS: Record<Monsters, GameEntity> = {
     type: 'monster',
     power: 3,
     xp: 3,
-    icon: Icons.Shadow, // Using Shadow icon for goblin
+    icon: Icons.Goblin,
   },
   cobra: {
     id: 'cobra',
     type: 'monster',
     power: 4,
     xp: 4,
-    icon: Icons.Shadow, // Using Shadow icon for cobra
+    icon: Icons.Cobra,
   },
   mushroom: {
     id: 'mushroom',
@@ -128,6 +129,13 @@ export const MONSTERS: Record<Monsters, GameEntity> = {
     power: 5,
     xp: 5,
     icon: Icons.Shadow, // Using Shadow icon for eye
+  },
+  shadow: {
+    id: 'shadow',
+    type: 'monster',
+    power: 5,
+    xp: 5,
+    icon: Icons.Shadow,
   },
   magician: {
     id: 'magician',

@@ -1,5 +1,5 @@
 import { useEffect, useCallback } from 'react';
-import { useAtom, useSetAtom } from 'jotai';
+import { useAtom, useAtomValue, useSetAtom } from 'jotai';
 import {
   boardAtom,
   hpAtom,
@@ -13,6 +13,7 @@ import {
   maxHpAtom,
   nextLevelExpAtom,
   specialMonstersStatusAtom,
+  dungeonGeneratorAtom,
 } from '@/state/game';
 import { ITEMS, MONSTERS, type GameEntity } from '@/lib/config/game-config';
 import type { Cell } from '@/features/minesweeper/entities/dungeon-generator';
@@ -27,6 +28,7 @@ export const useGameLogic = () => {
   const [board, setBoard] = useAtom(boardAtom);
   const [hp, setHp] = useAtom(hpAtom);
   const [exp, setExp] = useAtom(expAtom);
+  const dungeonGenerator = useAtomValue(dungeonGeneratorAtom);
   const [gameOver, setGameOver] = useAtom(gameOverAtom);
   const [gameWon, setGameWon] = useAtom(gameWonAtom);
   const setResetGame = useSetAtom(resetGameAtom);
@@ -40,7 +42,14 @@ export const useGameLogic = () => {
   const handleMonsterDefeat = useCallback(
     (x: number, y: number, monster: GameEntity) => {
       const newBoard = board.map((row) => [...row]);
-      const cell = newBoard[y][x];
+
+      if (newBoard[y][x].executed) {
+        newBoard[y][x].revealed = true;
+        newBoard[y][x].marked = null;
+        newBoard[y][x].entity = null;
+        setBoard(newBoard);
+        return;
+      }
 
       let finalMonsterPower = monster.power;
       const effectiveDamage = Math.max(1, finalMonsterPower - utilityStats.shield);
@@ -56,8 +65,11 @@ export const useGameLogic = () => {
           case MONSTERS.bunny.id:
             handleBunnyAbility(newBoard, x, y);
             break;
+          case MONSTERS.shadow.id:
+            handleShadowAbility(newBoard);
+            break;
           case MONSTERS.eye.id:
-            handleEyeAbility(newBoard);
+            handleEyeAbility(x, y);
             break;
           case MONSTERS.mineSeeker.id:
             handleMineSeekerAbility(newBoard, x, y);
@@ -69,6 +81,8 @@ export const useGameLogic = () => {
           default:
             break;
         }
+        newBoard[y][x].executed = true;
+        setBoard(newBoard);
       } else {
         setHp(0);
         setGameOver(true);
@@ -99,7 +113,7 @@ export const useGameLogic = () => {
     setSpecialMonstersStatus((prev) => ({ ...prev, isMineSeekerDefeated: true }));
   };
 
-  const handleEyeAbility = (currentBoard: Cell[][]) => {
+  const handleShadowAbility = (currentBoard: Cell[][]) => {
     currentBoard.forEach((row) => {
       row.forEach((targetCell) => {
         if (targetCell.entity?.id === MONSTERS.spider.id) {
@@ -109,12 +123,14 @@ export const useGameLogic = () => {
     });
   };
 
+  const handleEyeAbility = (x: number, y: number) => {
+    dungeonGenerator?.handleEyeDefeat(x, y);
+  };
+
   const handleItemAcquisition = useCallback(
     (x: number, y: number, item: GameEntity) => {
       const newBoard = board.map((row) => [...row]);
       const cell = newBoard[y][x];
-
-      cell.revealed = true;
 
       switch (item.id) {
         case ITEMS.hpItem.id:
@@ -135,6 +151,9 @@ export const useGameLogic = () => {
         default:
           break;
       }
+      cell.executed = true;
+      cell.revealed = true;
+      cell.marked = null;
       setBoard(newBoard);
     },
     [board, setBoard, setHp, setExp, utilityStats, specialMonstersStatus, setSpecialMonstersStatus],
@@ -256,6 +275,10 @@ export const useGameLogic = () => {
     }
   };
 
+  const calculateMonsterPowerSum = (x: number, y: number) => {
+    return dungeonGenerator?.getMonsterPowerSum(x, y);
+  };
+
   // 게임 시작 시 보드 생성
   useEffect(() => {
     if (board.length === 0) {
@@ -273,5 +296,6 @@ export const useGameLogic = () => {
     handleCellClick,
     handleCellRightClick,
     levelUp,
+    calculateMonsterPowerSum,
   };
 };

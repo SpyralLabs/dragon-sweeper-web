@@ -12,6 +12,7 @@ export class DungeonGenerator {
   public height: number;
   public board: Cell[][];
   public startPos: { x: number; y: number };
+  private eyeMonsters: { x: number; y: number; isAlive: boolean }[] = [];
 
   constructor() {
     this.width = BOARD_SIZE.width;
@@ -39,9 +40,24 @@ export class DungeonGenerator {
     return this.board;
   }
 
-  public getMonsterPowerSum(x: number, y: number): number {
-    let powerSum = 0;
+  public isEyeAbilityActive(x: number, y: number): boolean {
+    const radius = 3;
+    for (const eye of this.eyeMonsters) {
+      if (eye.isAlive) {
+        if (Math.abs(eye.x - x) <= radius && Math.abs(eye.y - y) <= radius) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
 
+  public getMonsterPowerSum(x: number, y: number): number | string {
+    if (this.isEyeAbilityActive(x, y)) {
+      return '?';
+    }
+
+    let powerSum = 0;
     for (let dy = -1; dy <= 1; dy++) {
       for (let dx = -1; dx <= 1; dx++) {
         if (dx === 0 && dy === 0) {
@@ -60,6 +76,13 @@ export class DungeonGenerator {
       }
     }
     return powerSum;
+  }
+
+  public handleEyeDefeat(x: number, y: number): void {
+    const eye = this.eyeMonsters.find((e) => e.x === x && e.y === y);
+    if (eye) {
+      eye.isAlive = false;
+    }
   }
 
   public setStartPos(): void {
@@ -154,7 +177,14 @@ export class DungeonGenerator {
     }
     this.placeRandomly(MONSTERS.bunny, 2);
     this.placeRandomly(MONSTERS.mimic);
-    this.placeRandomly(MONSTERS.eye, 2);
+    const eyeCount = 2;
+    for (let i = 0; i < eyeCount; i++) {
+      const eyePos = this.findRandomEmptyPosition();
+      if (eyePos) {
+        this.placeEntity(eyePos.x, eyePos.y, MONSTERS.eye);
+        this.eyeMonsters.push({ x: eyePos.x, y: eyePos.y, isAlive: true });
+      }
+    }
     this.placeRandomly(ITEMS.monkey);
   }
 
@@ -167,6 +197,7 @@ export class DungeonGenerator {
     this.placeRandomly(MONSTERS.cobra, 8, 2);
     this.placeRandomly(MONSTERS.giant, 5, 6);
     this.placeRandomly(MONSTERS.mushroom, 5, 2);
+    this.placeRandomly(MONSTERS.shadow, 1);
 
     // 3. Place Gargoyle
     // Place around wall or nearby mushroom cluster
@@ -398,7 +429,7 @@ export class DungeonGenerator {
   }
 
   private findRandomEmptyPosition(): { x: number; y: number } | null {
-    let attempts = 100;
+    let attempts = 150;
     while (attempts > 0) {
       const x = Math.floor(Math.random() * this.width);
       const y = Math.floor(Math.random() * this.height);
