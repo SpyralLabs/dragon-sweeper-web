@@ -3155,6 +3155,96 @@ const Icons = {
       </defs>
     </svg>
   )),
+  TileBrown: forwardRef<SVGSVGElement, ComponentPropsWithoutRef<'svg'>>((props, ref) => (
+    <svg
+      width="78"
+      height="78"
+      viewBox="0 0 78 78"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+      ref={ref}
+    >
+      <g filter="url(#filter0_ii_58_11938)">
+        <path
+          d="M5.89474 75.9999H74H76V73.9999V5.89468H74.0526V3.94731H72.1053V1.99994H5.89474H2V75.9999H5.89474Z"
+          fill="#8B6F58"
+        />
+      </g>
+      <path
+        d="M5.89474 75.9999H74H76V73.9999V5.89468H74.0526V3.94731H72.1053V1.99994H5.89474H2V75.9999H5.89474Z"
+        stroke="#333432"
+        strokeWidth="4"
+      />
+      <defs>
+        <filter
+          id="filter0_ii_58_11938"
+          x="0"
+          y="-6.10352e-05"
+          width="78"
+          height="78"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+          <feColorMatrix
+            in="SourceAlpha"
+            type="matrix"
+            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+            result="hardAlpha"
+          />
+          <feOffset dx="6" dy="8" />
+          <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+          <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.2 0" />
+          <feBlend mode="overlay" in2="shape" result="effect1_innerShadow_58_11938" />
+          <feColorMatrix
+            in="SourceAlpha"
+            type="matrix"
+            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+            result="hardAlpha"
+          />
+          <feOffset dy="-8" />
+          <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+          <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+          <feBlend
+            mode="normal"
+            in2="effect1_innerShadow_58_11938"
+            result="effect2_innerShadow_58_11938"
+          />
+        </filter>
+      </defs>
+    </svg>
+  )),
+  TileDisabled: forwardRef<SVGSVGElement, ComponentPropsWithoutRef<'svg'>>((props, ref) => (
+    <svg
+      width="74"
+      height="74"
+      viewBox="0 0 74 74"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+      ref={ref}
+    >
+      <g clip-path="url(#clip0_74_20250)">
+        <path
+          d="M3.89474 73.9999H72H74V71.9999V3.89468H72.0526V1.94731H70.1053V-6.10352e-05H3.89474H0V73.9999H3.89474Z"
+          fill="#454644"
+          stroke="#31322F"
+          strokeWidth="4"
+        />
+        <path
+          d="M33.625 34.9099H38.125V28.3399H33.625V34.9099ZM33.625 39.4999V41.6599H38.125V37.3399H31.375V34.9999H29.125V28.2499H31.375V25.9999H40.375V28.2499H42.625V41.7499H40.375V43.9999H31.375V41.7499H29.125V39.4999H33.625Z"
+          fill="#D2CDC5"
+        />
+      </g>
+      <defs>
+        <clipPath id="clip0_74_20250">
+          <rect width="74" height="74" fill="white" />
+        </clipPath>
+      </defs>
+    </svg>
+  )),
   Potion: forwardRef<SVGSVGElement, ComponentPropsWithoutRef<'svg'>>((props, ref) => (
     <svg
       width="32"
@@ -5072,5 +5162,10 @@ Icons.Wall3.displayName = 'Wall3';
 Icons.Wall4.displayName = 'Wall4';
 Icons.ExpWall.displayName = 'ExpWall';
 Icons.ExpBox.displayName = 'ExpBox';
+Icons.Tile.displayName = 'Tile';
+Icons.TileCracked1.displayName = 'TileCracked1';
+Icons.TileCracked2.displayName = 'TileCracked2';
+Icons.TileBrown.displayName = 'TileBrown';
+Icons.TileDisabled.displayName = 'TileDisabled';
 
 export default Icons;

@@ -50,32 +50,6 @@ const headerVariants = {
   },
 };
 
-const leftPanelVariants = {
-  initial: {
-    opacity: 0,
-    x: -100,
-    scale: 0.9,
-  },
-  in: {
-    opacity: 1,
-    x: 0,
-    scale: 1,
-  },
-};
-
-const rightPanelVariants = {
-  initial: {
-    opacity: 0,
-    x: 100,
-    scale: 0.9,
-  },
-  in: {
-    opacity: 1,
-    x: 0,
-    scale: 1,
-  },
-};
-
 const staggerContainer = {
   in: {
     transition: {
@@ -107,49 +81,9 @@ const PlayLayout = ({ children }: PlayLayoutProps) => {
           variants={staggerContainer}
           initial="initial"
           animate="in"
-          className="flex h-[calc(100vh-180px)]"
+          className="flex min-h-[calc(100vh-180px)] w-full"
         >
-          {/* Left Character Panel */}
-          <motion.div
-            variants={leftPanelVariants}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="w-80 flex-shrink-0 p-6"
-          >
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              className="h-full rounded-lg border-2 border-[#8b4513] bg-gradient-to-b from-[#2d1b13] to-[#1a0f0c] p-4 shadow-2xl"
-            >
-              {/* {children} */}
-            </motion.div>
-          </motion.div>
-
-          {/* Right Game Board */}
-          <motion.div
-            variants={rightPanelVariants}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="flex-1 p-6"
-          >
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.7 }}
-              className="h-full rounded-lg border-2 border-[#8b4513] bg-gradient-to-br from-[#2d1b13] to-[#1a0f0c] p-6 shadow-2xl"
-            >
-              {/* Game board content will be rendered here */}
-              <div className="flex h-full items-center justify-center">
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.5 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.8, delay: 0.9, type: 'spring', bounce: 0.3 }}
-                  className="text-center"
-                >
-                  {children}
-                </motion.div>
-              </div>
-            </motion.div>
-          </motion.div>
+          {children}
         </motion.div>
       </motion.div>
     </AnimatePresence>
