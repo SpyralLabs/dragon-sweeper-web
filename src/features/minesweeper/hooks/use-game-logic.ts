@@ -137,10 +137,15 @@ export const useGameLogic = () => {
           setHp((prevHp) => Math.min(25, prevHp + 5 + utilityStats.hpRegen));
           cell.entity = null;
           break;
-        case ITEMS.pickDefault.id:
+        case ITEMS.pickDefault.id: {
           cell.entity = null;
-          openArea(x, y, newBoard, OrbType.ITEM);
+          if (dungeonGenerator?.startPos.x === x && dungeonGenerator?.startPos.y === y) {
+            openArea(x, y, newBoard, OrbType.INITIAL);
+          } else {
+            openArea(x, y, newBoard, OrbType.ITEM);
+          }
           break;
+        }
         case ITEMS.mineBuster.id:
           handleMineDisarmButton(newBoard, x, y);
           break;
@@ -244,8 +249,8 @@ export const useGameLogic = () => {
               const cell = currentBoard[newY][newX];
               if (!cell.revealed) {
                 cell.revealed = true;
-                cell.executed = false;
                 cell.marked = null;
+                cell.executed = cell.entity === null;
               }
             }
           }
@@ -276,18 +281,21 @@ export const useGameLogic = () => {
   };
 
   const calculateMonsterPowerSum = (x: number, y: number) => {
-    return dungeonGenerator?.getMonsterPowerSum(x, y);
+    const value = dungeonGenerator?.getMonsterPowerSum(x, y) ?? 0;
+    return value;
   };
 
-  // 게임 시작 시 보드 생성
-  useEffect(() => {
-    if (board.length === 0) {
-      setResetGame();
-    }
-  }, [board, setResetGame]);
+  const toggleAllBoardForTest = () => {
+    setBoard((prev) =>
+      prev.map((row) => row.map((cell) => ({ ...cell, revealed: !cell.revealed }))),
+    );
+  };
+
+  // 게임 초기화는 게임 페이지에서 담당
 
   return {
     board,
+    dungeon: dungeonGenerator,
     gameOver,
     gameWon,
     hp,
@@ -300,5 +308,6 @@ export const useGameLogic = () => {
     handleCellRightClick,
     levelUp,
     calculateMonsterPowerSum,
+    toggleAllBoardForTest,
   };
 };

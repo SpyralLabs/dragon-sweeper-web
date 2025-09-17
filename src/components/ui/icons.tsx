@@ -3218,31 +3218,20 @@ const Icons = {
   )),
   TileDisabled: forwardRef<SVGSVGElement, ComponentPropsWithoutRef<'svg'>>((props, ref) => (
     <svg
-      width="74"
-      height="74"
-      viewBox="0 0 74 74"
+      width="78"
+      height="78"
+      viewBox="0 0 78 78"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       {...props}
       ref={ref}
     >
-      <g clip-path="url(#clip0_74_20250)">
-        <path
-          d="M3.89474 73.9999H72H74V71.9999V3.89468H72.0526V1.94731H70.1053V-6.10352e-05H3.89474H0V73.9999H3.89474Z"
-          fill="#454644"
-          stroke="#31322F"
-          strokeWidth="4"
-        />
-        <path
-          d="M33.625 34.9099H38.125V28.3399H33.625V34.9099ZM33.625 39.4999V41.6599H38.125V37.3399H31.375V34.9999H29.125V28.2499H31.375V25.9999H40.375V28.2499H42.625V41.7499H40.375V43.9999H31.375V41.7499H29.125V39.4999H33.625Z"
-          fill="#D2CDC5"
-        />
-      </g>
-      <defs>
-        <clipPath id="clip0_74_20250">
-          <rect width="74" height="74" fill="white" />
-        </clipPath>
-      </defs>
+      <path
+        d="M5.89474 76H74H76V74V5.89474H74.0526V3.94737H72.1053V2H5.89474H2V76H5.89474Z"
+        fill="#454644"
+        stroke="#31322F"
+        stroke-width="4"
+      />
     </svg>
   )),
   Potion: forwardRef<SVGSVGElement, ComponentPropsWithoutRef<'svg'>>((props, ref) => (

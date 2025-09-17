@@ -107,7 +107,7 @@ export const MONSTERS: Record<Monsters, GameEntity> = {
     type: 'monster',
     power: 8,
     xp: 8,
-    icon: Icons.Mushroom, // Using Mushroom icon for poison mushroom
+    icon: Icons.PoisonMushroom,
   },
   bunny: {
     id: 'bunny',

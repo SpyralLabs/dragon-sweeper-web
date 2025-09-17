@@ -101,6 +101,7 @@ export class DungeonGenerator {
       // 다크로드와 주변 몬스터를 피해 안전한 시작점을 찾습니다.
       if (!this.board[y][x].entity && !this.isNearFixedEntity(x, y)) {
         this.startPos = { x, y };
+        this.placeEntity(x, y, ITEMS.pickDefault);
         return;
       }
       attempts--;

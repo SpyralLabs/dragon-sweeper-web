@@ -17,8 +17,9 @@ const rightPanelVariants = {
 };
 
 export default function GameRightPannel() {
-  const { board, handleCellClick, handleCellRightClick, gameOver, gameWon } = useGameLogic();
-
+  const { board, handleCellClick, handleCellRightClick, toggleAllBoardForTest, dungeon } =
+    useGameLogic();
+  console.log(dungeon);
   return (
     <motion.div
       variants={rightPanelVariants}
@@ -52,6 +53,12 @@ export default function GameRightPannel() {
           </div>
         ))}
       </div>
+      <button
+        className="fixed right-4 bottom-4 z-[9999] h-10 w-60 bg-amber-50 text-black"
+        onClick={toggleAllBoardForTest}
+      >
+        Toggle All Board
+      </button>
     </motion.div>
   );
 }
