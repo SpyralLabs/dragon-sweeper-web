@@ -14,6 +14,7 @@ import {
   nextLevelExpAtom,
   specialMonstersStatusAtom,
   dungeonGeneratorAtom,
+  attackedAtom,
 } from '@/state/game';
 import { ITEMS, MONSTERS, type GameEntity } from '@/lib/config/game-config';
 import type { Cell } from '@/features/minesweeper/entities/dungeon-generator';
@@ -35,28 +36,29 @@ export const useGameLogic = () => {
   const [utilityStats] = useAtom(currentUtilityStatsAtom);
   const [level, setLevel] = useAtom(levelAtom);
   const [maxHp, setMaxHp] = useAtom(maxHpAtom);
+  const [attacked, setAttacked] = useAtom(attackedAtom);
   const [nextLevelExp] = useAtom(nextLevelExpAtom);
   const [canLevelUp] = useAtom(canLevelUpAtom);
   const [specialMonstersStatus, setSpecialMonstersStatus] = useAtom(specialMonstersStatusAtom);
 
   const handleMonsterDefeat = useCallback(
-    (x: number, y: number, monster: GameEntity) => {
-      const newBoard = board.map((row) => [...row]);
-
+    (newBoard: Cell[][], x: number, y: number, monster: GameEntity) => {
       if (newBoard[y][x].executed) {
         newBoard[y][x].revealed = true;
         newBoard[y][x].marked = null;
         newBoard[y][x].entity = null;
         setBoard(newBoard);
+        setAttacked(false);
         return;
       }
 
       let finalMonsterPower = monster.power;
       const effectiveDamage = Math.max(1, finalMonsterPower - utilityStats.shield);
 
-      if (hp > effectiveDamage) {
+      if (hp >= effectiveDamage) {
         setHp((prevHp) => prevHp - effectiveDamage);
         setExp((prevExp) => prevExp + monster.power + utilityStats.damageBoost);
+        setAttacked(true);
 
         switch (monster.id) {
           case MONSTERS.magician.id:
@@ -128,9 +130,9 @@ export const useGameLogic = () => {
   };
 
   const handleItemAcquisition = useCallback(
-    (x: number, y: number, item: GameEntity) => {
-      const newBoard = board.map((row) => [...row]);
+    (newBoard: Cell[][], x: number, y: number, item: GameEntity) => {
       const cell = newBoard[y][x];
+      setAttacked(false);
 
       switch (item.id) {
         case ITEMS.hpItem.id:
@@ -180,18 +182,54 @@ export const useGameLogic = () => {
   const handleCellClick = useCallback(
     ({ x, y }: { x: number; y: number }) => {
       if (gameOver || gameWon) return;
+      console.log(`[${x}, ${y}] 클릭 이벤트 발생`);
+      console.log(`현재 hp: ${hp}, 현재 exp: ${exp}, 현재 level: ${level}`);
 
       const newBoard = board.map((row) => [...row]);
       const cell = newBoard[y][x];
+      console.log(
+        `이 곳엔 ${cell.entity ? `${cell.entity?.id}가 있습니다` : '아무것도 없습니다.'}`,
+      );
 
       const entity = cell.entity;
 
+      // 1. 빈 칸인 경우
       if (!entity) {
         cell.revealed = true;
-      } else if (entity.type === 'monster') {
-        handleMonsterDefeat(x, y, entity);
-      } else if (entity.type === 'item') {
-        handleItemAcquisition(x, y, entity);
+        cell.executed = true;
+        setAttacked(false);
+        setBoard(newBoard);
+        return;
+      }
+
+      // 2. 공개정보인 경우
+      if (cell.revealed) {
+        if (entity.type === 'monster') {
+          console.log(`공개정보 [${x}, ${y}]에 따라 몬스터를 처치!`);
+          handleMonsterDefeat(newBoard, x, y, entity);
+        } else if (entity.type === 'item') {
+          console.log(`공개정보 [${x}, ${y}]에 따라 아이템을 획득!`);
+          handleItemAcquisition(newBoard, x, y, entity);
+        }
+        return;
+      }
+
+      // 3. 미공개 정보의 몬스터를 마주한 경우
+      if (entity.type === 'monster') {
+        console.log(`미공개정보 [${x}, ${y}]를 개방!`);
+        console.log(`[${x}, ${y}]는 ${entity.id} 몬스터 타일입니다`);
+        handleMonsterDefeat(newBoard, x, y, entity);
+        return;
+      }
+
+      // 4. 미공개 정보의 아이템을 마주한경우(아이템 타일만 공개)
+      if (entity.type === 'item') {
+        console.log(`미공개정보 [${x}, ${y}]를 개방!`);
+        console.log(`[${x}, ${y}]는 ${entity.id} 아이템 타일입니다`);
+        cell.revealed = true;
+        setAttacked(false);
+        setBoard(newBoard);
+        return;
       }
     },
     [board, gameOver, gameWon, handleMonsterDefeat, handleItemAcquisition],
@@ -217,7 +255,7 @@ export const useGameLogic = () => {
       return;
     }
 
-    setExp((prevExp) => prevExp - nextLevelExp);
+    setExp(nextLevelExp);
 
     const newLevel = level + 1;
     setLevel(newLevel);
@@ -299,6 +337,8 @@ export const useGameLogic = () => {
     gameOver,
     gameWon,
     hp,
+    level,
+    attacked,
     maxHp,
     exp,
     nextLevelExp,

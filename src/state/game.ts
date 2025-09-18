@@ -24,6 +24,7 @@ export const expAtom = atom(0); // 초기 EXP
 export const levelAtom = atom(1); // 초기 레벨
 export const maxHpAtom = atom(5); // 최대 HP
 export const pointsAtom = atom(0); // 유저 포인트
+export const attackedAtom = atom(false);
 const levelUpTable = [0, 4, 5, 7, 9, 9, 10, 12, 12, 12, 15, 18, 21, 21, 25];
 export const nextLevelExpAtom = atom((get) => {
   const level = get(levelAtom);
@@ -37,7 +38,7 @@ export const canLevelUpAtom = atom((get) => {
   const hp = get(hpAtom);
   const maxHp = get(maxHpAtom);
 
-  return hp > 0 && exp >= nextLevelExp && hp < maxHp;
+  return hp >= 0 && exp >= nextLevelExp && hp < maxHp;
 });
 export const specialMonstersStatusAtom = atom({
   isMineSeekerDefeated: false,
@@ -102,6 +103,7 @@ export const resetGameAtom = atom(null, (get, set) => {
   set(levelAtom, 1);
   set(maxHpAtom, 5);
   set(pointsAtom, 0);
+  set(attackedAtom, false);
   set(gameOverAtom, false);
   set(gameWonAtom, false);
 

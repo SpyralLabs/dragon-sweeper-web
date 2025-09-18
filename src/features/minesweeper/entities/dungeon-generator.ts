@@ -44,7 +44,7 @@ export class DungeonGenerator {
     const radius = 3;
     for (const eye of this.eyeMonsters) {
       if (eye.isAlive) {
-        if (Math.abs(eye.x - x) <= radius && Math.abs(eye.y - y) <= radius) {
+        if (Math.abs(eye.x - x) + Math.abs(eye.y - y) <= radius) {
           return true;
         }
       }
