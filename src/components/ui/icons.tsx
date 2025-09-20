@@ -2972,11 +2972,6 @@ const Icons = {
           fill="#626262"
         />
       </g>
-      <path
-        d="M5.89474 76H74H76V74V5.89474H74.0526V3.94737H72.1053V2H5.89474H2V76H5.89474Z"
-        stroke="#343533"
-        strokeWidth="4"
-      />
       <rect x="76" y="76" width="2" height="2" fill="#343533" />
       <defs>
         <filter
@@ -3034,11 +3029,6 @@ const Icons = {
           fill="#626262"
         />
       </g>
-      <path
-        d="M5.89474 76H74H76V74V5.89474H74.0526V3.94737H72.1053V2H5.89474H2V76H5.89474Z"
-        stroke="#343533"
-        strokeWidth="4"
-      />
       <rect x="76" y="76" width="2" height="2" fill="#343533" />
       <rect x="69" y="8" width="5" height="5" fill="#4A4A4A" />
       <rect x="64" y="13" width="5" height="5" fill="#4A4A4A" />
@@ -3102,11 +3092,6 @@ const Icons = {
           fill="#626262"
         />
       </g>
-      <path
-        d="M5.89474 76H74H76V74V5.89474H74.0526V3.94737H72.1053V2H5.89474H2V76H5.89474Z"
-        stroke="#343533"
-        strokeWidth="4"
-      />
       <rect x="76" y="76" width="2" height="2" fill="#262C2C" />
       <rect x="6" y="8" width="5" height="5" fill="#4A4A4A" />
       <rect x="11" y="13" width="5" height="5" fill="#4A4A4A" />
@@ -5110,6 +5095,40 @@ const Icons = {
       <rect x="27" y="16" width="2" height="2" fill="#944518" />
     </svg>
   )),
+  MarkedMine: forwardRef<SVGSVGElement, ComponentPropsWithoutRef<'svg'>>((props, ref) => (
+    <svg
+      width="48"
+      height="48"
+      viewBox="0 0 48 48"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+      ref={ref}
+    >
+      <path
+        d="M26 9H30V13H35V17H38V22H43V26H38V31H35V34H30V38H26V43H22V38H18V34H13V31H10V26H5V22H10V17H13V13H18V9H22V5H26V9Z"
+        fill="#8B0000"
+      />
+      <rect x="9" y="9" width="4" height="4" fill="#8B0000" />
+      <rect x="9" y="34" width="4" height="4" fill="#8B0000" />
+      <rect x="35" y="9" width="4" height="4" fill="#8B0000" />
+      <rect x="35" y="9" width="4" height="4" fill="#8B0000" />
+      <rect x="35" y="34" width="4" height="4" fill="#8B0000" />
+      <rect x="16" y="13" width="13" height="13" fill="#8B0000" />
+      <rect x="13" y="18" width="19" height="3" fill="#8B0000" />
+      <rect x="24" y="10" width="19" height="3" transform="rotate(90 24 10)" fill="#8B0000" />
+      <rect x="16" y="26" width="3" height="3" transform="rotate(90 16 26)" fill="#8B0000" />
+      <rect x="32" y="26" width="3" height="3" transform="rotate(90 32 26)" fill="#8B0000" />
+      <rect x="18" y="15" width="9" height="9" fill="#8B0000" />
+      <rect x="18" y="15" width="2" height="2" transform="rotate(180 18 15)" fill="#8B0000" />
+      <rect x="18" y="26" width="2" height="2" transform="rotate(180 18 26)" fill="#8B0000" />
+      <rect x="29" y="15" width="2" height="2" transform="rotate(180 29 15)" fill="#8B0000" />
+      <rect x="29" y="26" width="2" height="2" transform="rotate(180 29 26)" fill="#8B0000" />
+      <rect x="16" y="16" width="7" height="7" fill="#C0C0C0" />
+      <rect x="27" y="29" width="3" height="3" transform="rotate(90 27 29)" fill="#8B0000" />
+      <rect x="21" y="29" width="3" height="3" transform="rotate(90 21 29)" fill="#8B0000" />
+    </svg>
+  )),
 };
 
 Icons.BoxClose.displayName = 'BoxClose';
@@ -5156,5 +5175,6 @@ Icons.TileCracked1.displayName = 'TileCracked1';
 Icons.TileCracked2.displayName = 'TileCracked2';
 Icons.TileBrown.displayName = 'TileBrown';
 Icons.TileDisabled.displayName = 'TileDisabled';
+Icons.MarkedMine.displayName = 'MarkedMine';
 
 export default Icons;

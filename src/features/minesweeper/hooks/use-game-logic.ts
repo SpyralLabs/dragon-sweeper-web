@@ -1,4 +1,4 @@
-import { useEffect, useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
 import { useAtom, useAtomValue, useSetAtom } from 'jotai';
 import {
   boardAtom,
@@ -15,6 +15,7 @@ import {
   specialMonstersStatusAtom,
   dungeonGeneratorAtom,
   attackedAtom,
+  levelUpTable,
 } from '@/state/game';
 import { ITEMS, MONSTERS, type GameEntity } from '@/lib/config/game-config';
 import type { Cell } from '@/features/minesweeper/entities/dungeon-generator';
@@ -40,24 +41,30 @@ export const useGameLogic = () => {
   const [nextLevelExp] = useAtom(nextLevelExpAtom);
   const [canLevelUp] = useAtom(canLevelUpAtom);
   const [specialMonstersStatus, setSpecialMonstersStatus] = useAtom(specialMonstersStatusAtom);
+  const currentLevelExp = useMemo(() => {
+    return levelUpTable[level];
+  }, [level]);
+  const previewHp = useMemo(() => {
+    return level === 1 ? false : level % 2 !== 0;
+  }, [level]);
 
   const handleMonsterDefeat = useCallback(
     (newBoard: Cell[][], x: number, y: number, monster: GameEntity) => {
+      let finalMonsterPower = monster.power;
+      const effectiveDamage = Math.max(1, finalMonsterPower - utilityStats.shield);
+
       if (newBoard[y][x].executed) {
         newBoard[y][x].revealed = true;
         newBoard[y][x].marked = null;
         newBoard[y][x].entity = null;
         setBoard(newBoard);
         setAttacked(false);
+        setExp((prevExp) => prevExp + monster.power + utilityStats.damageBoost);
         return;
       }
 
-      let finalMonsterPower = monster.power;
-      const effectiveDamage = Math.max(1, finalMonsterPower - utilityStats.shield);
-
       if (hp >= effectiveDamage) {
         setHp((prevHp) => prevHp - effectiveDamage);
-        setExp((prevExp) => prevExp + monster.power + utilityStats.damageBoost);
         setAttacked(true);
 
         switch (monster.id) {
@@ -71,7 +78,7 @@ export const useGameLogic = () => {
             handleShadowAbility(newBoard);
             break;
           case MONSTERS.eye.id:
-            handleEyeAbility(x, y);
+            handleEyeAbility(newBoard, x, y);
             break;
           case MONSTERS.mineSeeker.id:
             handleMineSeekerAbility(newBoard, x, y);
@@ -125,7 +132,8 @@ export const useGameLogic = () => {
     });
   };
 
-  const handleEyeAbility = (x: number, y: number) => {
+  const handleEyeAbility = (currentBoard: Cell[][], x: number, y: number) => {
+    currentBoard[y][x].entity;
     dungeonGenerator?.handleEyeDefeat(x, y);
   };
 
@@ -151,20 +159,31 @@ export const useGameLogic = () => {
         case ITEMS.mineBuster.id:
           handleMineDisarmButton(newBoard, x, y);
           break;
-        case ITEMS.expBox.id:
-          setExp((prevExp) => prevExp + 3);
-          cell.entity = null;
+        case ITEMS.boxClose.id:
+          handleExpBoxAcquisition(newBoard, x, y, item);
           break;
         default:
           break;
       }
-      cell.executed = true;
+
       cell.revealed = true;
       cell.marked = null;
+      if (item.id === ITEMS.expBox.id) {
+        cell.executed = true;
+      }
       setBoard(newBoard);
     },
     [board, setBoard, setHp, setExp, utilityStats, specialMonstersStatus, setSpecialMonstersStatus],
   );
+
+  const handleExpBoxAcquisition = (newBoard: Cell[][], x: number, y: number, item: GameEntity) => {
+    console.log(item, newBoard[y][x]);
+    if (item.xp > 0) {
+      newBoard[y][x].entity = ITEMS.expBox;
+    } else {
+      newBoard[y][x].entity = ITEMS.hpItem;
+    }
+  };
 
   const handleMineDisarmButton = (currentBoard: Cell[][], x: number, y: number) => {
     if (specialMonstersStatus.isMineSeekerDefeated) {
@@ -192,6 +211,11 @@ export const useGameLogic = () => {
       );
 
       const entity = cell.entity;
+
+      if (dungeonGenerator?.startPos.x === x && dungeonGenerator?.startPos.y === y) {
+        handleItemAcquisition(newBoard, x, y, entity as GameEntity);
+        return;
+      }
 
       // 1. 빈 칸인 경우
       if (!entity) {
@@ -222,7 +246,7 @@ export const useGameLogic = () => {
         return;
       }
 
-      // 4. 미공개 정보의 아이템을 마주한경우(아이템 타일만 공개)
+      // 4. 미공개 정보의 아이템을 마주한경우(아이템 타일 공개)
       if (entity.type === 'item') {
         console.log(`미공개정보 [${x}, ${y}]를 개방!`);
         console.log(`[${x}, ${y}]는 ${entity.id} 아이템 타일입니다`);
@@ -238,9 +262,12 @@ export const useGameLogic = () => {
   const handleCellRightClick = useCallback(
     ({ x, y, marked }: { x: number; y: number; marked: number | null }) => {
       if (gameOver || gameWon) return;
+      console.log(`[${x}, ${y}] 오른쪽 클릭 이벤트 발생`);
+      console.log(`marked: ${marked}`);
 
       const newBoard = board.map((row) => [...row]);
       const cell = newBoard[y][x];
+      console.log(`cell:`, cell);
 
       if (cell.revealed) return;
 
@@ -255,15 +282,14 @@ export const useGameLogic = () => {
       return;
     }
 
-    setExp(nextLevelExp);
-
     const newLevel = level + 1;
+    setExp((prev) => prev - currentLevelExp);
     setLevel(newLevel);
     if (newLevel % 2 !== 0 && newLevel > 1) {
       setMaxHp((prevMaxHp) => prevMaxHp + 1);
     }
     setHp(maxHp);
-  }, [canLevelUp, level, nextLevelExp, maxHp, setExp, setLevel, setMaxHp, setHp]);
+  }, [canLevelUp, level, currentLevelExp, maxHp, setExp, setLevel, setMaxHp, setHp]);
 
   const openArea = (
     x: number,
@@ -343,6 +369,7 @@ export const useGameLogic = () => {
     exp,
     nextLevelExp,
     canLevelUp,
+    previewHp,
     startGame: setResetGame,
     handleCellClick,
     handleCellRightClick,

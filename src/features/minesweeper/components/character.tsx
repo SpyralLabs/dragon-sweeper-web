@@ -34,6 +34,7 @@ export default function Character() {
 
       {/* 모든 캐릭터 이미지를 미리 로드하고 필요에 따라 표시/숨김 */}
       <img
+        key={`${currentState}-basic`}
         src={basic}
         alt="Hero Basic"
         className={`z-1 aspect-[372/469] w-full object-cover object-top select-none ${
@@ -42,6 +43,7 @@ export default function Character() {
         draggable={false}
       />
       <img
+        key={`${currentState}-zero`}
         src={zero}
         alt="Hero Idle"
         className={`z-1 aspect-[372/469] w-full object-cover object-top select-none ${
@@ -50,6 +52,7 @@ export default function Character() {
         draggable={false}
       />
       <img
+        key={`${currentState}-attack`}
         src={attack}
         alt="Hero Attack"
         className={`z-1 aspect-[372/469] w-full object-cover object-top select-none ${
@@ -58,6 +61,7 @@ export default function Character() {
         draggable={false}
       />
       <img
+        key={`${currentState}-levelup`}
         src={levelup}
         alt="Hero Level Up"
         className={`z-1 aspect-[372/469] w-full object-cover object-top select-none ${

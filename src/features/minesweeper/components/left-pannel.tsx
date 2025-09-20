@@ -22,26 +22,30 @@ const leftPanelVariants = {
 };
 
 export default function GameLeftPannel() {
-  const { hp, exp, nextLevelExp, maxHp } = useGameLogic();
+  const { hp, exp, nextLevelExp, maxHp, previewHp } = useGameLogic();
 
   const hpRenderer = useMemo(() => {
     let filledHp = hp;
-    const groupOfMaxHp = Math.ceil(maxHp / 5);
-    const resetOfMaxHp = maxHp % 5 || 5;
+    const _maxHp = previewHp ? maxHp + 1 : maxHp;
+    const groupOfMaxHp = Math.ceil(_maxHp / 5);
+    const resetOfMaxHp = _maxHp % 5 || 5;
     const hpBar = Array.from({ length: groupOfMaxHp }).map((_, i) => {
       return Array.from({ length: i === groupOfMaxHp - 1 ? resetOfMaxHp : 5 }).map((_, j) => {
-        const item =
+        let item =
           filledHp > 0 ? (
             <Icons.HeartFilled key={`${i}-${j}`} />
           ) : (
-            <Icons.HeartDisabled key={`${i}-${j}`} />
+            <Icons.HeartUsed key={`${i}-${j}`} />
           );
+        if (previewHp && i === groupOfMaxHp - 1 && j === resetOfMaxHp - 1) {
+          item = <Icons.HeartDisabled key={`${i}-${j}`} />;
+        }
         filledHp--;
         return item;
       });
     });
     return hpBar;
-  }, [hp, maxHp]);
+  }, [hp, maxHp, previewHp]);
 
   const expRenderer = useMemo(() => {
     let filledExp = exp;

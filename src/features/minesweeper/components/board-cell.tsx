@@ -1,7 +1,6 @@
 import Icons from '@/components/ui/icons';
 import type { Cell } from '@/features/minesweeper/entities/dungeon-generator';
 import React, { useCallback, useMemo } from 'react';
-import { useGameLogic } from '../hooks/use-game-logic';
 import { cn } from '@/lib/utils/tailwind-util';
 import { ITEMS } from '@/lib/config/game-config';
 
@@ -10,14 +9,25 @@ interface BoardCellProps {
   x: number;
   y: number;
   cell: Cell;
+  rightClicking: boolean;
   onClick: (cell: Cell) => void;
-  onRightClick: (cell: Cell) => void;
+  onRightClick: (pos: { x: number; y: number }, clientPos: { x: number; y: number }) => void;
+  isStartPosition: boolean;
+  monsterPowerSum: number | string;
 }
 
-const BoardCell = ({ x, y, cell, onClick, onRightClick, className }: BoardCellProps) => {
-  const { calculateMonsterPowerSum, dungeon } = useGameLogic();
+const BoardCell = ({
+  x,
+  y,
+  cell,
+  onClick,
+  onRightClick,
+  className,
+  rightClicking,
+  isStartPosition,
+  monsterPowerSum,
+}: BoardCellProps) => {
   const { entity, revealed, marked, executed } = cell;
-  const isStartPosition = dungeon?.startPos.x === x && dungeon?.startPos.y === y;
 
   const Tile = useMemo(() => {
     const random = Math.random();
@@ -57,15 +67,20 @@ const BoardCell = ({ x, y, cell, onClick, onRightClick, className }: BoardCellPr
     return (
       <button
         className={cn(
-          'relative flex cursor-default flex-col items-center justify-center bg-[#454644] p-[9px]',
+          'relative m-px flex cursor-default flex-col items-center justify-center bg-[#454644] p-[9px]',
+          rightClicking && 'bg-[#E1A941]',
           className,
         )}
         onClick={handleOnClick}
+        onContextMenu={(e) => {
+          e.preventDefault();
+          onRightClick({ x, y }, { x: e.clientX, y: e.clientY });
+        }}
       >
-        <Tile className="absolute inset-0 h-full w-full" />
+        <Tile className="absolute top-1/2 left-1/2 h-[calc(100%-1px)] w-[calc(100%-1px)] -translate-x-1/2 -translate-y-1/2" />
         {marked && (
-          <p className="text-base font-bold text-[#ffde4a] [text-shadow:2px_2px_#482615]">
-            {marked}
+          <p className="z-1 text-base font-bold text-[#ffde4a] [text-shadow:2px_2px_#482615]">
+            {marked === 13 ? '?' : <Icons.MarkedMine className="mx-auto w-4/5" />}
           </p>
         )}
       </button>
@@ -82,14 +97,14 @@ const BoardCell = ({ x, y, cell, onClick, onRightClick, className }: BoardCellPr
         )}
         onClick={handleOnClick}
       >
-        <Tile className="absolute inset-0 h-full w-full" />
+        <Tile className="absolute top-1/2 left-1/2 h-[calc(100%-1px)] w-[calc(100%-1px)] -translate-x-1/2 -translate-y-1/2" />
         <div className="absolute top-0 left-1/2 flex h-full w-full -translate-x-1/2 flex-col items-center">
           {entity ? (
             <>
               <entity.icon />
-              {entity.type === 'monster' && (
+              {entity.xp > 0 && (
                 <p className="absolute bottom-0 left-1/2 -translate-x-1/2 text-base font-bold text-[#ffaa20] [text-shadow:2px_2px_#4d3e36]">
-                  {entity.power}
+                  {entity.xp}
                 </p>
               )}
             </>
@@ -100,7 +115,7 @@ const BoardCell = ({ x, y, cell, onClick, onRightClick, className }: BoardCellPr
   }
 
   // Case 3: Executed but not claimed exp
-  if (executed && entity) {
+  if (revealed && executed && entity) {
     return (
       <button
         className={cn(
@@ -109,29 +124,19 @@ const BoardCell = ({ x, y, cell, onClick, onRightClick, className }: BoardCellPr
         )}
         onClick={handleOnClick}
       >
-        <Icons.TileBrown className="absolute inset-0 h-full w-full" />
+        <Icons.TileBrown className="absolute top-1/2 left-1/2 h-[calc(100%-1px)] w-[calc(100%-1px)] -translate-x-1/2 -translate-y-1/2" />
         <div className="absolute top-0 left-1/2 flex h-full w-full -translate-x-1/2 flex-col items-center">
-          {entity ? (
-            <>
-              {entity.type === 'monster' ? (
-                <entity.icon />
-              ) : entity.id === ITEMS.boxClose.id ? (
-                <Icons.BoxOpen />
-              ) : null}
-              {entity.type === 'monster' ? (
-                <p className="absolute bottom-0 left-1/2 -translate-x-1/2 text-base font-bold text-[#ffaa20] [text-shadow:2px_2px_#4d3e36]">
-                  {entity.power}
-                </p>
-              ) : (
-                <div className="absolute bottom-0 left-1/2 flex -translate-x-1/2 items-center gap-1">
-                  <Icons.ExpFilled className="size-5" />
-                  <p className="text-base font-bold text-[#ffde4a] [text-shadow:2px_2px_#482615]">
-                    {entity.power}
-                  </p>
-                </div>
-              )}
-            </>
+          {entity.type === 'monster' ? (
+            <entity.icon />
+          ) : entity.id === ITEMS.boxClose.id ? (
+            <Icons.BoxOpen />
           ) : null}
+          <div className="absolute bottom-0 left-1/2 flex -translate-x-1/2 items-center gap-1">
+            <Icons.ExpFilled className="size-5" />
+            <p className="text-base font-bold text-[#ffde4a] [text-shadow:2px_2px_#482615]">
+              {entity.power}
+            </p>
+          </div>
         </div>
       </button>
     );
@@ -146,10 +151,24 @@ const BoardCell = ({ x, y, cell, onClick, onRightClick, className }: BoardCellPr
     >
       <Icons.TileDisabled className="absolute inset-0 h-full w-full" />
       <div className="z-[1] flex h-full w-full flex-col items-center justify-center font-bold">
-        <p>{calculateMonsterPowerSum(x, y)}</p>
+        <p>{monsterPowerSum === 0 ? '' : monsterPowerSum}</p>
       </div>
     </button>
   );
 };
 
-export default React.memo(BoardCell);
+export default React.memo(BoardCell, (prev, next) => {
+  return (
+    prev.x === next.x &&
+    prev.y === next.y &&
+    prev.cell.entity === next.cell.entity &&
+    prev.cell.revealed === next.cell.revealed &&
+    prev.cell.executed === next.cell.executed &&
+    prev.cell.marked === next.cell.marked &&
+    prev.rightClicking === next.rightClicking &&
+    prev.isStartPosition === next.isStartPosition &&
+    prev.monsterPowerSum === next.monsterPowerSum &&
+    prev.onClick === next.onClick &&
+    prev.onRightClick === next.onRightClick
+  );
+});

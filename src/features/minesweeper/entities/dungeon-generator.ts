@@ -12,7 +12,6 @@ export class DungeonGenerator {
   public height: number;
   public board: Cell[][];
   public startPos: { x: number; y: number };
-  private eyeMonsters: { x: number; y: number; isAlive: boolean }[] = [];
 
   constructor() {
     this.width = BOARD_SIZE.width;
@@ -40,22 +39,22 @@ export class DungeonGenerator {
     return this.board;
   }
 
-  public isEyeAbilityActive(x: number, y: number): boolean {
-    const radius = 3;
-    for (const eye of this.eyeMonsters) {
-      if (eye.isAlive) {
-        if (Math.abs(eye.x - x) + Math.abs(eye.y - y) <= radius) {
-          return true;
-        }
-      }
-    }
-    return false;
-  }
+  // public isEyeAbilityActive(x: number, y: number): boolean {
+  //   const radius = 3;
+  //   for (const eye of this.eyeMonsters) {
+  //     if (eye.isAlive) {
+  //       if (Math.abs(eye.x - x) + Math.abs(eye.y - y) <= radius) {
+  //         return true;
+  //       }
+  //     }
+  //   }
+  //   return false;
+  // }
 
   public getMonsterPowerSum(x: number, y: number): number | string {
-    if (this.isEyeAbilityActive(x, y)) {
-      return '?';
-    }
+    // if (this.isEyeAbilityActive(x, y)) {
+    //   return '?';
+    // }
 
     let powerSum = 0;
     for (let dy = -1; dy <= 1; dy++) {
@@ -78,12 +77,12 @@ export class DungeonGenerator {
     return powerSum;
   }
 
-  public handleEyeDefeat(x: number, y: number): void {
-    const eye = this.eyeMonsters.find((e) => e.x === x && e.y === y);
-    if (eye) {
-      eye.isAlive = false;
-    }
-  }
+  // public handleEyeDefeat(x: number, y: number): void {
+  //   const eye = this.eyeMonsters.find((e) => e.x === x && e.y === y);
+  //   if (eye) {
+  //     eye.isAlive = false;
+  //   }
+  // }
 
   public setStartPos(): void {
     // 맵의 중앙에 다크로드가 고정되어 있으므로, 몬스터가 없는 안전한 시작 위치를 찾습니다.
@@ -183,7 +182,6 @@ export class DungeonGenerator {
       const eyePos = this.findRandomEmptyPosition();
       if (eyePos) {
         this.placeEntity(eyePos.x, eyePos.y, MONSTERS.eye);
-        this.eyeMonsters.push({ x: eyePos.x, y: eyePos.y, isAlive: true });
       }
     }
     this.placeRandomly(ITEMS.monkey);
@@ -405,6 +403,16 @@ export class DungeonGenerator {
 
         // All checks passed, place the entity
         this.board[y][x].entity = entity;
+        if (entity.id === ITEMS.boxClose.id) {
+          const random = Math.random();
+          const isExp = random > 0.5;
+          this.board[y][x].entity = {
+            ...entity,
+            xp: isExp ? 5 : 0,
+          };
+        } else {
+          this.board[y][x].entity = entity;
+        }
         break;
       }
     }

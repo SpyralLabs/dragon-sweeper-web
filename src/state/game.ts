@@ -25,7 +25,7 @@ export const levelAtom = atom(1); // 초기 레벨
 export const maxHpAtom = atom(5); // 최대 HP
 export const pointsAtom = atom(0); // 유저 포인트
 export const attackedAtom = atom(false);
-const levelUpTable = [0, 4, 5, 7, 9, 9, 10, 12, 12, 12, 15, 18, 21, 21, 25];
+export const levelUpTable = [0, 4, 5, 7, 9, 9, 10, 12, 12, 12, 15, 18, 21, 21, 25];
 export const nextLevelExpAtom = atom((get) => {
   const level = get(levelAtom);
   const index = Math.min(level, levelUpTable.length - 1);
