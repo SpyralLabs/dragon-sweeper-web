@@ -134,6 +134,7 @@ export const useGameLogic = () => {
 
   const handleEyeAbility = (currentBoard: Cell[][], x: number, y: number) => {
     currentBoard[y][x].entity;
+    // TODO: handleEyeDefeat in Atom logic
     dungeonGenerator?.handleEyeDefeat(x, y);
   };
 
@@ -345,6 +346,7 @@ export const useGameLogic = () => {
   };
 
   const calculateMonsterPowerSum = (x: number, y: number) => {
+    // TODO: override this function with eye ability
     const value = dungeonGenerator?.getMonsterPowerSum(x, y) ?? 0;
     return value;
   };
