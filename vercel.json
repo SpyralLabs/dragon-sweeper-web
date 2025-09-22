@@ -1,0 +1,18 @@
+{
+  "buildCommand": "bun build:$VERCEL_ENV",
+  "git": {
+    "deploymentEnabled": {
+      "*": false,
+      "main": true,
+      "master": true,
+      "dev": true,
+      "qa": true
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/((?!assets|favicon|robots|apple-touch-icon|mstile|manifest|favicon.ico|.*\\.js|.*\\.css|.*\\.webp|.*\\.png|.*\\.svg|.*\\.json).*)",
+      "destination": "/index.html"
+    }
+  ]
+}
