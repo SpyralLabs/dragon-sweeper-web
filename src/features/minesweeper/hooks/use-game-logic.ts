@@ -16,6 +16,7 @@ import {
   dungeonGeneratorAtom,
   attackedAtom,
   levelUpTable,
+  eyePositionAtom,
 } from '@/state/game';
 import { ITEMS, MONSTERS, type GameEntity } from '@/lib/config/game-config';
 import type { Cell } from '@/features/minesweeper/entities/dungeon-generator';
@@ -41,6 +42,7 @@ export const useGameLogic = () => {
   const [nextLevelExp] = useAtom(nextLevelExpAtom);
   const [canLevelUp] = useAtom(canLevelUpAtom);
   const [specialMonstersStatus, setSpecialMonstersStatus] = useAtom(specialMonstersStatusAtom);
+  const [eyePosition, setEyePosition] = useAtom(eyePositionAtom);
   const currentLevelExp = useMemo(() => {
     return levelUpTable[level];
   }, [level]);
@@ -53,7 +55,7 @@ export const useGameLogic = () => {
       let finalMonsterPower = monster.power;
       const effectiveDamage = Math.max(1, finalMonsterPower - utilityStats.shield);
 
-      if (newBoard[y][x].executed) {
+      if (newBoard[y][x].executed && newBoard[y][x].entity !== null) {
         newBoard[y][x].revealed = true;
         newBoard[y][x].marked = null;
         newBoard[y][x].entity = null;
@@ -90,6 +92,9 @@ export const useGameLogic = () => {
           default:
             break;
         }
+
+        newBoard[y][x].revealed = true;
+        newBoard[y][x].marked = null;
         newBoard[y][x].executed = true;
         setBoard(newBoard);
       } else {
@@ -135,7 +140,13 @@ export const useGameLogic = () => {
   const handleEyeAbility = (currentBoard: Cell[][], x: number, y: number) => {
     currentBoard[y][x].entity;
     // TODO: handleEyeDefeat in Atom logic
-    dungeonGenerator?.handleEyeDefeat(x, y);
+    const newEyePosition = eyePosition.map((eye) => {
+      if (eye.x === x && eye.y === y) {
+        return { ...eye, isDefeated: true };
+      }
+      return eye;
+    });
+    setEyePosition(newEyePosition);
   };
 
   const handleItemAcquisition = useCallback(
@@ -345,8 +356,22 @@ export const useGameLogic = () => {
     }
   };
 
+  const isEyeAbilityActive = (x: number, y: number) => {
+    const radius = 3;
+    for (const eye of eyePosition) {
+      if (!eye.isDefeated) {
+        if (Math.abs(eye.x - x) + Math.abs(eye.y - y) <= radius) {
+          return true;
+        }
+      }
+    }
+    return false;
+  };
+
   const calculateMonsterPowerSum = (x: number, y: number) => {
-    // TODO: override this function with eye ability
+    if (isEyeAbilityActive(x, y)) {
+      return '?';
+    }
     const value = dungeonGenerator?.getMonsterPowerSum(x, y) ?? 0;
     return value;
   };

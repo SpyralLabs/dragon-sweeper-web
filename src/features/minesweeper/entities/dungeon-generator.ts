@@ -39,23 +39,7 @@ export class DungeonGenerator {
     return this.board;
   }
 
-  // public isEyeAbilityActive(x: number, y: number): boolean {
-  //   const radius = 3;
-  //   for (const eye of this.eyeMonsters) {
-  //     if (eye.isAlive) {
-  //       if (Math.abs(eye.x - x) + Math.abs(eye.y - y) <= radius) {
-  //         return true;
-  //       }
-  //     }
-  //   }
-  //   return false;
-  // }
-
   public getMonsterPowerSum(x: number, y: number): number | string {
-    // if (this.isEyeAbilityActive(x, y)) {
-    //   return '?';
-    // }
-
     let powerSum = 0;
     for (let dy = -1; dy <= 1; dy++) {
       for (let dx = -1; dx <= 1; dx++) {
@@ -76,13 +60,6 @@ export class DungeonGenerator {
     }
     return powerSum;
   }
-
-  // public handleEyeDefeat(x: number, y: number): void {
-  //   const eye = this.eyeMonsters.find((e) => e.x === x && e.y === y);
-  //   if (eye) {
-  //     eye.isAlive = false;
-  //   }
-  // }
 
   public setStartPos(): void {
     // 맵의 중앙에 다크로드가 고정되어 있으므로, 몬스터가 없는 안전한 시작 위치를 찾습니다.

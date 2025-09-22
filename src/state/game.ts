@@ -1,4 +1,5 @@
 import { type Cell, DungeonGenerator } from '@/features/minesweeper/entities/dungeon-generator';
+import { MONSTERS } from '@/lib/config/game-config';
 import { atom } from 'jotai';
 
 export enum GameUtility {
@@ -45,6 +46,9 @@ export const specialMonstersStatusAtom = atom({
 });
 export const gameOverAtom = atom(false);
 export const gameWonAtom = atom(false);
+
+// Ingame Property
+export const eyePositionAtom = atom<{ x: number; y: number; isDefeated: boolean }[]>([]);
 
 /**
  * @param selectedNFTId - if `Infinity`, then user must select NFT
@@ -106,6 +110,17 @@ export const resetGameAtom = atom(null, (get, set) => {
   set(attackedAtom, false);
   set(gameOverAtom, false);
   set(gameWonAtom, false);
+
+  // 게임 시작 시 눈 위치 초기화
+  const eyePositions: { x: number; y: number; isDefeated: boolean }[] = [];
+  newBoard.forEach((row, i) => {
+    row.forEach((col, j) => {
+      if (col.entity?.id === MONSTERS.eye.id) {
+        eyePositions.push({ x: j, y: i, isDefeated: false });
+      }
+    });
+  });
+  set(eyePositionAtom, eyePositions);
 
   // 게임 시작 시 NFT 유틸리티에 따라 초기 HP 또는 다른 스탯 설정
   const utilityStats = get(currentUtilityStatsAtom);
