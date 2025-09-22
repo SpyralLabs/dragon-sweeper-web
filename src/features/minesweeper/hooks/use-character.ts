@@ -22,8 +22,10 @@ export interface CharacterAssets {
 export type CharacterState = 'zero' | 'attack' | 'basic' | 'levelup';
 
 export function useCharacter({ type }: { type: Character }): CharacterAssets {
-  const getAssetPath = (filename: string) =>
-    `/src/assets/images/game/characters/${type}/${filename}`;
+  const getAssetPath = (filename: string) => {
+    // Vite가 빌드 시 asset을 처리할 수 있도록 import.meta.url을 사용
+    return new URL(`/src/assets/images/game/characters/${type}/${filename}`, import.meta.url).href;
+  };
 
   return {
     zero: getAssetPath('0.gif'),

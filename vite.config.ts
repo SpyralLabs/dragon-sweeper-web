@@ -8,4 +8,11 @@ export default defineConfig({
   base: '/',
   plugins: [react(), tailwindcss(), tsConfigPaths()],
   assetsInclude: ['**/*.webp'],
+  build: {
+    rollupOptions: {
+      input: {
+        main: './index.html',
+      },
+    },
+  },
 });
