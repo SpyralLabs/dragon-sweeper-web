@@ -108,6 +108,12 @@ export class DungeonGenerator {
     if (!this.isValidPosition(x, y) || this.board[y][x].entity) {
       return false;
     }
+
+    if (entity.id === MONSTERS.darkLord.id) {
+      this.board[y][x].entity = entity;
+      this.board[y][x].revealed = true;
+      return true;
+    }
     this.board[y][x].entity = entity;
     return true;
   }

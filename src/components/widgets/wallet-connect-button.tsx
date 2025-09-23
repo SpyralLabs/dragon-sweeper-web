@@ -20,7 +20,7 @@ export default function WalletConnectButton({
   const [isLoading, setIsLoading] = useState(false);
   const { login, logout } = useLoginWithAbstract();
   const { disconnectAsync } = useDisconnect();
-  const { isConnected } = useAccount();
+  const { isConnected, connector } = useAccount();
   const isWalletConnectAction = explicitAction === 'connect';
   const isWalletDisconnectAction = explicitAction === 'disconnect';
 
@@ -28,7 +28,7 @@ export default function WalletConnectButton({
     setIsLoading(true);
     try {
       if (isWalletConnectAction) {
-        await disconnectAsync();
+        await disconnectAsync({ connector });
         login();
         return;
       }

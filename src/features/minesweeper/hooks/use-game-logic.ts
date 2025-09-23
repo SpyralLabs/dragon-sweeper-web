@@ -156,7 +156,7 @@ export const useGameLogic = () => {
 
       switch (item.id) {
         case ITEMS.hpItem.id:
-          setHp((prevHp) => Math.min(25, prevHp + 5 + utilityStats.hpRegen));
+          setHp(maxHp);
           cell.entity = null;
           break;
         case ITEMS.pickDefault.id: {
@@ -166,35 +166,75 @@ export const useGameLogic = () => {
           } else {
             openArea(x, y, newBoard, OrbType.ITEM);
           }
+          cell.revealed = true;
+          cell.marked = null;
+          cell.executed = true;
+          break;
+        }
+        case ITEMS.darkCrystal.id:
+        case ITEMS.darkCrystalBroken.id: {
+          handleDarkCrystalAcquisition(newBoard, x, y);
           break;
         }
         case ITEMS.mineBuster.id:
           handleMineDisarmButton(newBoard, x, y);
+          cell.revealed = true;
+          cell.marked = null;
+          cell.executed = true;
           break;
         case ITEMS.boxClose.id:
+        case ITEMS.expBox.id:
           handleExpBoxAcquisition(newBoard, x, y, item);
           break;
         default:
           break;
       }
-
-      cell.revealed = true;
-      cell.marked = null;
-      if (item.id === ITEMS.expBox.id) {
-        cell.executed = true;
-      }
       setBoard(newBoard);
     },
-    [board, setBoard, setHp, setExp, utilityStats, specialMonstersStatus, setSpecialMonstersStatus],
+    [
+      board,
+      maxHp,
+      setBoard,
+      setHp,
+      setExp,
+      utilityStats,
+      specialMonstersStatus,
+      setSpecialMonstersStatus,
+    ],
   );
 
+  const handleDarkCrystalAcquisition = (newBoard: Cell[][], x: number, y: number) => {
+    if (newBoard[y][x].entity?.id === ITEMS.darkCrystal.id) {
+      newBoard[y][x] = {
+        entity: { ...ITEMS.darkCrystalBroken, xp: 3 },
+        revealed: true,
+        marked: null,
+        executed: true,
+      };
+    } else if (newBoard[y][x].entity?.id === ITEMS.darkCrystalBroken.id) {
+      setExp((prevExp) => prevExp + 3);
+      newBoard[y][x] = {
+        entity: null,
+        revealed: true,
+        marked: null,
+        executed: true,
+      };
+    }
+  };
+
   const handleExpBoxAcquisition = (newBoard: Cell[][], x: number, y: number, item: GameEntity) => {
-    console.log(item, newBoard[y][x]);
-    if (item.xp > 0) {
-      newBoard[y][x].entity = ITEMS.expBox;
+    if (newBoard[y][x].entity?.id === ITEMS.expBox.id && newBoard[y][x].executed) {
+      setExp((prevExp) => prevExp + 5);
+      newBoard[y][x].entity = null;
+    } else if (item.xp > 0) {
+      newBoard[y][x].entity = { ...ITEMS.expBox, xp: item.xp };
     } else {
       newBoard[y][x].entity = ITEMS.hpItem;
     }
+
+    newBoard[y][x].revealed = true;
+    newBoard[y][x].marked = null;
+    newBoard[y][x].executed = true;
   };
 
   const handleMineDisarmButton = (currentBoard: Cell[][], x: number, y: number) => {
