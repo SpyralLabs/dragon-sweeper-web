@@ -1,0 +1,176 @@
+---
+alwaysApply: true
+---
+
+# Cursor Rules
+
+## Service Layer Pattern
+
+### API Service Functions
+
+- 모든 API 호출 함수는 `src/services/` 디렉토리에 위치
+- 함수명은 동작을 명확히 표현 (예: `fetchUser`, `createUser`, `updateUser`)
+- try-catch 블록으로 에러 처리하고 `Promise.reject(error)` 반환
+- 타입 안전성을 위해 제네릭 타입 사용
+
+```typescript
+export async function fetchUser() {
+  try {
+    const { data } = await cashpopService.get<ServiceResponse<User.Info>>('/user');
+    return data;
+  } catch (error) {
+    return Promise.reject(error);
+  }
+}
+```
+
+### React Query Hooks Pattern
+
+#### useQuery Hooks
+
+- 데이터 조회용 함수에 대해 `useQuery` wrapping hook 제공
+- `enabled` 옵션과 `accessToken`을 통한 인증 체크
+- 적절한 queryKey 구조 사용
+- `useAuth()` hook으로 인증 상태 확인
+
+```typescript
+export const useUserInfo = (props?: { enabled: boolean }) => {
+  const { accessToken } = useAuth();
+
+  return useQuery({
+    queryKey: ['user', accessToken],
+    queryFn: fetchUser,
+    enabled: !!accessToken && (props?.enabled ?? true),
+    staleTime: 1000 * 60 * 5, // 5 minutes
+  });
+};
+```
+
+#### useMutation Hooks
+
+- 데이터 변경용 함수에 대해 `useMutation` wrapping hook 제공
+- `onSuccess`와 `onError` 콜백 지원
+- 일관된 네이밍 컨벤션 (`useCreateUser`, `useUpdateUser`)
+
+```typescript
+export const useCreateUser = ({
+  onSuccess,
+  onError,
+}: {
+  onSuccess: (data: User.CreateResponse) => void;
+  onError: (error: Service.Error) => void;
+}) => {
+  return useMutation({
+    mutationFn: createUser,
+    onSuccess,
+    onError,
+  });
+};
+```
+
+### Query Key Structure
+
+- 계층적 구조로 queryKey 구성: `['resource', 'action', accessToken, ...params]`
+- 예: `['games', 'fortune-cookie', accessToken, payload.ad]`
+- `accessToken`을 포함하여 인증 상태에 따른 캐시 분리
+
+### Type Safety
+
+- 모든 API 응답과 요청에 대해 타입 정의
+- `Service.Response<T>` 래퍼 타입 사용
+- 네임스페이스를 통한 타입 그룹화
+
+## File Organization
+
+### Services Directory Structure
+
+```
+src/services/
+├── client.ts          # HTTP 클라이언트 설정
+├── auth.ts            # 인증 관련 서비스
+├── user.ts            # 사용자 관련 서비스
+├── game.ts            # 게임 관련 서비스
+├── popcorn.ts         # 팝콘 관련 서비스
+└── ...
+```
+
+### Types Directory Structure
+
+```
+src/types/
+├── auth.ts            # 인증 관련 타입
+├── user.ts            # 사용자 관련 타입
+├── game.ts            # 게임 관련 타입
+├── popcorn.ts         # 팝콘 관련 타입
+└── ...
+```
+
+## Code Style
+
+### Import Order
+
+1. 타입 import (`@/types/...`)
+2. 서비스 import (`@/services/...`)
+3. React Query hooks (`@tanstack/react-query`)
+4. 커스텀 hooks (`@/hooks/...`)
+
+### Naming Conventions
+
+- 함수: camelCase (`fetchUser`, `createUser`)
+- Hook: camelCase with `use` prefix (`useUserInfo`, `useCreateUser`)
+- 타입: PascalCase (`User.Info`, `Game.Payload`)
+- 상수: UPPER_SNAKE_CASE (`API_BASE_URL`)
+
+### Error Handling
+
+- 모든 API 호출에서 try-catch 사용
+- 에러를 상위로 전파하여 컴포넌트에서 처리
+- `Service.Error` 타입으로 에러 응답 처리
+
+## React Query Best Practices
+
+### Query Configuration
+
+- `enabled` 옵션으로 조건부 쿼리 실행
+- `staleTime` 설정으로 불필요한 리페치 방지
+- `accessToken` 기반 인증 상태 확인
+
+### Mutation Configuration
+
+- `onSuccess`와 `onError` 콜백으로 결과 처리
+- `mutationFn`으로 순수 함수 전달
+- 에러 처리와 성공 처리 분리
+
+### Cache Management
+
+- 적절한 queryKey로 캐시 분리
+- 인증 상태에 따른 캐시 무효화
+- 리소스별 계층적 캐시 구조
+
+## Testing Guidelines
+
+### Service Functions
+
+- 순수 함수로 작성하여 단위 테스트 용이
+- 에러 케이스 포함하여 테스트
+- Mock 데이터로 API 응답 시뮬레이션
+
+### Hooks
+
+- `@testing-library/react-hooks` 사용
+- Query와 Mutation 상태 변화 테스트
+- 에러 처리와 성공 처리 테스트
+
+## Performance Considerations
+
+### Query Optimization
+
+- 적절한 `staleTime` 설정
+- 불필요한 리페치 방지
+- `enabled` 옵션으로 조건부 실행
+
+### Bundle Size
+
+- 필요한 함수만 import
+- Tree-shaking 지원하는 구조
+- 타입 정의와 런타임 코드 분리
