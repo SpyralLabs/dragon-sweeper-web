@@ -48,7 +48,10 @@ export type Items =
   | 'darkCrystalBroken'
   | 'mineBuster'
   | 'monkey'
-  | 'wall'
+  | 'wall1'
+  | 'wall2'
+  | 'wall3'
+  | 'wall4'
   | 'expBox'
   | 'expWall';
 
@@ -231,12 +234,33 @@ export const ITEMS: Record<Items, GameEntity> = {
     power: 0,
     icon: Icons.Monkey,
   },
-  wall: {
-    id: 'wall',
+  wall1: {
+    id: 'wall1',
     type: 'item',
     xp: 0,
     power: 0,
     icon: Icons.Wall1,
+  },
+  wall2: {
+    id: 'wall2',
+    type: 'item',
+    xp: 0,
+    power: 0,
+    icon: Icons.Wall2,
+  },
+  wall3: {
+    id: 'wall3',
+    type: 'item',
+    xp: 0,
+    power: 0,
+    icon: Icons.Wall3,
+  },
+  wall4: {
+    id: 'wall4',
+    type: 'item',
+    xp: 0,
+    power: 0,
+    icon: Icons.Wall4,
   },
   expBox: {
     id: 'exp-box',

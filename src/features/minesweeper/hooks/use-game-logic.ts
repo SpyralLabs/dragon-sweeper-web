@@ -176,6 +176,14 @@ export const useGameLogic = () => {
           handleDarkCrystalAcquisition(newBoard, x, y);
           break;
         }
+        case ITEMS.wall1.id:
+        case ITEMS.wall2.id:
+        case ITEMS.wall3.id:
+        case ITEMS.wall4.id:
+        case ITEMS.expWall.id: {
+          handleWallAcquisition(newBoard, x, y, item);
+          break;
+        }
         case ITEMS.mineBuster.id:
           handleMineDisarmButton(newBoard, x, y);
           cell.revealed = true;
@@ -202,6 +210,53 @@ export const useGameLogic = () => {
       setSpecialMonstersStatus,
     ],
   );
+
+  const handleWallAcquisition = (newBoard: Cell[][], x: number, y: number, item: GameEntity) => {
+    if (item.id === ITEMS.expWall.id) {
+      setExp((prevExp) => prevExp + 1);
+      newBoard[y][x] = {
+        entity: null,
+        revealed: true,
+        marked: null,
+        executed: true,
+      };
+      return;
+    }
+
+    if (hp === 0) return;
+    if (item.id === ITEMS.wall1.id) {
+      setHp((prevHp) => prevHp - 1);
+      newBoard[y][x] = {
+        entity: ITEMS.wall2,
+        revealed: true,
+        marked: null,
+        executed: false,
+      };
+      return;
+    }
+
+    if (item.id === ITEMS.wall2.id) {
+      setHp((prevHp) => prevHp - 1);
+      newBoard[y][x] = {
+        entity: ITEMS.wall3,
+        revealed: true,
+        marked: null,
+        executed: false,
+      };
+      return;
+    }
+
+    if (item.id === ITEMS.wall3.id) {
+      setHp((prevHp) => prevHp - 1);
+      newBoard[y][x] = {
+        entity: { ...ITEMS.expWall, xp: 1 },
+        revealed: true,
+        marked: null,
+        executed: true,
+      };
+      return;
+    }
+  };
 
   const handleDarkCrystalAcquisition = (newBoard: Cell[][], x: number, y: number) => {
     if (newBoard[y][x].entity?.id === ITEMS.darkCrystal.id) {
@@ -330,7 +385,7 @@ export const useGameLogic = () => {
   );
 
   const levelUp = useCallback(() => {
-    if (!canLevelUp) {
+    if (!canLevelUp || gameOver || gameWon) {
       return;
     }
 
@@ -341,7 +396,18 @@ export const useGameLogic = () => {
       setMaxHp((prevMaxHp) => prevMaxHp + 1);
     }
     setHp(maxHp);
-  }, [canLevelUp, level, currentLevelExp, maxHp, setExp, setLevel, setMaxHp, setHp]);
+  }, [
+    canLevelUp,
+    level,
+    currentLevelExp,
+    maxHp,
+    gameOver,
+    gameWon,
+    setExp,
+    setLevel,
+    setMaxHp,
+    setHp,
+  ]);
 
   const openArea = (
     x: number,
@@ -387,7 +453,7 @@ export const useGameLogic = () => {
             const cell = currentBoard[newY][newX];
             if (!cell.revealed) {
               cell.revealed = true;
-              cell.executed = false;
+              cell.executed = cell.entity === null;
               cell.marked = null;
             }
           }
@@ -397,14 +463,29 @@ export const useGameLogic = () => {
   };
 
   const isEyeAbilityActive = (x: number, y: number) => {
-    const radius = 3;
+    const crossDistances = [1, 3, 5];
+
     for (const eye of eyePosition) {
-      if (!eye.isDefeated) {
-        if (Math.abs(eye.x - x) + Math.abs(eye.y - y) <= radius) {
+      if (eye.isDefeated) continue;
+
+      // 중심 (eye 위치 자체)
+      if (eye.x === x && eye.y === y) {
+        return true;
+      }
+
+      // 십자 범위 검사
+      for (const d of crossDistances) {
+        // 같은 행에서 좌우 d칸
+        if (eye.y === y && (eye.x === x - d || eye.x === x + d)) {
+          return true;
+        }
+        // 같은 열에서 상하 d칸
+        if (eye.x === x && (eye.y === y - d || eye.y === y + d)) {
           return true;
         }
       }
     }
+
     return false;
   };
 

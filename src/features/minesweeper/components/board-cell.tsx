@@ -130,10 +130,19 @@ const BoardCell = ({
         )}
         onClick={handleOnClick}
       >
-        <Icons.TileBrown className="absolute top-1/2 left-1/2 h-[calc(100%-1px)] w-[calc(100%-1px)] -translate-x-1/2 -translate-y-1/2" />
+        {entity.xp === 0 ? (
+          <Icons.Tile className="absolute top-1/2 left-1/2 h-[calc(100%-1px)] w-[calc(100%-1px)] -translate-x-1/2 -translate-y-1/2" />
+        ) : (
+          <Icons.TileBrown className="absolute top-1/2 left-1/2 h-[calc(100%-1px)] w-[calc(100%-1px)] -translate-x-1/2 -translate-y-1/2" />
+        )}
         <div className="absolute top-0 left-1/2 flex h-full w-full -translate-x-1/2 flex-col items-center">
           {entity.id === ITEMS.boxClose.id ? <Icons.BoxOpen /> : <entity.icon />}
-          <div className="absolute bottom-0 left-1/2 flex -translate-x-1/2 items-center gap-1">
+          <div
+            className={cn([
+              'absolute bottom-0 left-1/2 flex -translate-x-1/2 items-center gap-1',
+              entity.xp === 0 && 'hidden',
+            ])}
+          >
             <Icons.ExpFilled className="size-5" />
             <p className="text-base font-bold text-[#ffde4a] [text-shadow:2px_2px_#482615]">
               {entity.xp}

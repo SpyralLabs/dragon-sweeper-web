@@ -1,11 +1,13 @@
 import { useCallback, useEffect, useState } from 'react';
 import Icons from '../ui/icons';
+import { cn } from '@/lib/utils/tailwind-util';
 
 interface Props<T extends HTMLElement> {
   containerRef: React.RefObject<T | null>;
-  onMarking: (value: number) => void;
+  onMarking: (value: number | null) => void;
   clientX: number;
   clientY: number;
+  marked?: number | null;
   onOpen: () => void;
 }
 
@@ -18,6 +20,7 @@ export default function PopoverMarking<T extends HTMLElement>({
   containerRef,
   onMarking,
   onOpen,
+  marked,
   clientX,
   clientY,
 }: Props<T>) {
@@ -26,6 +29,7 @@ export default function PopoverMarking<T extends HTMLElement>({
     y: number;
     dir: 'left' | 'right';
   } | null>(null);
+  console.log(`marked:`, marked);
 
   const handleOpenPopoverMenu = useCallback((clientX: number, clientY: number) => {
     const container = containerRef.current;
@@ -92,13 +96,13 @@ export default function PopoverMarking<T extends HTMLElement>({
           left: popoverPos.x,
           top: popoverPos.y,
         }}
-        className="absolute grid grid-cols-5 border border-[#191312]"
+        className="absolute grid grid-cols-5 border-2 border-[#191312]"
       >
         {Array(12)
           .fill(null)
           .map((_, i) => (
             <button
-              className="col-span-1 flex aspect-square items-center justify-center border border-[#191312] bg-[#BDB499] text-xl font-bold text-[#ffde4a] text-shadow-[2px_2px_#000000]"
+              className="col-span-1 flex aspect-square items-center justify-center border-2 border-[#191312] bg-[#BDB499] text-xl font-bold text-[#ffde4a] text-shadow-[2px_2px_#000000]"
               key={`${i}`}
               onClick={(e) => {
                 e.stopPropagation();
@@ -111,7 +115,7 @@ export default function PopoverMarking<T extends HTMLElement>({
             </button>
           ))}
         <button
-          className="col-span-1 flex aspect-square items-center justify-center border border-[#191312] bg-[#BDB499] text-xl font-bold text-[#4FA6F3] text-shadow-[2px_2px_#000000]"
+          className="col-span-1 flex aspect-square items-center justify-center border-2 border-[#191312] bg-[#BDB499] text-xl font-bold text-[#4FA6F3] text-shadow-[2px_2px_#000000]"
           key={`?`}
           onClick={(e) => {
             e.stopPropagation();
@@ -123,7 +127,7 @@ export default function PopoverMarking<T extends HTMLElement>({
           ?
         </button>
         <button
-          className="col-span-1 flex aspect-square items-center justify-center border border-[#191312] bg-[#BDB499]"
+          className="col-span-1 flex aspect-square items-center justify-center border-2 border-[#191312] bg-[#BDB499]"
           key={`mine`}
           onClick={(e) => {
             e.stopPropagation();
@@ -135,14 +139,20 @@ export default function PopoverMarking<T extends HTMLElement>({
           <Icons.MarkedMine />
         </button>
         <button
-          className="col-span-1 flex aspect-square items-center justify-center border border-[#191312] bg-[#BDB499]"
-          key={`blank`}
+          className={cn(
+            'col-span-1 flex aspect-square cursor-default! items-center justify-center border-2 border-[#191312] bg-[#7E7367]',
+            typeof marked === 'number' && 'cursor-pointer bg-[#BDB499]',
+          )}
+          key={marked ? 'Trash' : `blank`}
           onClick={(e) => {
             e.stopPropagation();
             e.preventDefault();
+            onMarking(null);
             onOpen();
           }}
-        />
+        >
+          <Icons.Trash className={cn(['hidden', typeof marked === 'number' && 'block'])} />
+        </button>
       </div>
     </div>
   );

@@ -67,7 +67,7 @@ export default function HomePage() {
         }}
         src={Characters}
         alt="Characters"
-        className="absolute bottom-0 left-1/2 aspect-[1157/1019] h-auto w-[max(1157px,100dvw)] max-w-none -translate-x-1/2 select-none"
+        className="absolute bottom-0 left-1/2 aspect-[1157/1019] h-auto w-[1157px] max-w-none -translate-x-1/2 select-none"
         draggable={false}
       />
 

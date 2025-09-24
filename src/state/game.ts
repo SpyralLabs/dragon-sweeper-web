@@ -37,9 +37,8 @@ export const canLevelUpAtom = atom((get) => {
   const exp = get(expAtom);
   const nextLevelExp = get(nextLevelExpAtom);
   const hp = get(hpAtom);
-  const maxHp = get(maxHpAtom);
 
-  return hp >= 0 && exp >= nextLevelExp && hp < maxHp;
+  return hp >= 0 && exp >= nextLevelExp;
 });
 export const specialMonstersStatusAtom = atom({
   isMineSeekerDefeated: false,

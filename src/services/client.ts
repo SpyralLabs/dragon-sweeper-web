@@ -8,20 +8,6 @@ import axios, {
   AxiosError,
 } from 'axios';
 
-// Service response wrapper type
-export interface ServiceResponse<T> {
-  data: T;
-  message: string;
-  success: boolean;
-}
-
-// Service error type
-export interface ServiceError {
-  message: string;
-  status: number;
-  code?: string;
-}
-
 interface QueueItem {
   resolve: (value: string | null) => void;
   reject: (error: unknown) => void;
@@ -117,11 +103,7 @@ const createApiClient = (): AxiosInstance => {
     async (error: unknown) => {
       if (!axios.isAxiosError(error)) {
         onLoggingErrorInDev(`[🔴 API Response Failed]: `, 'Unknown error', String(error));
-        const serviceError: ServiceError = {
-          message: 'An unknown error occurred',
-          status: 500,
-        };
-        return Promise.reject(serviceError);
+        return Promise.reject(error);
       }
 
       const axiosError = error as AxiosError<any>;
@@ -133,12 +115,7 @@ const createApiClient = (): AxiosInstance => {
           'No original request',
           axiosError.message,
         );
-        const serviceError: ServiceError = {
-          message: axiosError.message || 'An error occurred',
-          status: axiosError.response?.status || 500,
-          code: axiosError.response?.data?.code,
-        };
-        return Promise.reject(serviceError);
+        return Promise.reject(error);
       }
 
       onLoggingErrorInDev(
@@ -151,11 +128,7 @@ const createApiClient = (): AxiosInstance => {
       if (isUnauthorizedError(axiosError) && !originalRequest._retry) {
         // Skip refresh for refresh token endpoint to avoid infinite loop
         if (originalRequest.url === '/auth/refresh-token') {
-          const serviceError: ServiceError = {
-            message: 'Token refresh failed',
-            status: 401,
-          };
-          return Promise.reject(serviceError);
+          return Promise.reject(error);
         }
 
         // If already refreshing, queue the request
@@ -172,11 +145,7 @@ const createApiClient = (): AxiosInstance => {
             throw new Error('Token refresh failed');
           } catch (queueError) {
             onLoggingErrorInDev(`[🔴 Token Queue Failed]: `, String(queueError));
-            const serviceError: ServiceError = {
-              message: 'Token refresh failed',
-              status: 401,
-            };
-            return Promise.reject(serviceError);
+            return Promise.reject(error);
           }
         }
 
@@ -213,23 +182,14 @@ const createApiClient = (): AxiosInstance => {
           store.set(accessTokenAtom, null);
           store.set(refreshTokenAtom, null);
 
-          const serviceError: ServiceError = {
-            message: 'Token refresh failed',
-            status: 401,
-          };
-          return Promise.reject(serviceError);
+          return Promise.reject(error);
         } finally {
           isRefreshing = false;
         }
       }
 
       // Handle other errors
-      const serviceError: ServiceError = {
-        message: axiosError.response?.data?.message || axiosError.message || 'An error occurred',
-        status: axiosError.response?.status || 500,
-        code: axiosError.response?.data?.code,
-      };
-      return Promise.reject(serviceError);
+      return Promise.reject(error);
     },
   );
 

@@ -125,6 +125,11 @@ export default function GameRightPannel() {
           containerRef={containerRef}
           clientX={rightClickInfo?.clientPos.x ?? 0}
           clientY={rightClickInfo?.clientPos.y ?? 0}
+          marked={
+            rightClickInfo
+              ? board[rightClickInfo.pos.y ?? 0][rightClickInfo.pos.x ?? 0].marked
+              : undefined
+          }
           onMarking={(value) => {
             handleCellRightClick({
               x: rightClickInfo?.pos.x ?? 0,

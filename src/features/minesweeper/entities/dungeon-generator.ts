@@ -272,8 +272,8 @@ export class DungeonGenerator {
           !this.board[startPos.y][startPos.x + 1].entity
         ) {
           if (
-            this.placeEntity(startPos.x, startPos.y, ITEMS.wall) &&
-            this.placeEntity(startPos.x + 1, startPos.y, ITEMS.wall)
+            this.placeEntity(startPos.x, startPos.y, ITEMS.wall1) &&
+            this.placeEntity(startPos.x + 1, startPos.y, ITEMS.wall1)
           ) {
             placedCount += 2;
             success = true;
@@ -285,8 +285,8 @@ export class DungeonGenerator {
           !this.board[startPos.y + 1][startPos.x].entity
         ) {
           if (
-            this.placeEntity(startPos.x, startPos.y, ITEMS.wall) &&
-            this.placeEntity(startPos.x, startPos.y + 1, ITEMS.wall)
+            this.placeEntity(startPos.x, startPos.y, ITEMS.wall1) &&
+            this.placeEntity(startPos.x, startPos.y + 1, ITEMS.wall1)
           ) {
             placedCount += 2;
             success = true;
