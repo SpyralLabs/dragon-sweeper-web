@@ -30,7 +30,7 @@ export default function HomePage() {
       initial="initial"
       animate="in"
       variants={staggerContainer}
-      className="relative flex min-h-[max(1080px,100dvh)] w-full flex-col items-center overflow-hidden"
+      className="relative flex min-h-[max(829px,100dvh)] w-full flex-col items-center overflow-hidden"
     >
       {/* Background */}
       <motion.div
@@ -51,7 +51,7 @@ export default function HomePage() {
         }}
         src={NavLogo}
         alt="Nav Logo"
-        className="z-1 h-auto w-[max(1920px,100dvw)] max-w-none select-none"
+        className="z-1 h-[140px] w-[max(1920px,100dvw)] max-w-none select-none object-cover"
         draggable={false}
       />
 
@@ -67,7 +67,7 @@ export default function HomePage() {
         }}
         src={Characters}
         alt="Characters"
-        className="absolute bottom-0 left-1/2 aspect-[1157/1019] h-auto w-[1157px] max-w-none -translate-x-1/2 select-none"
+        className="absolute bottom-0 left-1/2 aspect-[1157/1019] h-[max(829px,0.94dvh)] max-w-[1157px] object-cover w-auto -translate-x-1/2 select-none"
         draggable={false}
       />
 
@@ -81,7 +81,7 @@ export default function HomePage() {
           stiffness: 200,
           damping: 20,
         }}
-        className="absolute bottom-[76px] left-1/2 z-1 flex h-[172px] w-105 -translate-x-1/2 items-center justify-center"
+        className="absolute bottom-[max(76px,0.07dvh)] left-1/2 z-1 flex h-[172px] w-105 -translate-x-1/2 items-center justify-center"
       >
         <motion.img
           variants={buttonVariants}

@@ -13,7 +13,7 @@ export function Header() {
   const canEnterGame = status.canEnterGame;
 
   return (
-    <header className="relative mx-auto flex h-[180px] w-full max-w-[max(1920px,100dvw)] flex-col overflow-x-hidden">
+    <header className="relative mx-auto flex h-[180px] w-full min-w-[1350px] max-w-[max(1920px,100dvw)] flex-col overflow-x-hidden">
       <img
         src={BackgroundPattern}
         alt="Background Pattern"

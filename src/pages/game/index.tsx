@@ -27,7 +27,7 @@ export default function GamePage() {
 
   return (
     <GameLayout.Play>
-      <div className="mx-auto flex w-max min-w-[1300px] items-stretch gap-0.5">
+      <div className="mx-auto flex w-max min-w-[1350px] items-stretch gap-0.5">
         <GameLeftPannel />
         <GameRightPannel />
       </div>

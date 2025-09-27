@@ -1,12 +1,13 @@
 import { motion } from 'framer-motion';
 import LeftPanelFrame from '@/assets/images/game/left-frame.webp';
 import HPFrame from '@/assets/images/game/left-hp-frame.webp';
-import Hero from '@/assets/images/hero/hero-sample.webp';
-import { useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useGameLogic } from '../hooks/use-game-logic';
 import Icons from '@/components/ui/icons';
 import { cn } from '@/lib/utils/tailwind-util';
 import Character from './character';
+import { hpAtom, maxHpAtom } from '@/state/game';
+import { useSetAtom } from 'jotai';
 
 const leftPanelVariants = {
   initial: {
@@ -23,6 +24,8 @@ const leftPanelVariants = {
 
 export default function GameLeftPannel() {
   const { hp, exp, nextLevelExp, maxHp, previewHp } = useGameLogic();
+  const setHp = useSetAtom(hpAtom);
+  const setMaxHp = useSetAtom(maxHpAtom);
 
   const hpRenderer = useMemo(() => {
     let filledHp = hp;
@@ -70,6 +73,11 @@ export default function GameLeftPannel() {
     });
   }, [exp, nextLevelExp]);
 
+  useEffect(() => {
+    setHp(15);
+    setMaxHp(15)
+  }, [maxHp, setHp]);
+
   return (
     <motion.div
       variants={leftPanelVariants}
@@ -94,7 +102,7 @@ export default function GameLeftPannel() {
           <p className="mt-8 text-center text-lg text-[#F0FFE6]">NFT Name</p>
           <div className="mt-4 grid w-full grid-cols-2 gap-x-4.5 gap-y-1">
             {hpRenderer.map((row) => (
-              <div className="flex items-center justify-center" key={row.join('-')}>
+              <div className="flex items-center justify-start" key={row.join('-')}>
                 {row.map((item) => item)}
               </div>
             ))}

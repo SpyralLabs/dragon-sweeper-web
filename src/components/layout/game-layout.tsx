@@ -69,7 +69,7 @@ const PlayLayout = ({ children }: PlayLayoutProps) => {
         exit="out"
         variants={pageVariants}
         transition={pageTransition}
-        className="h-[min(100dvh,689px)] bg-[#1a0f0c]"
+        className="h-full pb-30 bg-[#1a0f0c]"
       >
         {/* Header */}
         <motion.div variants={headerVariants} transition={{ duration: 0.8, delay: 0.2 }}>
@@ -81,7 +81,7 @@ const PlayLayout = ({ children }: PlayLayoutProps) => {
           variants={staggerContainer}
           initial="initial"
           animate="in"
-          className="flex h-[min(100dvh,689px)] w-full"
+          className="flex h-[min(100dvh,720px)] w-full"
         >
           {children}
         </motion.div>
@@ -100,7 +100,7 @@ const CharacterLayout = ({ children }: CharacterLayoutProps) => {
         exit="out"
         variants={pageVariants}
         transition={pageTransition}
-        className="min-h-screen bg-[#1a0f0c]"
+        className="min-h-screen bg-[#1a0f0c] w-max"
       >
         {/* Header */}
         <motion.div variants={headerVariants} transition={{ duration: 0.8, delay: 0.2 }}>

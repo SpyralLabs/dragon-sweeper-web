@@ -2,7 +2,7 @@ import Icons from '@/components/ui/icons';
 import type { Cell } from '@/features/minesweeper/entities/dungeon-generator';
 import React, { useCallback, useMemo } from 'react';
 import { cn } from '@/lib/utils/tailwind-util';
-import { ITEMS } from '@/lib/config/game-config';
+import { ITEMS, MONSTERS } from '@/lib/config/game-config';
 
 interface BoardCellProps {
   className?: string;
@@ -67,7 +67,7 @@ const BoardCell = ({
     return (
       <button
         className={cn(
-          'relative m-px flex cursor-default flex-col items-center justify-center bg-[#454644] p-[9px]',
+          'relative flex cursor-default flex-col items-center justify-center bg-[#454644] p-[9px]',
           rightClicking && 'bg-[#E1A941]',
           className,
         )}
@@ -108,10 +108,15 @@ const BoardCell = ({
           {entity ? (
             <>
               <entity.icon />
-              {entity.xp > 0 && (
+              {entity.xp > 0 && ![ITEMS.boxClose.id, MONSTERS.mimic.id].includes(entity.id) && (
                 <p className="absolute bottom-0 left-1/2 -translate-x-1/2 text-base font-bold text-[#ffaa20] [text-shadow:2px_2px_#4d3e36]">
                   {entity.xp}
                 </p>
+              )}
+              {entity && entity.id === MONSTERS.mine.id && (
+                <p className="absolute bottom-0 left-1/2 -translate-x-1/2 text-base font-bold text-[#ffaa20] [text-shadow:2px_2px_#4d3e36]">
+                {entity.power}
+              </p>
               )}
             </>
           ) : null}

@@ -5156,6 +5156,178 @@ const Icons = {
       <rect x="2" y="4" width="24" height="3" fill="#423E5C" />
     </svg>
   )),
+  MineExp: forwardRef<SVGSVGElement, ComponentPropsWithoutRef<'svg'>>((props, ref) => (
+    <svg
+      width="56"
+      height="56"
+      viewBox="0 0 56 56"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+      ref={ref}
+    >
+      <rect x="26" y="30" width="4" height="9" fill="#202020" />
+      <rect x="26" y="1" width="4" height="8" fill="#202020" />
+      <rect x="13" y="5" width="4" height="4" fill="#202020" />
+      <rect x="13" y="30" width="4" height="4" fill="#202020" />
+      <rect x="39" y="5" width="4" height="4" fill="#202020" />
+      <rect x="39" y="5" width="4" height="4" fill="#202020" />
+      <rect x="39" y="30" width="4" height="4" fill="#202020" />
+      <rect x="47" y="18" width="4" height="8" transform="rotate(90 47 18)" fill="#202020" />
+      <rect x="14" y="18" width="4" height="5" transform="rotate(90 14 18)" fill="#202020" />
+      <rect x="42" y="13" width="14" height="4" transform="rotate(90 42 13)" fill="#202020" />
+      <rect x="18" y="13" width="14" height="4" transform="rotate(90 18 13)" fill="#202020" />
+      <rect
+        width="13"
+        height="3"
+        transform="matrix(-4.37114e-08 1 1 4.37114e-08 18 13)"
+        fill="#3F3F3F"
+      />
+      <rect
+        width="13"
+        height="3"
+        transform="matrix(-4.37114e-08 1 1 4.37114e-08 35 13)"
+        fill="#3F3F3F"
+      />
+      <rect
+        width="3"
+        height="4"
+        transform="matrix(-4.37114e-08 1 1 4.37114e-08 20 13)"
+        fill="#3F3F3F"
+      />
+      <rect
+        width="3"
+        height="4"
+        transform="matrix(-4.37114e-08 1 1 4.37114e-08 32 13)"
+        fill="#3F3F3F"
+      />
+      <rect
+        width="3"
+        height="4"
+        transform="matrix(-4.37114e-08 1 1 4.37114e-08 32 23)"
+        fill="#3F3F3F"
+      />
+      <rect
+        width="3"
+        height="4"
+        transform="matrix(-4.37114e-08 1 1 4.37114e-08 20 23)"
+        fill="#3F3F3F"
+      />
+      <rect
+        width="4"
+        height="10"
+        transform="matrix(-4.37114e-08 1 1 4.37114e-08 23 26)"
+        fill="#3F3F3F"
+      />
+      <rect
+        width="4"
+        height="10"
+        transform="matrix(-4.37114e-08 1 1 4.37114e-08 23 9)"
+        fill="#3F3F3F"
+      />
+      <rect
+        width="4"
+        height="6"
+        transform="matrix(4.80825e-08 -1 -1 -3.97376e-08 39 13)"
+        fill="#202020"
+      />
+      <rect
+        width="4"
+        height="6"
+        transform="matrix(4.80825e-08 -1 -1 -3.97376e-08 23 13)"
+        fill="#202020"
+      />
+      <rect
+        width="4"
+        height="12"
+        transform="matrix(4.37114e-08 -1 -1 -4.37114e-08 34 9)"
+        fill="#202020"
+      />
+      <rect
+        width="4"
+        height="6"
+        transform="matrix(4.80825e-08 -1 -1 -3.97376e-08 39 30)"
+        fill="#202020"
+      />
+      <rect
+        width="4"
+        height="6"
+        transform="matrix(4.80825e-08 -1 -1 -3.97376e-08 23 30)"
+        fill="#202020"
+      />
+      <rect
+        width="4"
+        height="12"
+        transform="matrix(4.37114e-08 -1 -1 -4.37114e-08 34 34)"
+        fill="#202020"
+      />
+    </svg>
+  )),
+  DarkLordExecuted: forwardRef<SVGSVGElement, ComponentPropsWithoutRef<'svg'>>((props, ref) => (
+    <svg
+      width="56"
+      height="56"
+      viewBox="0 0 56 56"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+      ref={ref}
+    >
+      <rect x="35" y="48" width="10" height="5" fill="#786E91" />
+      <rect x="18" y="24" width="18" height="3" fill="#BAB6AB" />
+      <rect x="23" y="28" width="8" height="18" fill="#DCD0B4" />
+      <rect x="25" y="28" width="2" height="18" fill="#FFF8E7" />
+      <rect width="2" height="19" transform="matrix(-1 0 0 1 23 27)" fill="#33322D" />
+      <rect width="2" height="19" transform="matrix(-1 0 0 1 33 27)" fill="#33322D" />
+      <rect width="18" height="2" transform="matrix(-1 0 0 1 36 27)" fill="#33322D" />
+      <rect width="6" height="2" transform="matrix(-1 0 0 1 30 12)" fill="#33322D" />
+      <rect width="2" height="3" transform="matrix(-1 0 0 1 24 14)" fill="#33322D" />
+      <rect width="2" height="3" transform="matrix(-1 0 0 1 32 14)" fill="#33322D" />
+      <rect width="2" height="3" transform="matrix(-1 0 0 1 38 24)" fill="#33322D" />
+      <rect width="2" height="3" transform="matrix(-1 0 0 1 18 24)" fill="#33322D" />
+      <rect width="5" height="2" transform="matrix(-1 0 0 1 36 22)" fill="#33322D" />
+      <rect width="5" height="2" transform="matrix(-1 0 0 1 23 22)" fill="#33322D" />
+      <rect width="2" height="7" transform="matrix(-1 0 0 1 31 17)" fill="#33322D" />
+      <rect width="2" height="7" transform="matrix(-1 0 0 1 25 17)" fill="#33322D" />
+      <rect x="23" y="28" width="6" height="2" fill="#96918A" />
+      <rect x="23" y="43" width="4" height="3" fill="#96918A" />
+      <rect x="27" y="28" width="4" height="18" fill="#686762" />
+      <rect x="29" y="30" width="2" height="16" fill="#96918A" />
+      <rect x="25" y="17" width="4" height="6" fill="#915931" />
+      <rect x="27" y="17" width="2" height="6" fill="#743F20" />
+      <rect width="4" height="1" transform="matrix(1 0 0 -1 25 24)" fill="#5C2D15" />
+      <rect width="2" height="1" transform="matrix(1 0 0 -1 25 24)" fill="#743F20" />
+      <rect x="24" y="14" width="6" height="3" fill="#7D7B78" />
+      <rect x="27" y="14" width="3" height="3" fill="#605F5E" />
+      <rect x="18" y="24" width="6" height="3" fill="#75746D" />
+      <rect x="27" y="24" width="9" height="3" fill="#696963" />
+      <rect x="15" y="46" width="25" height="4" fill="#CA343D" />
+      <rect x="15" y="46" width="9" height="2" fill="#591720" />
+      <rect x="24" y="46" width="2" height="2" fill="#F3848A" />
+      <rect x="38" y="48" width="2" height="2" fill="#9A2A31" />
+      <rect x="15" y="48" width="2" height="2" fill="#9A2A31" />
+      <rect x="24" y="44" width="12" height="2" fill="#591720" />
+      <rect x="36" y="46" width="4" height="2" fill="#591720" />
+      <rect x="35" y="50" width="5" height="2" fill="#414256" />
+      <rect x="35" y="51" width="2" height="2" fill="#414256" />
+      <rect x="40" y="48" width="5" height="2" fill="#21294E" />
+      <rect x="45" y="50" width="2" height="3" fill="#21294E" />
+      <rect x="45" y="53" width="4" height="2" fill="#0F181D" />
+      <rect x="13" y="48" width="2" height="3" fill="#591720" />
+      <rect x="9" y="51" width="2" height="4" fill="#591720" />
+      <rect x="11" y="50" width="24" height="5" fill="#9A2A31" />
+      <rect x="7" y="53" width="28" height="2" fill="#591720" />
+      <rect x="33" y="51" width="2" height="2" fill="#414256" />
+      <rect x="33" y="53" width="12" height="2" fill="#21294E" />
+      <rect x="11" y="49" width="2" height="2" fill="#591720" />
+      <rect x="25" y="49" width="2" height="2" fill="#591720" />
+      <rect x="33" y="49" width="2" height="2" fill="#591720" />
+      <rect x="31" y="49" width="2" height="2" fill="#591720" />
+      <rect x="23" y="49" width="2" height="2" fill="#591720" />
+      <rect x="21" y="51" width="2" height="2" fill="#591720" />
+      <rect x="19" y="51" width="2" height="2" fill="#591720" />
+    </svg>
+  )),
 };
 
 Icons.Spider.displayName = 'Spider';
@@ -5214,5 +5386,7 @@ Icons.TileBrown.displayName = 'TileBrown';
 Icons.TileDisabled.displayName = 'TileDisabled';
 Icons.MarkedMine.displayName = 'MarkedMine';
 Icons.Trash.displayName = 'Trash';
+Icons.MineExp.displayName = 'MineExp';
+Icons.DarkLordExecuted.displayName = 'DarkLordExecuted';
 
 export default Icons;

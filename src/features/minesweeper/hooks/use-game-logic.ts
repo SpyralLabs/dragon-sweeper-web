@@ -303,10 +303,11 @@ export const useGameLogic = () => {
 
   const handleMineDisarmButton = (currentBoard: Cell[][], x: number, y: number) => {
     if (specialMonstersStatus.isMineSeekerDefeated) {
+      setExp((prevExp) => prevExp + currentBoard[y][x].entity!.xp);
       currentBoard.forEach((row) => {
         row.forEach((targetCell) => {
-          if (targetCell.entity?.id === MONSTERS.mine.id) {
-            targetCell.entity = ITEMS.expBox;
+          if (targetCell.entity?.id === MONSTERS.mine.id && targetCell.revealed) {
+            targetCell.entity = ITEMS.mineExp;
           }
         });
       });
@@ -346,6 +347,9 @@ export const useGameLogic = () => {
       if (cell.revealed) {
         if (entity.type === 'monster') {
           console.log(`공개정보 [${x}, ${y}]에 따라 몬스터를 처치!`);
+          if (cell.entity && entity.id === MONSTERS.mimic.id) {
+            cell.entity.icon = MONSTERS.mimic.icon;
+          }
           handleMonsterDefeat(newBoard, x, y, entity);
         } else if (entity.type === 'item') {
           console.log(`공개정보 [${x}, ${y}]에 따라 아이템을 획득!`);
@@ -358,7 +362,15 @@ export const useGameLogic = () => {
       if (entity.type === 'monster') {
         console.log(`미공개정보 [${x}, ${y}]를 개방!`);
         console.log(`[${x}, ${y}]는 ${entity.id} 몬스터 타일입니다`);
-        handleMonsterDefeat(newBoard, x, y, entity);
+
+        if (cell.entity && entity.id === MONSTERS.mimic.id) {
+          setAttacked(false);
+          cell.revealed = true;
+          cell.entity = { ...cell.entity, icon: ITEMS.boxClose.icon };
+          setBoard(newBoard);
+        } else {
+          handleMonsterDefeat(newBoard, x, y, entity);
+        }
         return;
       }
 
@@ -403,8 +415,10 @@ export const useGameLogic = () => {
     setLevel(newLevel);
     if (newLevel % 2 !== 0 && newLevel > 1) {
       setMaxHp((prevMaxHp) => prevMaxHp + 1);
+      setHp(maxHp + 1);
+    } else {
+      setHp(maxHp);
     }
-    setHp(maxHp);
   }, [
     canLevelUp,
     level,
@@ -486,9 +500,10 @@ export const useGameLogic = () => {
       for (let dy = -orbRadius; dy <= orbRadius; dy++) {
         for (let dx = -orbRadius; dx <= orbRadius; dx++) {
           if (Math.abs(dx) + Math.abs(dy) <= orbRadius) {
-            const newX = x + dx;
-            const newY = y + dy;
+            const newX = eye.x + dx;
+            const newY = eye.y + dy;
             if (x === newX && y === newY) {
+              console.log(x, newX, y, newY);
               return true;
             }
           }

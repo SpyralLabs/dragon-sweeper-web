@@ -4,6 +4,9 @@ import { useGameLogic } from '@/features/minesweeper/hooks/use-game-logic';
 import BoardCell from './board-cell';
 import PopoverMarking from '@/components/widgets/popover-marking';
 import { useCallback, useMemo, useRef, useState } from 'react';
+import GameOverDialog from './game-over-dialog';
+import { resetGameAtom } from '@/state/game';
+import { useSetAtom } from 'jotai';
 
 const rightPanelVariants = {
   initial: {
@@ -26,12 +29,15 @@ interface RightClickInfo {
 export default function GameRightPannel() {
   const {
     board,
+    gameOver,
+    gameWon,
     handleCellClick,
     handleCellRightClick,
     toggleAllBoardForTest,
     dungeon,
     calculateMonsterPowerSum,
   } = useGameLogic();
+  const setResetGame = useSetAtom(resetGameAtom);
   const containerRef = useRef<HTMLDivElement>(null);
   const [rightClickInfo, setRightClickInfo] = useState<RightClickInfo | null>(null);
 
@@ -142,12 +148,22 @@ export default function GameRightPannel() {
           }}
         />
       </div>
+      <p className="absolute top-[calc(100%+12px)] right-0 text-right text-sm text-[#828c7c]">
+        If the game is interrupted, used resources cannot be refunded.
+      </p>
       <button
         className="fixed right-4 bottom-4 z-[9999] h-10 w-60 bg-amber-50 text-black"
         onClick={toggleAllBoardForTest}
       >
         Toggle All Board
       </button>
+      {gameOver && (
+        <GameOverDialog
+          onClick={() => {
+            setResetGame();
+          }}
+        />
+      )}
     </motion.div>
   );
 }

@@ -53,7 +53,8 @@ export type Items =
   | 'wall3'
   | 'wall4'
   | 'expBox'
-  | 'expWall';
+  | 'expWall'
+  | 'mineExp';
 
 export const MONSTERS: Record<Monsters, GameEntity> = {
   spider: {
@@ -275,5 +276,12 @@ export const ITEMS: Record<Items, GameEntity> = {
     xp: 0,
     power: 0,
     icon: Icons.ExpWall,
+  },
+  mineExp: {
+    id: 'mine-exp',
+    type: 'item',
+    xp: 3,
+    power: 0,
+    icon: Icons.MineExp,
   },
 };
