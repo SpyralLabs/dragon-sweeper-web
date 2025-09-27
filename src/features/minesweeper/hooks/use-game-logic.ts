@@ -158,6 +158,9 @@ export const useGameLogic = () => {
         case ITEMS.hpItem.id:
           setHp(maxHp);
           cell.entity = null;
+          cell.revealed = true;
+          cell.marked = null;
+          cell.executed = true;
           break;
         case ITEMS.pickDefault.id: {
           cell.entity = null;
@@ -193,6 +196,12 @@ export const useGameLogic = () => {
         case ITEMS.boxClose.id:
         case ITEMS.expBox.id:
           handleExpBoxAcquisition(newBoard, x, y, item);
+          break;
+        case ITEMS.monkey.id:
+          newBoard[y][x].entity = null;
+          cell.revealed = true;
+          cell.marked = null;
+          cell.executed = true;
           break;
         default:
           break;
