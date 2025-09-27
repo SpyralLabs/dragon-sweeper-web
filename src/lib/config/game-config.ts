@@ -216,7 +216,7 @@ export const ITEMS: Record<Items, GameEntity> = {
   darkCrystalBroken: {
     id: 'dark-crystal-broken',
     type: 'item',
-    xp: 0,
+    xp: 3,
     power: 0,
     icon: Icons.DarkCrystalBroken,
   },
