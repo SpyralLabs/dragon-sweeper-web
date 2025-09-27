@@ -472,7 +472,7 @@ export const useGameLogic = () => {
   };
 
   const isEyeAbilityActive = (x: number, y: number) => {
-    const crossDistances = [1, 3, 5];
+    const orbRadius = 2;
 
     for (const eye of eyePosition) {
       if (eye.isDefeated) continue;
@@ -483,14 +483,15 @@ export const useGameLogic = () => {
       }
 
       // 십자 범위 검사
-      for (const d of crossDistances) {
-        // 같은 행에서 좌우 d칸
-        if (eye.y === y && (eye.x === x - d || eye.x === x + d)) {
-          return true;
-        }
-        // 같은 열에서 상하 d칸
-        if (eye.x === x && (eye.y === y - d || eye.y === y + d)) {
-          return true;
+      for (let dy = -orbRadius; dy <= orbRadius; dy++) {
+        for (let dx = -orbRadius; dx <= orbRadius; dx++) {
+          if (Math.abs(dx) + Math.abs(dy) <= orbRadius) {
+            const newX = x + dx;
+            const newY = y + dy;
+            if (x === newX && y === newY) {
+              return true;
+            }
+          }
         }
       }
     }

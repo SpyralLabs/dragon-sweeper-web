@@ -131,7 +131,7 @@ export const MONSTERS: Record<Monsters, GameEntity> = {
     type: 'monster',
     power: 5,
     xp: 5,
-    icon: Icons.Shadow, // Using Shadow icon for eye
+    icon: Icons.Eye, // Using Eye icon for eye
   },
   shadow: {
     id: 'shadow',
