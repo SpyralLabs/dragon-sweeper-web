@@ -92,7 +92,7 @@ export default function GameLeftPannel() {
           draggable={false}
         />
         <div className="relative z-1 mb-7 flex flex-col items-center justify-center">
-          <p className="mt-8 text-center text-lg text-[#F0FFE6]">NFT Name</p>
+          <p className="mt-8 text-center text-lg text-[#F0FFE6]">Aomi</p>
           <div className="mt-4 grid w-full grid-cols-2 gap-x-4.5 gap-y-1">
             {hpRenderer.map((row) => (
               <div className="flex items-center justify-start" key={row.join('-')}>
