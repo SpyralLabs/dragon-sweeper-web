@@ -69,7 +69,7 @@ const PlayLayout = ({ children }: PlayLayoutProps) => {
         exit="out"
         variants={pageVariants}
         transition={pageTransition}
-        className="h-full pb-30 bg-[#1a0f0c]"
+        className="h-full bg-[#1a0f0c] pb-30"
       >
         {/* Header */}
         <motion.div variants={headerVariants} transition={{ duration: 0.8, delay: 0.2 }}>
@@ -100,7 +100,7 @@ const CharacterLayout = ({ children }: CharacterLayoutProps) => {
         exit="out"
         variants={pageVariants}
         transition={pageTransition}
-        className="min-h-screen bg-[#1a0f0c] w-max"
+        className="min-h-screen w-full bg-[#1a0f0c]"
       >
         {/* Header */}
         <motion.div variants={headerVariants} transition={{ duration: 0.8, delay: 0.2 }}>
