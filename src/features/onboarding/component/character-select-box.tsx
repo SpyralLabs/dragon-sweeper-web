@@ -75,7 +75,7 @@ export default function CharacterSelectBox() {
       <motion.div
         variants={ScaleUpVariants}
         transition={{ duration: 0.8, delay: 0.6 }}
-        className="relative mx-auto aspect-[1500/690] w-full max-w-[1500px] overflow-hidden p-9"
+        className="relative mx-auto w-full max-w-[1500px] overflow-hidden p-9"
       >
         <img
           src={CharacterGrid}

@@ -1,9 +1,18 @@
 import { Button } from '@/components/ui/button';
 import FrameGameOver from '@/assets/images/game/frame-gameover.webp';
 import { useNavigate } from 'react-router';
+import useMusic from '@/lib/hooks/use-music';
+import { useEffect } from 'react';
+import { SOUNDS } from '@/lib/config/music-config';
 
 export default function GameOverDialog({ onClick }: { onClick: () => void }) {
   const navigate = useNavigate();
+  const { playSound } = useMusic();
+
+  useEffect(() => {
+    playSound(SOUNDS.ingame.over);
+  }, [playSound]);
+
   return (
     <div className="absolute inset-0 z-[9999] flex h-full w-full flex-col items-center justify-center">
       <div className="relative flex h-[374px] w-[560px] flex-col items-center justify-between gap-3.5 p-[35px]">

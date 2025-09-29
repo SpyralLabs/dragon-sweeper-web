@@ -7,6 +7,9 @@ import { useCallback, useMemo, useRef, useState } from 'react';
 import GameOverDialog from './game-over-dialog';
 import { resetGameAtom } from '@/state/game';
 import { useSetAtom } from 'jotai';
+import GameStartDialog from './game-start-dialog';
+import useMusic from '@/lib/hooks/use-music';
+import { SOUNDS } from '@/lib/config/music-config';
 
 const rightPanelVariants = {
   initial: {
@@ -27,6 +30,7 @@ interface RightClickInfo {
 }
 
 export default function GameRightPannel() {
+  const [gameStart, setGameStart] = useState(false);
   const {
     board,
     gameOver,
@@ -40,6 +44,7 @@ export default function GameRightPannel() {
   const setResetGame = useSetAtom(resetGameAtom);
   const containerRef = useRef<HTMLDivElement>(null);
   const [rightClickInfo, setRightClickInfo] = useState<RightClickInfo | null>(null);
+  const { playSound } = useMusic();
 
   // onClick 콜백을 완전히 메모이제이션
   const handleCellClickCallback = useCallback(
@@ -114,6 +119,7 @@ export default function GameRightPannel() {
             {row.map((cell, j) => (
               <BoardCell
                 className="flex-1"
+                isStarted={gameStart}
                 key={`${i}-${j}`}
                 cell={cell}
                 x={j}
@@ -161,6 +167,14 @@ export default function GameRightPannel() {
         <GameOverDialog
           onClick={() => {
             setResetGame();
+          }}
+        />
+      )}
+      {!gameStart && (
+        <GameStartDialog
+          onClick={() => {
+            setGameStart(true);
+            playSound(SOUNDS.ingame.start);
           }}
         />
       )}

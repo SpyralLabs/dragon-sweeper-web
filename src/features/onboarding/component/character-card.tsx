@@ -3,9 +3,11 @@ import NFTDefaultFrame from '@/assets/images/hero/hero-card-frame-default.webp';
 import NFTActiveFrame from '@/assets/images/hero/hero-card-frame-active.webp';
 import NFTNameFrame from '@/assets/images/hero/hero-card-title-frame.webp';
 import { cn } from '@/lib/utils/tailwind-util';
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Icons from '@/components/ui/icons';
 import { Button } from '@/components/ui/button';
+import useMusic from '@/lib/hooks/use-music';
+import { SOUNDS } from '@/lib/config/music-config';
 
 interface Props {
   id: number;
@@ -25,7 +27,16 @@ interface Props {
 }
 
 export default function CharacterCard({ id, name, src, utility, isSelected, onClick }: Props) {
-  const handleClick = () => {
+  const { playSound } = useMusic();
+
+  const handleClick = async () => {
+    if (!isSelected) {
+      try {
+        playSound(SOUNDS.select.aomi);
+      } catch (error) {
+        console.warn('Failed to play sound:', error);
+      }
+    }
     onClick?.({
       isFinalized: isSelected,
       selectedNftId: id,
@@ -42,9 +53,9 @@ export default function CharacterCard({ id, name, src, utility, isSelected, onCl
       onClick={
         isSelected
           ? undefined
-          : (e) => {
+          : async (e) => {
               e.preventDefault();
-              handleClick();
+              await handleClick();
             }
       }
     >
@@ -72,20 +83,20 @@ export default function CharacterCard({ id, name, src, utility, isSelected, onCl
           <div className={'flex items-center'}>
             Rarity: Common
             <div className="ml-2 flex items-center gap-1">
-              {Array.from({ length: utility.starRate }).map((_, i) => (
+              {Array.from({ length: utility.starRate + 1 }).map((_, i) => (
                 <Icons.Star key={i} />
               ))}
             </div>
           </div>
-          <p>Utility: {utility.key}</p>
+          <p>Utility: {utility.key === 'DEFAULT' ? 'Only Gameplay' : ''}</p>
         </div>
         <Button
           variant="default"
           className="absolute bottom-8 left-1/2 z-2 -translate-x-1/2"
-          onClick={(e) => {
+          onClick={async (e) => {
             e.preventDefault();
             e.stopPropagation();
-            handleClick();
+            await handleClick();
           }}
         >
           Select

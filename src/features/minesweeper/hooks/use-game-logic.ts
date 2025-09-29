@@ -20,6 +20,8 @@ import {
 } from '@/state/game';
 import { ITEMS, MONSTERS, type GameEntity } from '@/lib/config/game-config';
 import type { Cell } from '@/features/minesweeper/entities/dungeon-generator';
+import useMusic from '@/lib/hooks/use-music';
+import { SOUNDS } from '@/lib/config/music-config';
 
 // Orb 타입 정의
 export enum OrbType {
@@ -28,6 +30,7 @@ export enum OrbType {
 }
 
 export const useGameLogic = () => {
+  const { playSound } = useMusic();
   const [board, setBoard] = useAtom(boardAtom);
   const [hp, setHp] = useAtom(hpAtom);
   const [exp, setExp] = useAtom(expAtom);
@@ -68,6 +71,7 @@ export const useGameLogic = () => {
       if (hp >= effectiveDamage) {
         setHp((prevHp) => prevHp - effectiveDamage);
         setAttacked(true);
+        playSound(SOUNDS.ingame.attack);
 
         switch (monster.id) {
           case MONSTERS.magician.id:
@@ -156,6 +160,7 @@ export const useGameLogic = () => {
 
       switch (item.id) {
         case ITEMS.hpItem.id:
+          playSound(SOUNDS.ingame.hpitem);
           setHp(maxHp);
           cell.entity = null;
           cell.revealed = true;
@@ -163,6 +168,7 @@ export const useGameLogic = () => {
           cell.executed = true;
           break;
         case ITEMS.pickDefault.id: {
+          playSound(SOUNDS.ingame.start);
           cell.entity = null;
           if (dungeonGenerator?.startPos.x === x && dungeonGenerator?.startPos.y === y) {
             openArea(x, y, newBoard, OrbType.INITIAL);

@@ -8,6 +8,7 @@ interface BoardCellProps {
   className?: string;
   x: number;
   y: number;
+  isStarted: boolean;
   cell: Cell;
   rightClicking: boolean;
   onClick: (cell: Cell) => void;
@@ -19,15 +20,18 @@ interface BoardCellProps {
 const BoardCell = ({
   x,
   y,
+  isStarted,
   cell,
   onClick,
   onRightClick,
   className,
   rightClicking,
-  isStartPosition,
+  isStartPosition: _isStartPosition,
   monsterPowerSum,
 }: BoardCellProps) => {
-  const { entity, revealed, marked, executed } = cell;
+  const { entity, revealed: _revealed, marked, executed } = cell;
+  const revealed = isStarted ? _revealed : false;
+  const isStartPosition = isStarted ? _isStartPosition : false;
 
   const Tile = useMemo(() => {
     const random = Math.random();
@@ -115,8 +119,8 @@ const BoardCell = ({
               )}
               {entity && entity.id === MONSTERS.mine.id && (
                 <p className="absolute bottom-0 left-1/2 -translate-x-1/2 text-base font-bold text-[#ffaa20] [text-shadow:2px_2px_#4d3e36]">
-                {entity.power}
-              </p>
+                  {entity.power}
+                </p>
               )}
             </>
           ) : null}
@@ -177,6 +181,7 @@ export default React.memo(BoardCell, (prev, next) => {
   return (
     prev.x === next.x &&
     prev.y === next.y &&
+    prev.isStarted === next.isStarted &&
     prev.cell.entity === next.cell.entity &&
     prev.cell.revealed === next.cell.revealed &&
     prev.cell.executed === next.cell.executed &&
