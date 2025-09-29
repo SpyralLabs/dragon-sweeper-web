@@ -1,4 +1,4 @@
-import { useCallback, useMemo } from 'react';
+import { useCallback, useEffect, useMemo } from 'react';
 import { useAtom, useAtomValue, useSetAtom } from 'jotai';
 import {
   boardAtom,
@@ -533,7 +533,11 @@ export const useGameLogic = () => {
     );
   };
 
-  // 게임 초기화는 게임 페이지에서 담당
+  useEffect(() => {
+    if (gameOver) {
+      setBoard((prev) => prev.map((row) => row.map((cell) => ({ ...cell, revealed: true }))));
+    }
+  }, [gameOver]);
 
   return {
     board,

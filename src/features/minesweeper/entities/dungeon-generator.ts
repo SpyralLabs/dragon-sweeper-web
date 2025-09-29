@@ -203,7 +203,7 @@ export class DungeonGenerator {
 
     const boxCount = 5;
     this.placeRandomly(ITEMS.boxClose, boxCount);
-    this.placeRandomly(ITEMS.hpItem, 9);
+    this.placeRandomly(ITEMS.hpItem, 4);
     this.placeRandomly(ITEMS.pickDefault, 1);
   }
 

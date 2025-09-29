@@ -171,7 +171,7 @@ const BoardCell = ({
     >
       <Icons.TileDisabled className="absolute inset-0 h-full w-full" />
       <div className="z-[1] flex h-full w-full flex-col items-center justify-center font-bold">
-        <p>{monsterPowerSum === 0 ? '' : monsterPowerSum}</p>
+        <p className="text-[#D2CDC5]">{monsterPowerSum === 0 ? '' : monsterPowerSum}</p>
       </div>
     </button>
   );
