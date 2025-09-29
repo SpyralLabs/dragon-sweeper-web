@@ -39,7 +39,7 @@ export class DungeonGenerator {
     return this.board;
   }
 
-  public getMonsterPowerSum(x: number, y: number): number | string {
+  public getMonsterPowerSum(x: number, y: number): number {
     let powerSum = 0;
     for (let dy = -1; dy <= 1; dy++) {
       for (let dx = -1; dx <= 1; dx++) {
@@ -52,7 +52,7 @@ export class DungeonGenerator {
 
         if (this.isValidPosition(newX, newY)) {
           const cell = this.board[newY][newX];
-          if (cell.entity?.type === 'monster') {
+          if (cell.entity?.power) {
             powerSum += cell.entity.power;
           }
         }

@@ -414,6 +414,7 @@ export const useGameLogic = () => {
     if (!canLevelUp || gameOver || gameWon) {
       return;
     }
+    playSound(SOUNDS.ingame.levelup);
 
     const newLevel = level + 1;
     setExp((prev) => prev - currentLevelExp);
@@ -435,6 +436,7 @@ export const useGameLogic = () => {
     setLevel,
     setMaxHp,
     setHp,
+    playSound,
   ]);
 
   const openArea = (
@@ -527,6 +529,10 @@ export const useGameLogic = () => {
     return value;
   };
 
+  const revealAllBoard = () => {
+    setBoard((prev) => prev.map((row) => row.map((cell) => ({ ...cell, revealed: true }))));
+  };
+
   const toggleAllBoardForTest = () => {
     setBoard((prev) =>
       prev.map((row) => row.map((cell) => ({ ...cell, revealed: !cell.revealed }))),
@@ -535,7 +541,7 @@ export const useGameLogic = () => {
 
   useEffect(() => {
     if (gameOver) {
-      setBoard((prev) => prev.map((row) => row.map((cell) => ({ ...cell, revealed: true }))));
+      revealAllBoard();
     }
   }, [gameOver]);
 
@@ -557,6 +563,7 @@ export const useGameLogic = () => {
     handleCellRightClick,
     levelUp,
     calculateMonsterPowerSum,
+    revealAllBoard,
     toggleAllBoardForTest,
   };
 };
