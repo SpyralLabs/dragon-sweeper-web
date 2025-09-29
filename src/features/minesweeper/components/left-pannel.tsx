@@ -24,8 +24,6 @@ const leftPanelVariants = {
 
 export default function GameLeftPannel() {
   const { hp, exp, nextLevelExp, maxHp, previewHp } = useGameLogic();
-  const setHp = useSetAtom(hpAtom);
-  const setMaxHp = useSetAtom(maxHpAtom);
 
   const hpRenderer = useMemo(() => {
     let filledHp = hp;
@@ -72,11 +70,6 @@ export default function GameLeftPannel() {
       return item;
     });
   }, [exp, nextLevelExp]);
-
-  useEffect(() => {
-    setHp(15);
-    setMaxHp(15)
-  }, [maxHp, setHp]);
 
   return (
     <motion.div
