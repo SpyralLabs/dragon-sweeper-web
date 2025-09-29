@@ -168,7 +168,6 @@ export const useGameLogic = () => {
           cell.executed = true;
           break;
         case ITEMS.pickDefault.id: {
-          playSound(SOUNDS.ingame.start);
           cell.entity = null;
           if (dungeonGenerator?.startPos.x === x && dungeonGenerator?.startPos.y === y) {
             openArea(x, y, newBoard, OrbType.INITIAL);
