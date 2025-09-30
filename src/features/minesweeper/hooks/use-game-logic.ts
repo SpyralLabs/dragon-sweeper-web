@@ -18,10 +18,11 @@ import {
   levelUpTable,
   eyePositionAtom,
 } from '@/state/game';
-import { ITEMS, MONSTERS, type GameEntity } from '@/lib/config/game-config';
+import { BOARD_SIZE, ITEMS, MONSTERS, type GameEntity } from '@/lib/config/game-config';
 import type { Cell } from '@/features/minesweeper/entities/dungeon-generator';
 import useMusic from '@/lib/hooks/use-music';
 import { SOUNDS } from '@/lib/config/music-config';
+import Icons from '@/components/ui/icons';
 
 // Orb 타입 정의
 export enum OrbType {
@@ -58,6 +59,13 @@ export const useGameLogic = () => {
       let finalMonsterPower = monster.power;
       const effectiveDamage = Math.max(1, finalMonsterPower - utilityStats.shield);
 
+      if (newBoard[y][x].executed && newBoard[y][x].entity?.id === MONSTERS.darkLord.id) {
+        setExp((prevExp) => prevExp + monster.power);
+        setBoard(newBoard);
+        setGameWon(true);
+        return;
+      }
+
       if (newBoard[y][x].executed && newBoard[y][x].entity !== null) {
         newBoard[y][x].revealed = true;
         newBoard[y][x].marked = null;
@@ -89,10 +97,15 @@ export const useGameLogic = () => {
           case MONSTERS.mineSeeker.id:
             handleMineSeekerAbility(newBoard, x, y);
             break;
-          case MONSTERS.darkLord.id:
-            alert('게임 승리!');
-            setGameWon(true);
+          case MONSTERS.darkLord.id: {
+            if (!newBoard[y][x].entity) break;
+            newBoard[y][x].entity.icon = Icons.DarkLordExecuted;
+            newBoard[y][x].revealed = true;
+            newBoard[y][x].marked = null;
+            newBoard[y][x].executed = true;
+            setBoard(newBoard);
             break;
+          }
           default:
             break;
         }
@@ -203,6 +216,9 @@ export const useGameLogic = () => {
           handleExpBoxAcquisition(newBoard, x, y, item);
           break;
         case ITEMS.monkey.id:
+          if (cell.entity && cell.entity.xp > 0) {
+            setExp((prevExp) => prevExp + cell.entity!.xp);
+          }
           newBoard[y][x].entity = null;
           cell.revealed = true;
           cell.marked = null;
@@ -492,42 +508,64 @@ export const useGameLogic = () => {
     }
   };
 
-  const isEyeAbilityActive = (x: number, y: number) => {
-    const orbRadius = 2;
+  const isEyeAbilityActive = useCallback(
+    (x: number, y: number) => {
+      const orbRadius = 2;
 
-    for (const eye of eyePosition) {
-      if (eye.isDefeated) continue;
+      for (const eye of eyePosition) {
+        if (eye.isDefeated) continue;
 
-      // 중심 (eye 위치 자체)
-      if (eye.x === x && eye.y === y) {
-        return true;
-      }
+        // 중심 (eye 위치 자체)
+        if (eye.x === x && eye.y === y) {
+          return true;
+        }
 
-      // 십자 범위 검사
-      for (let dy = -orbRadius; dy <= orbRadius; dy++) {
-        for (let dx = -orbRadius; dx <= orbRadius; dx++) {
-          if (Math.abs(dx) + Math.abs(dy) <= orbRadius) {
-            const newX = eye.x + dx;
-            const newY = eye.y + dy;
-            if (x === newX && y === newY) {
-              console.log(x, newX, y, newY);
-              return true;
+        // 십자 범위 검사
+        for (let dy = -orbRadius; dy <= orbRadius; dy++) {
+          for (let dx = -orbRadius; dx <= orbRadius; dx++) {
+            if (Math.abs(dx) + Math.abs(dy) <= orbRadius) {
+              const newX = eye.x + dx;
+              const newY = eye.y + dy;
+              if (x === newX && y === newY) {
+                return true;
+              }
             }
           }
         }
       }
-    }
 
-    return false;
-  };
+      return false;
+    },
+    [eyePosition],
+  );
 
-  const calculateMonsterPowerSum = (x: number, y: number) => {
-    if (isEyeAbilityActive(x, y)) {
-      return '?';
-    }
-    const value = dungeonGenerator?.getMonsterPowerSum(x, y) ?? 0;
-    return value;
-  };
+  const calculateMonsterPowerSum = useCallback(
+    (x: number, y: number) => {
+      if (isEyeAbilityActive(x, y)) {
+        return '?';
+      }
+      let powerSum = 0;
+      for (let dy = -1; dy <= 1; dy++) {
+        for (let dx = -1; dx <= 1; dx++) {
+          if (dx === 0 && dy === 0) {
+            continue;
+          }
+
+          const newX = x + dx;
+          const newY = y + dy;
+
+          if (newX >= 0 && newX < BOARD_SIZE.width && newY >= 0 && newY < BOARD_SIZE.height) {
+            const cell = board[newY][newX];
+            if (cell.entity?.power) {
+              powerSum += cell.entity.power;
+            }
+          }
+        }
+      }
+      return powerSum;
+    },
+    [board, isEyeAbilityActive],
+  );
 
   const revealAllBoard = () => {
     setBoard((prev) => prev.map((row) => row.map((cell) => ({ ...cell, revealed: true }))));

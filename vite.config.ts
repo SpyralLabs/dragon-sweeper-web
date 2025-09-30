@@ -7,12 +7,16 @@ import tsConfigPaths from 'vite-tsconfig-paths';
 export default defineConfig({
   base: '/',
   plugins: [react(), tailwindcss(), tsConfigPaths()],
-  assetsInclude: ['**/*.webp'],
+  assetsInclude: ['**/*.webp', '**/*.wav'],
   build: {
     rollupOptions: {
       input: {
         main: './index.html',
       },
     },
+  },
+  server: {
+    open: false,
+    port: 5173,
   },
 });

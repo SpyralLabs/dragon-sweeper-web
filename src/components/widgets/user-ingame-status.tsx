@@ -3,6 +3,7 @@ import ProfileFrame from '@/assets/images/layout/frame-character.webp';
 import UsernameFrame from '@/assets/images/layout/frame-username.webp';
 import Icons from '@/components/ui/icons';
 import useUsername from '@/lib/hooks/user-username';
+import { formatInGameItemNumber } from '@/lib/utils/ingame-util';
 
 interface Props {
   points?: number;
@@ -10,7 +11,7 @@ interface Props {
   dotImage: string;
 }
 
-export default function UserIngameStatus({ points = 0, portions = 0, dotImage }: Props) {
+export default function UserIngameStatus({ points = 0, portions = Infinity, dotImage }: Props) {
   const userName = useUsername();
 
   return (
@@ -43,9 +44,9 @@ export default function UserIngameStatus({ points = 0, portions = 0, dotImage }:
           </div>
           <div className="flex items-center px-1.5 py-[9px]">
             <Icons.Point />
-            <p className="ml-1.5 text-sm">{points.toLocaleString('en-US')}P</p>
+            <p className="ml-1.5 text-sm">{formatInGameItemNumber(points)}P</p>
             <Icons.Potion className="ml-3.5" />
-            <p className="ml-1.5 text-sm">X{portions.toLocaleString('en-US')}</p>
+            <p className="ml-1.5 text-sm">X{formatInGameItemNumber(portions)}</p>
             <button className="ml-1.5">
               <Icons.Plus />
             </button>

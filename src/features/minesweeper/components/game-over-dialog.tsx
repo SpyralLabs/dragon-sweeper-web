@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router';
 import useMusic from '@/lib/hooks/use-music';
 import { useEffect } from 'react';
 import { SOUNDS } from '@/lib/config/music-config';
+import Icons from '@/components/ui/icons';
 
 export default function GameOverDialog({ onClick }: { onClick: () => void }) {
   const navigate = useNavigate();
@@ -489,17 +490,30 @@ export default function GameOverDialog({ onClick }: { onClick: () => void }) {
           <rect x="126.16" y="62.1371" width="3.49057" height="3.45205" fill="#25140D" />
           <rect x="133.142" y="51.7809" width="6.98113" height="3.45205" fill="#25140D" />
         </svg>
-        <Button
-          size="sm"
-          variant="default"
-          className="z-[1] h-[58px] w-[184px]"
-          onClick={() => {
-            navigate('/');
-            onClick();
-          }}
-        >
-          Return Home
-        </Button>
+        <div className="flex items-center justify-center gap-5">
+          <Button
+            size="sm"
+            variant="default"
+            className="z-[1] h-[58px] w-[204px]"
+            onClick={() => {
+              navigate('/');
+              onClick();
+            }}
+          >
+            Return Home
+          </Button>
+          <Button
+            size="sm"
+            variant="default"
+            className="z-[1] flex h-[58px] w-[204px] items-center"
+            onClick={() => {
+              onClick();
+            }}
+          >
+            Retry <Icons.Potion className="size-7" />
+            <p className="text-stroke-000 ml-1.5 text-lg font-bold text-[#FFF5B9]">120</p>
+          </Button>
+        </div>
       </div>
     </div>
   );

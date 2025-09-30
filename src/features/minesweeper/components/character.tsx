@@ -14,14 +14,15 @@ import { motion } from 'framer-motion';
 
 export default function Character() {
   const [isLevelUp, setIsLevelUp] = useState(false);
-  const { level, canLevelUp, hp, attacked, levelUp } = useGameLogic();
+  const { level, canLevelUp, hp, attacked, gameOver, levelUp } = useGameLogic();
   const { basic, zero, attack, levelup } = useCharacter({ type: 'Aomi' });
   const currentState: CharacterState = useMemo(() => {
+    if (gameOver) return 'zero';
     if (canLevelUp) return 'levelup';
     if (hp === 0) return 'zero';
     if (attacked) return 'attack';
     return 'basic';
-  }, [canLevelUp, hp, attacked]);
+  }, [canLevelUp, hp, attacked, gameOver]);
 
   return (
     <div className="relative z-2 flex flex-col items-center justify-center p-3">

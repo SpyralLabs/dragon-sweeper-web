@@ -39,28 +39,6 @@ export class DungeonGenerator {
     return this.board;
   }
 
-  public getMonsterPowerSum(x: number, y: number): number {
-    let powerSum = 0;
-    for (let dy = -1; dy <= 1; dy++) {
-      for (let dx = -1; dx <= 1; dx++) {
-        if (dx === 0 && dy === 0) {
-          continue;
-        }
-
-        const newX = x + dx;
-        const newY = y + dy;
-
-        if (this.isValidPosition(newX, newY)) {
-          const cell = this.board[newY][newX];
-          if (cell.entity?.power) {
-            powerSum += cell.entity.power;
-          }
-        }
-      }
-    }
-    return powerSum;
-  }
-
   public setStartPos(): void {
     // 맵의 중앙에 다크로드가 고정되어 있으므로, 몬스터가 없는 안전한 시작 위치를 찾습니다.
     const margin = 2; // 맵의 가장자리로부터 2칸 여유를 둡니다.
@@ -167,7 +145,8 @@ export class DungeonGenerator {
         this.placeEntity(eyePos.x, eyePos.y, MONSTERS.eye);
       }
     }
-    this.placeRandomly(ITEMS.monkey);
+    const monkeyEntity = { ...ITEMS.monkey, xp: Math.random() <= 0.3 ? 9 : 0 };
+    this.placeRandomly(monkeyEntity);
   }
 
   private placeRandomMonstersAndItems() {

@@ -102,7 +102,7 @@ export default function PopoverMarking<T extends HTMLElement>({
           .fill(null)
           .map((_, i) => (
             <button
-              className="col-span-1 flex aspect-square items-center justify-center border-2 border-[#191312] bg-[#BDB499] text-xl font-bold text-[#ffde4a] text-shadow-[2px_2px_#000000]"
+              className="text-stroke-000 col-span-1 flex aspect-square items-center justify-center border-2 border-[#191312] bg-[#BDB499] text-xl font-bold text-[#ffde4a]"
               key={`${i}`}
               onClick={(e) => {
                 e.stopPropagation();
@@ -115,7 +115,7 @@ export default function PopoverMarking<T extends HTMLElement>({
             </button>
           ))}
         <button
-          className="col-span-1 flex aspect-square items-center justify-center border-2 border-[#191312] bg-[#BDB499] text-xl font-bold text-[#4FA6F3] text-shadow-[2px_2px_#000000]"
+          className="text-stroke-000 col-span-1 flex aspect-square items-center justify-center border-2 border-[#191312] bg-[#BDB499] text-xl font-bold text-[#4FA6F3]"
           key={`?`}
           onClick={(e) => {
             e.stopPropagation();

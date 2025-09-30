@@ -83,7 +83,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         )}
         <div
           className={cn(
-            'relative z-1 transition-transform duration-200',
+            'relative z-1 flex items-center transition-transform duration-200',
             isTouched && 'translate-y-1.5',
           )}
           onMouseDown={(e) => {

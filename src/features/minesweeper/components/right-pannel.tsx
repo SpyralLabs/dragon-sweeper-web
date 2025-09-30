@@ -10,6 +10,7 @@ import { useSetAtom } from 'jotai';
 import GameStartDialog from './game-start-dialog';
 import useMusic from '@/lib/hooks/use-music';
 import { SOUNDS } from '@/lib/config/music-config';
+import GameWonDialog from './game-won-dialog';
 
 const rightPanelVariants = {
   initial: {
@@ -178,6 +179,7 @@ export default function GameRightPannel() {
           }}
         />
       )}
+      {gameWon && <GameWonDialog />}
     </motion.div>
   );
 }

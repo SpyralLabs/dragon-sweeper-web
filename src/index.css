@@ -93,3 +93,27 @@ button:disabled {
   --color-gold: #cd9b50;
   --tw-text-shadow-color: #4d3e36;
 }
+
+@utility text-stroke-000 {
+  text-shadow:
+    -2px -2px 0 #000,
+    2px -2px 0 #000,
+    -2px 2px 0 #000,
+    2px 2px 0 #000;
+}
+
+@utility text-stroke-4d3e36 {
+  text-shadow:
+    -2px -2px 0 #4d3e36,
+    2px -2px 0 #4d3e36,
+    -2px 2px 0 #4d3e36,
+    2px 2px 0 #4d3e36;
+}
+
+@utility text-stroke-482615 {
+  text-shadow:
+    -2px -2px 0 #482615,
+    2px -2px 0 #482615,
+    -2px 2px 0 #482615,
+    2px 2px 0 #482615;
+}

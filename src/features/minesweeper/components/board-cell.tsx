@@ -83,7 +83,7 @@ const BoardCell = ({
       >
         <Tile className="absolute top-1/2 left-1/2 h-[calc(100%-1px)] w-[calc(100%-1px)] -translate-x-1/2 -translate-y-1/2" />
         {marked && (
-          <p className="z-1 text-base font-bold text-[#ffde4a] [text-shadow:2px_2px_#482615]">
+          <p className="text-stroke-482615 z-1 text-base font-bold text-[#ffde4a]">
             {marked === 13 ? (
               '?'
             ) : marked === 14 ? (
@@ -113,12 +113,12 @@ const BoardCell = ({
             <>
               <entity.icon />
               {entity.xp > 0 && ![ITEMS.boxClose.id, MONSTERS.mimic.id].includes(entity.id) && (
-                <p className="absolute bottom-0 left-1/2 -translate-x-1/2 text-base font-bold text-[#ffaa20] [text-shadow:2px_2px_#4d3e36]">
+                <p className="text-stroke-4d3e36 absolute bottom-0 left-1/2 -translate-x-1/2 text-base font-bold text-[#ffaa20]">
                   {entity.xp}
                 </p>
               )}
               {entity && entity.id === MONSTERS.mine.id && (
-                <p className="absolute bottom-0 left-1/2 -translate-x-1/2 text-base font-bold text-[#ffaa20] [text-shadow:2px_2px_#4d3e36]">
+                <p className="text-stroke-4d3e36 absolute bottom-0 left-1/2 -translate-x-1/2 text-base font-bold text-[#ffaa20]">
                   {entity.power}
                 </p>
               )}
@@ -153,9 +153,7 @@ const BoardCell = ({
             ])}
           >
             <Icons.ExpFilled className="size-5" />
-            <p className="text-base font-bold text-[#ffde4a] [text-shadow:2px_2px_#482615]">
-              {entity.xp}
-            </p>
+            <p className="text-stroke-482615 text-base font-bold text-[#ffde4a]">{entity.xp}</p>
           </div>
         </div>
       </button>
@@ -165,7 +163,7 @@ const BoardCell = ({
   return (
     <button
       className={cn(
-        'relative flex cursor-default flex-col items-center justify-center bg-[#454644] p-[9px]',
+        'relative flex cursor-default! flex-col items-center justify-center bg-[#454644] p-[9px]',
         className,
       )}
     >

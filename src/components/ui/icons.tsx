@@ -5265,67 +5265,67 @@ const Icons = {
   )),
   DarkLordExecuted: forwardRef<SVGSVGElement, ComponentPropsWithoutRef<'svg'>>((props, ref) => (
     <svg
-      width="56"
-      height="56"
-      viewBox="0 0 56 56"
+      width="42"
+      height="43"
+      viewBox="0 0 42 43"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       {...props}
       ref={ref}
     >
-      <rect x="35" y="48" width="10" height="5" fill="#786E91" />
-      <rect x="18" y="24" width="18" height="3" fill="#BAB6AB" />
-      <rect x="23" y="28" width="8" height="18" fill="#DCD0B4" />
-      <rect x="25" y="28" width="2" height="18" fill="#FFF8E7" />
-      <rect width="2" height="19" transform="matrix(-1 0 0 1 23 27)" fill="#33322D" />
-      <rect width="2" height="19" transform="matrix(-1 0 0 1 33 27)" fill="#33322D" />
-      <rect width="18" height="2" transform="matrix(-1 0 0 1 36 27)" fill="#33322D" />
-      <rect width="6" height="2" transform="matrix(-1 0 0 1 30 12)" fill="#33322D" />
-      <rect width="2" height="3" transform="matrix(-1 0 0 1 24 14)" fill="#33322D" />
-      <rect width="2" height="3" transform="matrix(-1 0 0 1 32 14)" fill="#33322D" />
-      <rect width="2" height="3" transform="matrix(-1 0 0 1 38 24)" fill="#33322D" />
-      <rect width="2" height="3" transform="matrix(-1 0 0 1 18 24)" fill="#33322D" />
-      <rect width="5" height="2" transform="matrix(-1 0 0 1 36 22)" fill="#33322D" />
-      <rect width="5" height="2" transform="matrix(-1 0 0 1 23 22)" fill="#33322D" />
-      <rect width="2" height="7" transform="matrix(-1 0 0 1 31 17)" fill="#33322D" />
-      <rect width="2" height="7" transform="matrix(-1 0 0 1 25 17)" fill="#33322D" />
-      <rect x="23" y="28" width="6" height="2" fill="#96918A" />
-      <rect x="23" y="43" width="4" height="3" fill="#96918A" />
-      <rect x="27" y="28" width="4" height="18" fill="#686762" />
-      <rect x="29" y="30" width="2" height="16" fill="#96918A" />
-      <rect x="25" y="17" width="4" height="6" fill="#915931" />
-      <rect x="27" y="17" width="2" height="6" fill="#743F20" />
-      <rect width="4" height="1" transform="matrix(1 0 0 -1 25 24)" fill="#5C2D15" />
-      <rect width="2" height="1" transform="matrix(1 0 0 -1 25 24)" fill="#743F20" />
-      <rect x="24" y="14" width="6" height="3" fill="#7D7B78" />
-      <rect x="27" y="14" width="3" height="3" fill="#605F5E" />
-      <rect x="18" y="24" width="6" height="3" fill="#75746D" />
-      <rect x="27" y="24" width="9" height="3" fill="#696963" />
-      <rect x="15" y="46" width="25" height="4" fill="#CA343D" />
-      <rect x="15" y="46" width="9" height="2" fill="#591720" />
-      <rect x="24" y="46" width="2" height="2" fill="#F3848A" />
-      <rect x="38" y="48" width="2" height="2" fill="#9A2A31" />
-      <rect x="15" y="48" width="2" height="2" fill="#9A2A31" />
-      <rect x="24" y="44" width="12" height="2" fill="#591720" />
-      <rect x="36" y="46" width="4" height="2" fill="#591720" />
-      <rect x="35" y="50" width="5" height="2" fill="#414256" />
-      <rect x="35" y="51" width="2" height="2" fill="#414256" />
-      <rect x="40" y="48" width="5" height="2" fill="#21294E" />
-      <rect x="45" y="50" width="2" height="3" fill="#21294E" />
-      <rect x="45" y="53" width="4" height="2" fill="#0F181D" />
-      <rect x="13" y="48" width="2" height="3" fill="#591720" />
-      <rect x="9" y="51" width="2" height="4" fill="#591720" />
-      <rect x="11" y="50" width="24" height="5" fill="#9A2A31" />
-      <rect x="7" y="53" width="28" height="2" fill="#591720" />
-      <rect x="33" y="51" width="2" height="2" fill="#414256" />
-      <rect x="33" y="53" width="12" height="2" fill="#21294E" />
-      <rect x="11" y="49" width="2" height="2" fill="#591720" />
-      <rect x="25" y="49" width="2" height="2" fill="#591720" />
-      <rect x="33" y="49" width="2" height="2" fill="#591720" />
-      <rect x="31" y="49" width="2" height="2" fill="#591720" />
-      <rect x="23" y="49" width="2" height="2" fill="#591720" />
-      <rect x="21" y="51" width="2" height="2" fill="#591720" />
-      <rect x="19" y="51" width="2" height="2" fill="#591720" />
+      <rect x="28" y="36" width="10" height="5" fill="#786E91" />
+      <rect x="11" y="12" width="18" height="3" fill="#BAB6AB" />
+      <rect x="16" y="16" width="8" height="18" fill="#DCD0B4" />
+      <rect x="18" y="16" width="2" height="18" fill="#FFF8E7" />
+      <rect width="2" height="19" transform="matrix(-1 0 0 1 16 15)" fill="#33322D" />
+      <rect width="2" height="19" transform="matrix(-1 0 0 1 26 15)" fill="#33322D" />
+      <rect width="18" height="2" transform="matrix(-1 0 0 1 29 15)" fill="#33322D" />
+      <rect width="6" height="2" transform="matrix(-1 0 0 1 23 0)" fill="#33322D" />
+      <rect width="2" height="3" transform="matrix(-1 0 0 1 17 2)" fill="#33322D" />
+      <rect width="2" height="3" transform="matrix(-1 0 0 1 25 2)" fill="#33322D" />
+      <rect width="2" height="3" transform="matrix(-1 0 0 1 31 12)" fill="#33322D" />
+      <rect width="2" height="3" transform="matrix(-1 0 0 1 11 12)" fill="#33322D" />
+      <rect width="5" height="2" transform="matrix(-1 0 0 1 29 10)" fill="#33322D" />
+      <rect width="5" height="2" transform="matrix(-1 0 0 1 16 10)" fill="#33322D" />
+      <rect width="2" height="7" transform="matrix(-1 0 0 1 24 5)" fill="#33322D" />
+      <rect width="2" height="7" transform="matrix(-1 0 0 1 18 5)" fill="#33322D" />
+      <rect x="16" y="16" width="6" height="2" fill="#96918A" />
+      <rect x="16" y="31" width="4" height="3" fill="#96918A" />
+      <rect x="20" y="16" width="4" height="18" fill="#686762" />
+      <rect x="22" y="18" width="2" height="16" fill="#96918A" />
+      <rect x="18" y="5" width="4" height="6" fill="#915931" />
+      <rect x="20" y="5" width="2" height="6" fill="#743F20" />
+      <rect width="4" height="1" transform="matrix(1 0 0 -1 18 12)" fill="#5C2D15" />
+      <rect width="2" height="1" transform="matrix(1 0 0 -1 18 12)" fill="#743F20" />
+      <rect x="17" y="2" width="6" height="3" fill="#7D7B78" />
+      <rect x="20" y="2" width="3" height="3" fill="#605F5E" />
+      <rect x="11" y="12" width="6" height="3" fill="#75746D" />
+      <rect x="20" y="12" width="9" height="3" fill="#696963" />
+      <rect x="8" y="34" width="25" height="4" fill="#CA343D" />
+      <rect x="8" y="34" width="9" height="2" fill="#591720" />
+      <rect x="17" y="34" width="2" height="2" fill="#F3848A" />
+      <rect x="31" y="36" width="2" height="2" fill="#9A2A31" />
+      <rect x="8" y="36" width="2" height="2" fill="#9A2A31" />
+      <rect x="17" y="32" width="12" height="2" fill="#591720" />
+      <rect x="29" y="34" width="4" height="2" fill="#591720" />
+      <rect x="28" y="38" width="5" height="2" fill="#414256" />
+      <rect x="28" y="39" width="2" height="2" fill="#414256" />
+      <rect x="33" y="36" width="5" height="2" fill="#21294E" />
+      <rect x="38" y="38" width="2" height="3" fill="#21294E" />
+      <rect x="38" y="41" width="4" height="2" fill="#0F181D" />
+      <rect x="6" y="36" width="2" height="3" fill="#591720" />
+      <rect x="2" y="39" width="2" height="4" fill="#591720" />
+      <rect x="4" y="38" width="24" height="5" fill="#9A2A31" />
+      <rect y="41" width="28" height="2" fill="#591720" />
+      <rect x="26" y="39" width="2" height="2" fill="#414256" />
+      <rect x="26" y="41" width="12" height="2" fill="#21294E" />
+      <rect x="4" y="37" width="2" height="2" fill="#591720" />
+      <rect x="18" y="37" width="2" height="2" fill="#591720" />
+      <rect x="26" y="37" width="2" height="2" fill="#591720" />
+      <rect x="24" y="37" width="2" height="2" fill="#591720" />
+      <rect x="16" y="37" width="2" height="2" fill="#591720" />
+      <rect x="14" y="39" width="2" height="2" fill="#591720" />
+      <rect x="12" y="39" width="2" height="2" fill="#591720" />
     </svg>
   )),
   PlayIcon: forwardRef<SVGSVGElement, ComponentPropsWithoutRef<'svg'>>((props, ref) => (
