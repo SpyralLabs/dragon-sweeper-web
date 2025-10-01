@@ -11,6 +11,7 @@ import GameStartDialog from './game-start-dialog';
 import useMusic from '@/lib/hooks/use-music';
 import { SOUNDS } from '@/lib/config/music-config';
 import GameWonDialog from './game-won-dialog';
+import TestPannel from './test-pannel';
 
 const rightPanelVariants = {
   initial: {
@@ -38,7 +39,6 @@ export default function GameRightPannel() {
     gameWon,
     handleCellClick,
     handleCellRightClick,
-    toggleAllBoardForTest,
     dungeon,
     calculateMonsterPowerSum,
   } = useGameLogic();
@@ -158,12 +158,7 @@ export default function GameRightPannel() {
       <p className="absolute top-[calc(100%+12px)] right-0 text-right text-sm text-[#828c7c]">
         If the game is interrupted, used resources cannot be refunded.
       </p>
-      <button
-        className="fixed right-4 bottom-4 z-[9999] h-10 w-60 bg-amber-50 text-black"
-        onClick={toggleAllBoardForTest}
-      >
-        Toggle All Board
-      </button>
+      <TestPannel />
       {gameOver && (
         <GameOverDialog
           onClick={() => {

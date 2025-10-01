@@ -36,6 +36,7 @@ export type Monsters =
   | 'magician'
   | 'mimic'
   | 'darkLord'
+  | 'monkey'
   | 'mine';
 
 export type Items =
@@ -47,14 +48,17 @@ export type Items =
   | 'darkCrystal'
   | 'darkCrystalBroken'
   | 'mineBuster'
-  | 'monkey'
   | 'wall1'
   | 'wall2'
   | 'wall3'
   | 'wall4'
   | 'expBox'
   | 'expWall'
-  | 'mineExp';
+  | 'mineExp'
+  | 'shadowAbility'
+  | 'bunnyAbility'
+  | 'magicianAbility'
+  | 'mineSeekerAbility';
 
 export const MONSTERS: Record<Monsters, GameEntity> = {
   spider: {
@@ -169,6 +173,13 @@ export const MONSTERS: Record<Monsters, GameEntity> = {
     power: 100,
     icon: Icons.Mine,
   },
+  monkey: {
+    id: 'monkey',
+    type: 'monster',
+    xp: Math.random() <= 0.3 ? 9 : 0,
+    power: 0,
+    icon: Icons.Monkey,
+  },
 } as const;
 
 export const ITEMS: Record<Items, GameEntity> = {
@@ -228,13 +239,6 @@ export const ITEMS: Record<Items, GameEntity> = {
     power: 0,
     icon: Icons.MineBuster,
   },
-  monkey: {
-    id: 'monkey',
-    type: 'item',
-    xp: 0,
-    power: 0,
-    icon: Icons.Monkey,
-  },
   wall1: {
     id: 'wall1',
     type: 'item',
@@ -283,5 +287,33 @@ export const ITEMS: Record<Items, GameEntity> = {
     xp: 3,
     power: 0,
     icon: Icons.MineExp,
+  },
+  shadowAbility: {
+    id: 'shadow-ability',
+    type: 'item',
+    xp: 0,
+    power: 0,
+    icon: Icons.ShadowAbility,
+  },
+  bunnyAbility: {
+    id: 'bunny-ability',
+    type: 'item',
+    xp: 0,
+    power: 0,
+    icon: Icons.BunnyAbility,
+  },
+  magicianAbility: {
+    id: 'magician-ability',
+    type: 'item',
+    xp: 0,
+    power: 0,
+    icon: Icons.MagicianAbility,
+  },
+  mineSeekerAbility: {
+    id: 'mine-seeker-ability',
+    type: 'item',
+    xp: 0,
+    power: 0,
+    icon: Icons.MineseekerAbility,
   },
 };

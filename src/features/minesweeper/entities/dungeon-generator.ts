@@ -145,8 +145,8 @@ export class DungeonGenerator {
         this.placeEntity(eyePos.x, eyePos.y, MONSTERS.eye);
       }
     }
-    const monkeyEntity = { ...ITEMS.monkey, xp: Math.random() <= 0.3 ? 9 : 0 };
-    this.placeRandomly(monkeyEntity);
+
+    this.placeRandomly(MONSTERS.monkey);
   }
 
   private placeRandomMonstersAndItems() {

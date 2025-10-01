@@ -1,13 +1,11 @@
 import { motion } from 'framer-motion';
 import LeftPanelFrame from '@/assets/images/game/left-frame.webp';
 import HPFrame from '@/assets/images/game/left-hp-frame.webp';
-import { useEffect, useMemo } from 'react';
+import { useMemo } from 'react';
 import { useGameLogic } from '../hooks/use-game-logic';
 import Icons from '@/components/ui/icons';
 import { cn } from '@/lib/utils/tailwind-util';
 import Character from './character';
-import { hpAtom, maxHpAtom } from '@/state/game';
-import { useSetAtom } from 'jotai';
 
 const leftPanelVariants = {
   initial: {

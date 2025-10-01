@@ -67,7 +67,7 @@ const BoardCell = ({
   }
 
   // Case 1: Not revealed and not opened info
-  if (!revealed && !executed) {
+  if (!revealed) {
     return (
       <button
         className={cn(
@@ -112,11 +112,12 @@ const BoardCell = ({
           {entity ? (
             <>
               <entity.icon />
-              {entity.xp > 0 && ![ITEMS.boxClose.id, MONSTERS.mimic.id].includes(entity.id) && (
-                <p className="text-stroke-4d3e36 absolute bottom-0 left-1/2 -translate-x-1/2 text-base font-bold text-[#ffaa20]">
-                  {entity.xp}
-                </p>
-              )}
+              {entity.xp > 0 &&
+                ![ITEMS.boxClose.id, MONSTERS.mimic.id, MONSTERS.monkey.id].includes(entity.id) && (
+                  <p className="text-stroke-4d3e36 absolute bottom-0 left-1/2 -translate-x-1/2 text-base font-bold text-[#ffaa20]">
+                    {entity.xp}
+                  </p>
+                )}
               {entity && entity.id === MONSTERS.mine.id && (
                 <p className="text-stroke-4d3e36 absolute bottom-0 left-1/2 -translate-x-1/2 text-base font-bold text-[#ffaa20]">
                   {entity.power}

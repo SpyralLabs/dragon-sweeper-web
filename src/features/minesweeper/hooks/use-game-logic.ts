@@ -57,10 +57,10 @@ export const useGameLogic = () => {
   const handleMonsterDefeat = useCallback(
     (newBoard: Cell[][], x: number, y: number, monster: GameEntity) => {
       let finalMonsterPower = monster.power;
-      const effectiveDamage = Math.max(1, finalMonsterPower - utilityStats.shield);
+      const effectiveDamage = Math.max(0, finalMonsterPower - utilityStats.shield);
 
       if (newBoard[y][x].executed && newBoard[y][x].entity?.id === MONSTERS.darkLord.id) {
-        setExp((prevExp) => prevExp + monster.power);
+        setExp((prevExp) => prevExp + monster.xp);
         setBoard(newBoard);
         setGameWon(true);
         return;
@@ -69,40 +69,47 @@ export const useGameLogic = () => {
       if (newBoard[y][x].executed && newBoard[y][x].entity !== null) {
         newBoard[y][x].revealed = true;
         newBoard[y][x].marked = null;
-        newBoard[y][x].entity = null;
+        switch (monster.id) {
+          case MONSTERS.monkey.id:
+            newBoard[y][x].entity = null;
+            break;
+          case MONSTERS.mineSeeker.id:
+            newBoard[y][x].entity = ITEMS.mineSeekerAbility;
+            break;
+          case MONSTERS.shadow.id:
+            newBoard[y][x].entity = ITEMS.shadowAbility;
+            break;
+          case MONSTERS.bunny.id:
+            newBoard[y][x].entity = ITEMS.bunnyAbility;
+            break;
+          case MONSTERS.magician.id:
+            newBoard[y][x].entity = ITEMS.magicianAbility;
+            break;
+          default:
+            newBoard[y][x].entity = null;
+            break;
+        }
         setBoard(newBoard);
         setAttacked(false);
-        setExp((prevExp) => prevExp + monster.power + utilityStats.damageBoost);
+        setExp((prevExp) => prevExp + monster.xp);
         return;
       }
 
       if (hp >= effectiveDamage) {
         setHp((prevHp) => prevHp - effectiveDamage);
-        setAttacked(true);
+        setAttacked(effectiveDamage > 0);
         playSound(SOUNDS.ingame.attack);
 
         switch (monster.id) {
-          case MONSTERS.magician.id:
-            handleMagicianAbility(newBoard);
-            break;
-          case MONSTERS.bunny.id:
-            handleBunnyAbility(newBoard, x, y);
-            break;
-          case MONSTERS.shadow.id:
-            handleShadowAbility(newBoard);
-            break;
           case MONSTERS.eye.id:
             handleEyeAbility(newBoard, x, y);
             break;
           case MONSTERS.mineSeeker.id:
-            handleMineSeekerAbility(newBoard, x, y);
+            setSpecialMonstersStatus((prev) => ({ ...prev, isMineSeekerDefeated: true }));
             break;
           case MONSTERS.darkLord.id: {
             if (!newBoard[y][x].entity) break;
             newBoard[y][x].entity.icon = Icons.DarkLordExecuted;
-            newBoard[y][x].revealed = true;
-            newBoard[y][x].marked = null;
-            newBoard[y][x].executed = true;
             setBoard(newBoard);
             break;
           }
@@ -121,50 +128,6 @@ export const useGameLogic = () => {
     },
     [board, hp, exp, utilityStats, setHp, setExp, setGameOver, setGameWon],
   );
-
-  const handleMagicianAbility = (currentBoard: Cell[][]) => {
-    currentBoard.forEach((row) => {
-      row.forEach((targetCell) => {
-        if (
-          targetCell.entity?.id === MONSTERS.mushroom.id ||
-          targetCell.entity?.id === MONSTERS.poisonMushroom.id
-        ) {
-          targetCell.revealed = true;
-        }
-      });
-    });
-  };
-
-  const handleBunnyAbility = (currentBoard: Cell[][], x: number, y: number) => {
-    currentBoard[y][x].entity = ITEMS.hpItem;
-  };
-
-  const handleMineSeekerAbility = (currentBoard: Cell[][], x: number, y: number) => {
-    currentBoard[y][x].entity = ITEMS.mineBuster;
-    setSpecialMonstersStatus((prev) => ({ ...prev, isMineSeekerDefeated: true }));
-  };
-
-  const handleShadowAbility = (currentBoard: Cell[][]) => {
-    currentBoard.forEach((row) => {
-      row.forEach((targetCell) => {
-        if (targetCell.entity?.id === MONSTERS.spider.id) {
-          targetCell.revealed = true;
-        }
-      });
-    });
-  };
-
-  const handleEyeAbility = (currentBoard: Cell[][], x: number, y: number) => {
-    currentBoard[y][x].entity;
-    // TODO: handleEyeDefeat in Atom logic
-    const newEyePosition = eyePosition.map((eye) => {
-      if (eye.x === x && eye.y === y) {
-        return { ...eye, isDefeated: true };
-      }
-      return eye;
-    });
-    setEyePosition(newEyePosition);
-  };
 
   const handleItemAcquisition = useCallback(
     (newBoard: Cell[][], x: number, y: number, item: GameEntity) => {
@@ -205,24 +168,44 @@ export const useGameLogic = () => {
           handleWallAcquisition(newBoard, x, y, item);
           break;
         }
-        case ITEMS.mineBuster.id:
+        case ITEMS.shadowAbility.id:
+          handleShadowAbility(newBoard);
+          cell.revealed = true;
+          cell.marked = null;
+          cell.executed = true;
+          cell.entity = null;
+          break;
+        case ITEMS.bunnyAbility.id:
+          handleBunnyAbility(cell);
+          cell.revealed = true;
+          cell.marked = null;
+          cell.executed = true;
+          cell.entity = null;
+          break;
+        case ITEMS.magicianAbility.id:
+          handleMagicianAbility(newBoard);
+          cell.revealed = true;
+          cell.marked = null;
+          cell.executed = true;
+          cell.entity = null;
+          break;
+        case ITEMS.mineSeekerAbility.id:
           handleMineDisarmButton(newBoard, x, y);
           cell.revealed = true;
           cell.marked = null;
           cell.executed = true;
+          cell.entity = null;
+          break;
+        case ITEMS.mineExp.id:
+          setExp((prevExp) => prevExp + 3);
+          cell.revealed = true;
+          cell.marked = null;
+          cell.executed = true;
+          cell.entity = null;
           break;
         case ITEMS.boxClose.id:
         case ITEMS.expBox.id:
           handleExpBoxAcquisition(newBoard, x, y, item);
-          break;
-        case ITEMS.monkey.id:
-          if (cell.entity && cell.entity.xp > 0) {
-            setExp((prevExp) => prevExp + cell.entity!.xp);
-          }
-          newBoard[y][x].entity = null;
-          cell.revealed = true;
-          cell.marked = null;
-          cell.executed = true;
           break;
         default:
           break;
@@ -327,13 +310,59 @@ export const useGameLogic = () => {
       setExp((prevExp) => prevExp + currentBoard[y][x].entity!.xp);
       currentBoard.forEach((row) => {
         row.forEach((targetCell) => {
-          if (targetCell.entity?.id === MONSTERS.mine.id && targetCell.revealed) {
+          if (targetCell.entity?.id === MONSTERS.mine.id) {
             targetCell.entity = ITEMS.mineExp;
+            targetCell.marked = null;
+            targetCell.executed = true;
           }
         });
       });
       currentBoard[y][x].entity = null;
     }
+  };
+
+  const handleMagicianAbility = (currentBoard: Cell[][]) => {
+    currentBoard.forEach((row) => {
+      row.forEach((targetCell) => {
+        if (
+          targetCell.entity?.id === MONSTERS.mushroom.id ||
+          targetCell.entity?.id === MONSTERS.poisonMushroom.id
+        ) {
+          targetCell.revealed = true;
+        }
+      });
+    });
+  };
+
+  const handleBunnyAbility = (cell: Cell) => {
+    playSound(SOUNDS.ingame.hpitem);
+    setHp(maxHp);
+    cell.entity = null;
+    cell.revealed = true;
+    cell.marked = null;
+    cell.executed = true;
+  };
+
+  const handleShadowAbility = (currentBoard: Cell[][]) => {
+    currentBoard.forEach((row) => {
+      row.forEach((targetCell) => {
+        if (targetCell.entity?.id === MONSTERS.spider.id) {
+          targetCell.revealed = true;
+        }
+      });
+    });
+  };
+
+  const handleEyeAbility = (currentBoard: Cell[][], x: number, y: number) => {
+    currentBoard[y][x].entity;
+    // TODO: handleEyeDefeat in Atom logic
+    const newEyePosition = eyePosition.map((eye) => {
+      if (eye.x === x && eye.y === y) {
+        return { ...eye, isDefeated: true };
+      }
+      return eye;
+    });
+    setEyePosition(newEyePosition);
   };
 
   const handleCellClick = useCallback(
