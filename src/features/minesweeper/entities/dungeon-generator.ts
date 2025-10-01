@@ -311,10 +311,10 @@ export class DungeonGenerator {
     centerPos: { x: number; y: number },
   ) {
     for (let i = 0; i < count; i++) {
-      let attempts = 100;
+      let attempts = 200;
       while (attempts > 0) {
-        const x = centerPos.x + Math.floor(Math.random() * 3) - 1;
-        const y = centerPos.y + Math.floor(Math.random() * 3) - 1;
+        const x = centerPos.x + Math.floor(Math.random() * 4) - 1;
+        const y = centerPos.y + Math.floor(Math.random() * 4) - 1;
 
         if (this.placeEntity(x, y, entity)) {
           break;
